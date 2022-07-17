@@ -15,15 +15,14 @@ model miner_data {
     watts      Float
     efficiency Float
 
-
     market_data market_data[]
 }
 
 model market_data {
-    id     String   @id @unique
-    vendor String
-    price  Float
-    date   DateTime @db.Date()
-    miner_data      miner_data? @relation(fields: [model], references: [model])
-    model String?
+    id         String      @id @unique
+    vendor     String
+    price      Float
+    date       DateTime    @db.Date()
+    miner_data miner_data? @relation(fields: [model], references: [model])
+    model      String?
 }
