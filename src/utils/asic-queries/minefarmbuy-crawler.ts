@@ -61,13 +61,16 @@ const minefarmbuyScraper = async () => {
       );
     });
 
-    //removes all duplicate urls from the filteredUrls
-    const uniqueUrls = [...new Set(filteredUrls)];
+    //removes all duplicate urls from the filteredUrls not using Set
+
+    const uniqueUrls = filteredUrls.filter((url, index) => {
+      return filteredUrls.indexOf(url) === index;
+    });
 
     const minefarmbuyData: minefarmbuyDataInterface[] = [];
 
     // loops through all of the filtered links
-    for (const url of uniqueUrls.values()) {
+    for (const url of uniqueUrls) {
       await page.goto(url, { waitUntil: "domcontentloaded" });
 
       const asicModel = await page.$eval(
@@ -118,7 +121,7 @@ const minefarmbuyScraper = async () => {
         });
 
         //loops through the filtered options and sets the data
-        for (const th of filterHashrateOptions.values()) {
+        for (const th of filterHashrateOptions) {
           await page.select("select#hashrate", th);
 
           const asicPrice = await page.$$eval(
@@ -168,7 +171,7 @@ const minefarmbuyScraper = async () => {
           });
         }
       } else if (filteredEfficiency.length > 0) {
-        for (const effic of filteredEfficiency.values()) {
+        for (const effic of filteredEfficiency) {
           await page.select("select#efficiency", effic);
 
           const hashrateOptionForEff = await page.$$eval(
@@ -182,7 +185,7 @@ const minefarmbuyScraper = async () => {
             }
           );
 
-          for (const th of efficiencyHashrateOpt.values()) {
+          for (const th of efficiencyHashrateOpt) {
             await page.select("select#hashrate", th);
 
             let asicPrice = await page.$$eval(

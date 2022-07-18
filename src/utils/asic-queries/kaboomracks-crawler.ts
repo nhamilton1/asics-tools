@@ -1,6 +1,6 @@
 import { load } from "cheerio";
-import { sha1 } from "../helpers";
-import { asicWattList } from "./asicWattList";
+import { sha1 } from "../../utils/helpers";
+import { asicWattList } from "../../utils/asic-queries/asicWattList";
 
 export interface kaboomracksInterface {
   vendor: string;
@@ -13,42 +13,17 @@ export interface kaboomracksInterface {
   id: string;
 }
 
-type wattListType = {
-  "Bitmain Antminer S9": { [key: number | string]: number };
-  "Bitmain Antminer S19 Pro": { [key: number | string]: number };
-  "Bitmain Antminer S19j Pro": { [key: number | string]: number };
-  "Bitmain Antminer S19j": { [key: number | string]: number };
-  "Bitmain Antminer S19": { [key: number | string]: number };
-  "Bitmain Antminer S19a": { [key: number | string]: number };
-  "Bitmain Antminer S19a Pro": { [key: number | string]: number };
-  "Bitmain Antminer S19 XP": { [key: number | string]: number };
-  "Whatsminer M50": { [key: number | string]: number };
-  "Whatsminer M30S": { [key: number | string]: number };
-  "Whatsminer M31S": { [key: number | string]: number };
-  "Whatsminer M31S+": { [key: number | string]: number };
-  "Whatsminer M30s+": { [key: number | string]: number };
-  "Whatsminer M30S++": { [key: number | string]: number };
-  "Whatsminer M21s": { [key: number | string]: number };
-  "Whatsminer M21S": { [key: number | string]: number };
-  "Whatsminer M20s": { [key: number | string]: number };
-  "Whatsminer M20S": { [key: number | string]: number };
-  "Canaan Avalonminer 1066": { [key: number | string]: number };
-  "Canaan Avalonminer 1246": { [key: number | string]: number };
-  "Canaan Avalonminer 1166": { [key: number | string]: number };
-  "Canaan Avalonminer 1166 Pro": { [key: number | string]: number };
-  "Canaan Avalonminer 1146": { [key: number | string]: number };
-  "Canaan Avalonminer 1146 Pro": { [key: number | string]: number };
-};
-
 const kaboomracksScraper = async () => {
   try {
     // const { data } = await axios.get("https://t.me/s/kaboomracks");
-    const { data } = await fetch("https://t.me/s/kaboomracks", {
+    const fetchedKaboom = await fetch("https://t.me/s/kaboomracks", {
       method: "GET",
       headers: {
         Accept: "*/*",
       },
-    }).then((res) => res.json());
+    });
+
+    const data = await fetchedKaboom.json();
 
     const $miner = load(data);
 
@@ -476,5 +451,5 @@ const kaboomracksScraper = async () => {
     console.error(err);
   }
 };
-kaboomracksScraper();
+
 export default kaboomracksScraper;
