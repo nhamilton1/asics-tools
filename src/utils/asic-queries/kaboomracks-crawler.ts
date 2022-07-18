@@ -1,6 +1,7 @@
 import { load } from "cheerio";
 import { sha1 } from "../../utils/helpers";
 import { asicWattList } from "../../utils/asic-queries/asicWattList";
+import axios from "axios";
 
 export interface kaboomracksInterface {
   vendor: string;
@@ -15,15 +16,12 @@ export interface kaboomracksInterface {
 
 const kaboomracksScraper = async () => {
   try {
-    // const { data } = await axios.get("https://t.me/s/kaboomracks");
-    const fetchedKaboom = await fetch("https://t.me/s/kaboomracks", {
+    const { data } = await axios.get("https://t.me/s/kaboomracks", {
       method: "GET",
       headers: {
         Accept: "*/*",
       },
     });
-
-    const data = await fetchedKaboom.json();
 
     const $miner = load(data);
 
@@ -451,5 +449,5 @@ const kaboomracksScraper = async () => {
     console.error(err);
   }
 };
-
+kaboomracksScraper()
 export default kaboomracksScraper;
