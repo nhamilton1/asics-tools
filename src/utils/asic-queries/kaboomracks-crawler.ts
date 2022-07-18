@@ -35,7 +35,7 @@ const kaboomracksScraper = async () => {
       "body > main > div > section > div > div > div > div.tgme_widget_message_text"
     ).each((_idx, el) => {
       const minerData = $miner(el)?.text() as string;
-      console.log(minerData);
+
       if (!minerData) {
         return;
       }
@@ -449,5 +449,5 @@ const kaboomracksScraper = async () => {
     console.error(err);
   }
 };
-kaboomracksScraper()
+
 export default kaboomracksScraper;
