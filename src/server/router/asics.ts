@@ -10,15 +10,28 @@ export const asicsRouter = createRouter().query("get-asics-info", {
         price: true,
         id: true,
         date: true,
-        miner_data: {
-          select: {
-            model: true,
-            th: true,
-            watts: true,
-            efficiency: true,
-          },
-        },
       },
+    });
+
+    const minerInfo = await prisma.miner_data.findMany({
+      select: {
+        efficiency: true,
+        watts: true,
+        th: true,
+        model: true,
+      },
+    });
+
+    const asicsWithMinerInfo = asics.map((asic) => {
+      const miner = minerInfo.find((x) => x.model === asic.model);
+      if (miner) {
+        return {
+          ...asic,
+          th: miner.th,
+          watts: miner.watts,
+          efficiency: miner.efficiency,
+        };
+      }
     });
 
     const btcPriceURL = `https://insights.braiins.com/api/v1.0/price-stats`;
@@ -63,37 +76,36 @@ export const asicsRouter = createRouter().query("get-asics-info", {
     let elongatedHashPrice = currentHashPrice * 347.22;
     let kWhPrice = 0.12;
 
-    const formattingAsicData = asics?.map((a, idx) => {
-      if (a.miner_data) {
+    const formattingAsicData = asicsWithMinerInfo.map((a) => {
+      if (a?.id) {
         let asicBTCPrice =
           Math.round(1000000 * (a.price / currentBTCPrice!)) / 1000000;
-        let value = Math.round(a.price / a.miner_data.th);
-        let wattDollar = Number((value * a.miner_data.efficiency).toFixed(0));
+        let value = Math.round(a.price / a?.th);
+        let wattDollar = Number((value * a?.efficiency).toFixed(0));
         let denverDerivative = Number(
           (wattDollar / elongatedHashPrice).toFixed(2)
         );
         let btcPerMonth =
           Math.round(
-            1000000 *
-              ((a.miner_data.th / (currentHash! * 1000000)) * 900 * 30.5)
+            1000000 * ((a?.th / (currentHash! * 1000000)) * 900 * 30.5)
           ) / 1000000;
         let dollarPerMonth = Math.round(btcPerMonth * currentBTCPrice!);
         let monthlyEnergy =
-          Math.round(
-            100 * (732 * (a.miner_data.watts * 0.001) * Number(kWhPrice))
-          ) / 100;
+          Math.round(100 * (732 * (a?.watts * 0.001) * Number(kWhPrice))) / 100;
         let profitMonth = Math.round(dollarPerMonth - monthlyEnergy);
         let monthsToRoi = Math.round(100 * (a.price / dollarPerMonth)) / 100;
 
         return {
           id: a.id,
-          date: new Date(a.date).toLocaleDateString("en-US"),
-          efficiency: a.miner_data.efficiency.toFixed(1),
+          date: new Date(a.date.toISOString().slice(0, -1)).toLocaleDateString(
+            "en-US"
+          ),
+          efficiency: a?.efficiency.toFixed(1),
           model: a.model,
           price: a.price,
-          th: a.miner_data.th,
+          th: a?.th,
           vendor: a.vendor,
-          watts: a.miner_data.watts,
+          watts: a?.watts,
           asicBTCPrice,
           value,
           wattDollar,
