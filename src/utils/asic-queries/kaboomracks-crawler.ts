@@ -430,7 +430,6 @@ const kaboomracksScraper = async () => {
             vendor,
             model,
             th,
-
             watts,
             efficiency,
             price,
