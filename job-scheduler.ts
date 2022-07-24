@@ -78,18 +78,15 @@ const scheduler = async () => {
         watts: x.watts,
         efficiency: x.efficiency,
       }));
-
-      if (minerInfo) {
-        console.log("miner info", minerInfo);
-        await prisma.miner_data.createMany({
-          data: minerInfo.map((x) => ({
-            model: x.model,
-            th: x.th,
-            watts: x.watts,
-            efficiency: x.efficiency,
-          })),
-        });
-      }
+      console.log("miner info", minerInfo);
+      await prisma.miner_data.createMany({
+        data: minerInfo.map((x) => ({
+          model: x.model,
+          th: x.th,
+          watts: x.watts,
+          efficiency: x.efficiency,
+        })),
+      });
     }
 
     if (marketInfoDupCheck.length > 0) {
@@ -100,18 +97,16 @@ const scheduler = async () => {
         price: x.price,
         date: x.date,
       }));
-      if (marketInfo) {
-        console.log("market info", marketInfo);
-        await prisma.market_data.createMany({
-          data: marketInfo.map((x) => ({
-            id: x.id,
-            vendor: x.vendor,
-            model: x.model,
-            price: x.price,
-            date: x.date,
-          })),
-        });
-      }
+      console.log("market info", marketInfo);
+      await prisma.market_data.createMany({
+        data: marketInfo.map((x) => ({
+          id: x.id,
+          vendor: x.vendor,
+          model: x.model,
+          price: x.price,
+          date: x.date,
+        })),
+      });
     }
   } catch (err) {
     console.error("error in scheduler file", err);
