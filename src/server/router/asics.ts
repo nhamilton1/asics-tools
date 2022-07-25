@@ -76,6 +76,8 @@ export const asicsRouter = createRouter().query("get-asics-info", {
     let elongatedHashPrice = currentHashPrice * 347.22;
     let kWhPrice = 0.12;
 
+    //TODO: next time i work on this, i should move this to the front end, I feel like it would be better to do this on the front end.
+
     const formattingAsicData = asicsWithMinerInfo.map((a) => {
       if (a?.id) {
         let asicBTCPrice =
