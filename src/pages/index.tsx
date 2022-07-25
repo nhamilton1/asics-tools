@@ -209,10 +209,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto flex flex-col items-center justify-center p-4">
+      <main className="container mx-auto flex flex-col items-center justify-center p-4 bg-slate-800 text-white h-screen">
         <h1 className="text-4xl font-bold">
-          <span className="text-gray-700">Asic-tools</span>
-          {isLoading && <span className="text-gray-700">Loading...</span>}
+          <span className="text-white">Asic-tools</span>
+          {isLoading && <span className="text-white">Loading...</span>}
         </h1>
         <div>
           <table>
@@ -293,7 +293,7 @@ const Home: NextPage = () => {
                 const page = e.target.value ? Number(e.target.value) - 1 : 0;
                 table.setPageIndex(page);
               }}
-              className="border p-1 rounded w-16"
+              className="border p-1 rounded w-12 text-black"
             />
           </span>
           <select
@@ -301,6 +301,7 @@ const Home: NextPage = () => {
             onChange={(e) => {
               table.setPageSize(Number(e.target.value));
             }}
+            className="text-black"
           >
             {[10, 20, 30, 40, 50].map((pageSize) => (
               <option key={pageSize} value={pageSize}>
