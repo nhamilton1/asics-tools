@@ -17,10 +17,13 @@ export const asicModelDbCheck = async (
   });
 
   if (!matchedAsicNameInDb) {
+    console.log(`${asicSearchName} not found in db`);
+    // if not found in db, check if it is in the asicWattList
     let watts: number | undefined =
-      asicWattList[asicSearchName]![th] !== undefined
-        ? (asicWattList[asicSearchName]![th] as number)
-        : ((asicWattList[asicSearchName]!["wt"]! * Number(th)) as number);
+      asicWattList[asicSearchName.toLowerCase()]![th] !== undefined
+        ? (asicWattList[asicSearchName.toLowerCase()]![th] as number)
+        : ((asicWattList[asicSearchName.toLowerCase()]!["wt"]! *
+            Number(th)) as number);
 
     let efficiency = Number((watts / th).toFixed(1));
 

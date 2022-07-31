@@ -1,4 +1,5 @@
 import Puppeteer from "puppeteer";
+import { asicModelDbCheck } from "../asicModelDbCheck";
 import { convertEfficiency, convertPowerDraw, sha1 } from "../helpers";
 
 export interface minefarmbuyDataInterface {
@@ -17,6 +18,8 @@ interface removeImgEtcInterface {
   abort: () => void;
   continue: () => void;
 }
+
+const vendor = "minefarmbuy";
 
 const minefarmbuyScraper = async () => {
   let browser;
@@ -155,7 +158,7 @@ const minefarmbuyScraper = async () => {
           }`;
 
           minefarmbuyData.push({
-            vendor: "minefarmbuy",
+            vendor,
             model,
             th: Number(th.split(/th/i)[0]),
             watts: convertPowerDraw(powerDraw, th),
@@ -213,7 +216,7 @@ const minefarmbuyScraper = async () => {
             // model = model.split(" ").slice(0,-1).join(" ")
 
             minefarmbuyData.push({
-              vendor: "minefarmbuy",
+              vendor,
               model,
               th: Number(th.split(/th/i)[0]),
               watts: convertPowerDraw(effic, th),

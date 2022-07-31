@@ -4,53 +4,59 @@ export const asicWattList: {
     [key: string | number | symbol]: number;
   };
 } = {
-  "Bitmain Antminer S9": {
+  "bitmain antminer s9": {
+    wt: 98,
     13.5: 1323,
   },
-  "Bitmain Antminer S19 Pro": {
+  "bitmain antminer s17e": {
+    wt: 45,
+    64: 2880,
+  },
+  "bitmain antminer s19 pro": {
+    wt: 29.5,
     110: 3250,
   },
-  "Bitmain Antminer S19j Pro": {
+  "bitmain antminer s19j pro": {
     wt: 29.5,
     104: 3068,
     100: 3050,
     96: 2832,
     90: 2655,
   },
-  "Bitmain Antminer S19j": {
+  "bitmain antminer s19j": {
     wt: 29.5,
     104: 3068,
     100: 3050,
     96: 2832,
     90: 2655,
   },
-  "Bitmain Antminer S19": {
+  "bitmain antminer s19": {
     wt: 30,
     95: 3250,
     90: 3250,
   },
-  "Bitmain Antminer S19a": {
+  "bitmain antminer s19a": {
     wt: 34.5,
     100: 3450,
     96: 3312,
     92: 3174,
     88: 3036,
   },
-  "Bitmain Antminer S19a Pro": {
+  "bitmain antminer s19a pro": {
     wt: 29.5,
     110: 3245,
     106: 3127,
     102: 3009,
   },
-  "Bitmain Antminer S19 XP": {
+  "bitmain antminer s19 xp": {
     wt: 21.5,
     140: 3010,
   },
-  "Whatsminer M50": {
+  "whatsminer m50": {
     wt: 29,
     118: 3422,
   },
-  "Whatsminer M30S": {
+  "whatsminer m30s": {
     wt: 42,
     102: 3264,
     92: 3496,
@@ -58,67 +64,64 @@ export const asicWattList: {
     88: 3344,
     86: 3268,
   },
-  "Whatsminer M31S": {
+  "whatsminer m31s": {
     wt: 46,
     74: 3404,
   },
-  "Whatsminer M31S+": {
+  "whatsminer m31s+": {
     wt: 38,
     82: 3444,
     80: 3360,
     76: 3220,
   },
-  "Whatsminer M30s+": {
+  "whatsminer m30s+": {
     wt: 34,
     100: 3400,
-  },
-  "Whatsminer M30S+": {
-    wt: 34,
     102: 3468,
   },
-  "Whatsminer M30S++": {
+  "whatsminer m30s++": {
     wt: 31,
     106: 3472,
   },
-  "Whatsminer M21s": {
+  "whatsminer m21s": {
     wt: 66,
     50: 3300,
   },
-  "Whatsminer M21S": {
-    wt: 66,
-    50: 3300,
-  },
-  "Whatsminer M20s": {
+  "whatsminer m20s": {
     wt: 52,
     62: 2976,
   },
-  "Whatsminer M20S": {
+  "whatsminer m20S": {
     wt: 52,
     62: 2976,
     60: 3120,
   },
-  "Canaan Avalonminer 1066": {
+  "canaan avalonminer 1066": {
     wt: 65,
     50: 3250,
   },
-  "Canaan Avalonminer 1246": {
+  "canaan avalonminer 1246": {
     wt: 38,
     90: 3420,
   },
-  "Canaan Avalonminer 1166": {
+  "canaan avalonminer 1166": {
     wt: 47,
     68: 3196,
   },
-  "Canaan Avalonminer 1166 Pro": {
+  "canaan avalonminer 1166 pro": {
     wt: 42,
     81: 3402,
   },
-  "Canaan Avalonminer 1146": {
+  "canaan avalonminer 1146": {
     wt: 57,
     56: 3196,
   },
-  "Canaan Avalonminer 1146 Pro": {
+  "canaan avalonminer 1146 pro": {
     wt: 52,
     63: 3276,
+  },
+  "canaan avalon 1246": {
+    wt: 40,
+    85: 3420,
   },
 };
