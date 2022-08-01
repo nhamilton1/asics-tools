@@ -1,5 +1,6 @@
 import Puppeteer from "puppeteer";
 import { sha1 } from "../helpers";
+import { prisma } from "../../server/db/client";
 
 interface removeImgEtcInterface {
   resourceType: () => string;
@@ -17,6 +18,8 @@ interface upstreamdataInterface {
   date: Date;
   id: string;
 }
+
+const vendor: string = "upstreamdata";
 
 const upStreamDataCrawler = async () => {
   let browser;
@@ -88,8 +91,6 @@ const upStreamDataCrawler = async () => {
           Number((el as HTMLElement).innerText.replace(/[^\d.-]/g, ""))
       );
 
-      const vendor: string = "upstreamdata";
-
       const date: Date = new Date(new Date().toLocaleDateString("en-CA"));
 
       const th: number = Number(
@@ -104,6 +105,24 @@ const upStreamDataCrawler = async () => {
 
       const id = sha1(`upstreamdata ${asicModel} ${price}`);
 
+      const matchedAsicNameInDb = await prisma.miner_data.findFirst({
+        where: {
+          model: asicModel,
+        },
+      });
+
+      if (!matchedAsicNameInDb) {
+        console.log(`${asicModel} not found in db`);
+        await prisma.miner_data.create({
+          data: {
+            model: asicModel,
+            efficiency,
+            watts,
+            th,
+          },
+        });
+      }
+
       upstreamdataAsics.push({
         vendor,
         model: asicModel,
@@ -115,13 +134,12 @@ const upStreamDataCrawler = async () => {
         id,
       });
     }
+
     await browser.close();
     return upstreamdataAsics;
   } catch (err) {
     console.log("Could not create a browser instance => : ", err);
   }
 };
-
-upStreamDataCrawler();
 
 export default upStreamDataCrawler;

@@ -18,15 +18,6 @@ type allDataType =
     }[]
   | undefined;
 
-type minerInfoDupCheckType =
-  | {
-      model: string;
-      th: number;
-      watts: number;
-      efficiency: number;
-    }[]
-  | undefined;
-
 type marketInfoDupCheckType =
   | {
       id: string;
@@ -49,8 +40,6 @@ const scheduler = async () => {
 
     let allData: allDataType;
 
-    let minerInfoDupCheck: minerInfoDupCheckType;
-
     let marketInfoDupCheck: marketInfoDupCheckType;
 
     //combine all three scrapers into one array.
@@ -60,34 +49,10 @@ const scheduler = async () => {
       ...scrapeForUpstreamData,
     ];
 
-    //comparing between allData and minerInfo to see if there are any duplicate models.
-    minerInfoDupCheck = allData?.filter(
-      (scapeData) =>
-        !minerInfo.find((allAsicData) => scapeData.model === allAsicData.model)
-    );
-
     marketInfoDupCheck = allData?.filter(
       (scapeData) =>
         !marketInfo.find((allAsicData) => scapeData.id === allAsicData.id)
     );
-
-    if (minerInfoDupCheck.length > 0) {
-      const minerInfo = minerInfoDupCheck?.map((x) => ({
-        model: x.model,
-        th: x.th,
-        watts: x.watts,
-        efficiency: x.efficiency,
-      }));
-      console.log("miner info", minerInfo);
-      await prisma.miner_data.createMany({
-        data: minerInfo.map((x) => ({
-          model: x.model,
-          th: x.th,
-          watts: x.watts,
-          efficiency: x.efficiency,
-        })),
-      });
-    }
 
     if (marketInfoDupCheck.length > 0) {
       const marketInfo = marketInfoDupCheck?.map((x) => ({

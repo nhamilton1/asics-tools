@@ -1,6 +1,6 @@
 import Puppeteer from "puppeteer";
-import { asicModelDbCheck } from "../asicModelDbCheck";
 import { convertEfficiency, convertPowerDraw, sha1 } from "../helpers";
+import { prisma } from "../../server/db/client";
 
 export interface minefarmbuyDataInterface {
   vendor: string;
@@ -157,6 +157,24 @@ const minefarmbuyScraper = async () => {
               : Number(asicPrice[0].replace("$", "").replace(",", ""))
           }`;
 
+          const matchedAsicNameInDb = await prisma.miner_data.findFirst({
+            where: {
+              model: asicModel,
+            },
+          });
+
+          if (!matchedAsicNameInDb) {
+            console.log(`${asicModel} not found in db`);
+            await prisma.miner_data.create({
+              data: {
+                model: asicModel,
+                th: Number(th.split(/th/i)[0]),
+                watts: convertPowerDraw(powerDraw, th),
+                efficiency: convertEfficiency(powerDraw, th),
+              },
+            });
+          }
+
           minefarmbuyData.push({
             vendor,
             model,
@@ -214,6 +232,24 @@ const minefarmbuyScraper = async () => {
 
             // this will remove the j/th, still debating if i want to do this.
             // model = model.split(" ").slice(0,-1).join(" ")
+
+            const matchedAsicNameInDb = await prisma.miner_data.findFirst({
+              where: {
+                model: asicModel,
+              },
+            });
+
+            if (!matchedAsicNameInDb) {
+              console.log(`${asicModel} not found in db`);
+              await prisma.miner_data.create({
+                data: {
+                  model: asicModel,
+                  th: Number(th.split(/th/i)[0]),
+                  watts: convertPowerDraw(effic, th),
+                  efficiency: Number(effic.split(/j\/th/i)[0]),
+                },
+              });
+            }
 
             minefarmbuyData.push({
               vendor,
