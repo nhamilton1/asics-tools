@@ -13,15 +13,15 @@ const main = async () => {
     return !minerData.find((miner) => miner.model === asic.model);
   });
 
-  const uniqueMissingAsics = missingAsics.filter(
+  const uniqueMissingMiners = missingAsics.filter(
     (asic, index) =>
       missingAsics.findIndex((t) => t.model === asic.model) === index
   );
 
-  console.log(`Missing ${uniqueMissingAsics.length} asics`);
-  if (uniqueMissingAsics.length > 0) {
+  console.log(`Missing ${uniqueMissingMiners.length} miners from db`);
+  if (uniqueMissingMiners.length > 0) {
     await prisma.miner_data.createMany({
-      data: uniqueMissingAsics.map((asics) => ({
+      data: uniqueMissingMiners.map((asics) => ({
         model: asics.model,
         watts: asics.watts,
         efficiency: asics.efficiency,
@@ -36,9 +36,10 @@ const main = async () => {
         market.id === asic.date &&
         market.model === asic.model &&
         market.price === asic.price &&
-        asic.vendor === market.vendor
+        market.vendor === asic.vendor
     );
   });
+  console.log(`Missing ${missingMarketAsics.length} market data from db`);
 
   const uniqueMissingMarketAsics = missingMarketAsics.filter(
     (asic, index) =>
@@ -47,20 +48,20 @@ const main = async () => {
           t.date === asic.date &&
           t.model === asic.model &&
           t.price === asic.price &&
-          asic.vendor === t.vendor
+          t.vendor === asic.vendor
       ) === index
   );
 
-  console.log(`Missing ${uniqueMissingMarketAsics.length} asics`);
+  console.log(`Missing ${uniqueMissingMarketAsics.length} asics from market`);
   if (uniqueMissingMarketAsics.length > 0) {
-    await prisma.market_data.createMany({
-      data: uniqueMissingMarketAsics.map((market) => ({
-        date: new Date(market.date),
-        model: market.model,
-        vendor: market.vendor,
-        price: market.price,
-      })),
-    });
+    // await prisma.market_data.createMany({
+    //   data: uniqueMissingMarketAsics.map((market) => ({
+    //     date: new Date(market.date),
+    //     model: market.model,
+    //     vendor: market.vendor,
+    //     price: market.price,
+    //   })),
+    // });
   }
 
   console.log("Seeding complete");
