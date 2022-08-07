@@ -1,5 +1,6 @@
 import { createRouter } from "./context";
 import { prisma } from "../db/client";
+import { TRPCError } from "@trpc/server";
 
 export const asicsRouter = createRouter().query("get-asics-info", {
   async resolve() {
@@ -78,7 +79,7 @@ export const asicsRouter = createRouter().query("get-asics-info", {
 
     //TODO: next time i work on this, i should move this to the front end, I feel like it would be better to do this on the front end.
 
-    const formattingAsicData = asicsWithMinerInfo.map((a) => {
+    let formattingAsicData = asicsWithMinerInfo.map((a) => {
       if (a?.id) {
         let asicBTCPrice =
           Math.round(1000000 * (a.price / currentBTCPrice!)) / 1000000;
@@ -122,6 +123,24 @@ export const asicsRouter = createRouter().query("get-asics-info", {
         };
       }
     });
+
+    if (!formattingAsicData) {
+      throw new TRPCError({
+        code: "NOT_FOUND",
+        message: "No asics found",
+      });
+    }
+
+    formattingAsicData
+      .sort((a, b) => {
+        if (a && b) {
+          return new Date(a.date).getTime() - new Date(b.date).getTime();
+        } else {
+          return 0;
+        }
+      })
+      .reverse();
+
     return formattingAsicData;
   },
 });

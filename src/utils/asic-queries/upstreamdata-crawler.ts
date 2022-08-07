@@ -82,11 +82,21 @@ const upStreamDataCrawler = async () => {
           Number((el as HTMLElement).innerText.replace(/[^\d.-]/g, ""))
       );
 
-      const price: number = await page.$eval(
-        "div > div.summary.entry-summary > p.price > span > bdi",
-        (el): number =>
-          Number((el as HTMLElement).innerText.replace(/[^\d.-]/g, ""))
+      let price: number = await page.$eval(".price", (el): number =>
+        Number((el as HTMLElement).innerText.replace(/[^\d.-]/g, ""))
       );
+
+      /*
+       * added this because upsteamdata had a sale, struck out the price and put another
+       */
+      if (isNaN(price)) {
+        console.log("======================made it here=====================");
+        price = await page.$eval(".price", (el): number =>
+          Number(
+            (el as HTMLElement).innerText.split(" ")[1]?.replace(/[^\d.-]/g, "")
+          )
+        );
+      }
 
       const vendor: string = "upstreamdata";
 

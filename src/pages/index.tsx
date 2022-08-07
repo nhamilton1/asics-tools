@@ -2,15 +2,19 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { trpc } from "../utils/trpc";
 import {
+  Column,
   ColumnDef,
-  createColumnHelper,
+  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
+  getFacetedUniqueValues,
+  Table,
   useReactTable,
 } from "@tanstack/react-table";
-import { useMemo, useState } from "react";
+
+import { InputHTMLAttributes, useEffect, useMemo, useState } from "react";
 
 type AsicData =
   | {
@@ -36,68 +40,19 @@ type AsicData =
     }
   | undefined;
 
-const columnHelper = createColumnHelper<AsicData>();
-
-const columns = [
-  columnHelper.accessor("model", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("date", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("efficiency", {
-    cell: (info) => info.getValue(),
-  }),
-
-  columnHelper.accessor("price", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("th", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("vendor", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("watts", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("asicBTCPrice", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("value", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("wattDollar", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("currentHashPrice", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("elongatedHashPrice", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("denverDerivative", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("btcPerMonth", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("dollarPerMonth", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("monthlyEnergy", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("profitMonth", {
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("monthsToRoi", {
-    cell: (info) => info.getValue(),
-  }),
-];
-
 const Home: NextPage = () => {
-  const { data, isLoading } = trpc.useQuery(["asics.get-asics-info"]);
+  const [data, setData] = useState<AsicData[]>([]);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+
+  const { isLoading } = trpc.useQuery(["asics.get-asics-info"], {
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+    onSuccess: (data) => {
+      setData(data);
+    },
+  });
+
   const [rowSelection, setRowSelection] = useState({});
 
   const columns = useMemo<ColumnDef<AsicData>[]>(
@@ -196,10 +151,9 @@ const Home: NextPage = () => {
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
     debugTable: true,
   });
-
-  console.log(data);
 
   return (
     <>
@@ -209,69 +163,94 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto flex flex-col items-center justify-center p-4 bg-slate-800 text-white h-screen">
+      <main className="flex flex-col items-center justify-center m-4 bg-slate-800 text-white gap-10">
         <h1 className="text-4xl font-bold">
           <span className="text-white">Asic-tools</span>
           {isLoading && <span className="text-white">Loading...</span>}
         </h1>
-        <div>
-          <table>
-            <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <th key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table.getRowModel().rows.map((row) => (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <table>
+          <thead className="border-b">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id} className="text-left">
+                {headerGroup.headers.map((header) => (
+                  <th
+                    key={header.id}
+                    className="text-sm font-medium px-4 py-2 whitespace-nowrap"
+                    colSpan={header.colSpan}
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                    {header.column.getCanFilter() &&
+                    header.column.columnDef.header === "Model" ? (
+                      <Filter column={header.column} table={table} />
+                    ) : null}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row) => (
+              <tr
+                key={row.id}
+                className="border-b transition duration-300 ease-in-out hover:bg-slate-700"
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <td
+                    key={cell.id}
+                    className="font-light px-4 py-6 whitespace-nowrap"
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
         <div className="flex items-center gap-2">
           <button
-            className="border rounded p-1"
+            className={
+              !table.getCanPreviousPage()
+                ? "text-gray-500 border-gray-500 border p-1 rounded"
+                : "border rounded p-1 cursor-pointer"
+            }
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
             {"<<"}
           </button>
           <button
-            className="border rounded p-1"
+            className={
+              !table.getCanPreviousPage()
+                ? "text-gray-500 border-gray-500 border p-1 rounded"
+                : "border rounded p-1 cursor-pointer"
+            }
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
             {"<"}
           </button>
           <button
-            className="border rounded p-1"
+            className={
+              !table.getCanNextPage()
+                ? "text-gray-500 border-gray-500 border p-1 rounded"
+                : "border rounded p-1 cursor-pointer"
+            }
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
             {">"}
           </button>
           <button
-            className="border rounded p-1"
+            className={
+              !table.getCanNextPage()
+                ? "text-gray-500 border-gray-500 border p-1 rounded"
+                : "border rounded p-1 cursor-pointer"
+            }
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
@@ -290,7 +269,7 @@ const Home: NextPage = () => {
               type="number"
               defaultValue={table.getState().pagination.pageIndex + 1}
               onChange={(e) => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                let page = e.target.value ? Number(e.target.value) - 1 : 0;
                 table.setPageIndex(page);
               }}
               className="border p-1 rounded w-12 text-black"
@@ -316,3 +295,77 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+function Filter({
+  column,
+  table,
+}: {
+  column: Column<any, unknown>;
+  table: Table<any>;
+}) {
+  const firstValue = table
+    .getPreFilteredRowModel()
+    .flatRows[0]?.getValue(column.id);
+
+  const columnFilterValue = column.getFilterValue();
+
+  const sortedUniqueValues = useMemo(
+    () =>
+      typeof firstValue === "number"
+        ? []
+        : Array.from(column.getFacetedUniqueValues().keys()).sort(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [column.getFacetedUniqueValues()]
+  );
+
+  return (
+    <>
+      <datalist id={column.id + "list"}>
+        {sortedUniqueValues.map((value: any) => (
+          <option value={value} key={value} />
+        ))}
+      </datalist>
+      <DebouncedInput
+        type="text"
+        value={(columnFilterValue ?? "") as string}
+        onChange={(value) => column.setFilterValue(value)}
+        placeholder={`Search... (${column.getFacetedUniqueValues().size})`}
+        className="w-36 border shadow rounded bg-slate-800 p-1 ml-2"
+        list={column.id + "list"}
+      />
+    </>
+  );
+}
+
+function DebouncedInput({
+  value: initialValue,
+  onChange,
+  debounce = 500,
+  ...props
+}: {
+  value: string | number;
+  onChange: (value: string | number) => void;
+  debounce?: number;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, "onChange">) {
+  const [value, setValue] = useState(initialValue);
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      onChange(value);
+    }, debounce);
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
+
+  return (
+    <input
+      {...props}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  );
+}
