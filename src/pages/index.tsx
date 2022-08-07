@@ -41,6 +41,7 @@ type AsicData =
 
 const Home: NextPage = () => {
   const [data, setData] = useState<AsicData[]>([]);
+  const [kWhPrice, setKWhPrice] = useState<number>(0.12);
   const [defs, setDefs] = useState<{
     currentBTCPrice: string;
     currentHash: number;
@@ -49,21 +50,119 @@ const Home: NextPage = () => {
     currentHashValue: number;
   }>();
 
-  const { isLoading } = trpc.useQuery(["asics.get-asics-info"], {
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-    staleTime: Infinity,
-    onSuccess: (data) => {
-      setData(data.formattingAsicData);
-      setDefs({
-        currentBTCPrice: data.currentBTCPrice,
-        currentHash: data.currentHash,
-        currentHashPrice: data.currentHashPrice,
-        elongatedHashPrice: data.elongatedHashPrice,
-        currentHashValue: data.currentHashValue,
-      });
-    },
-  });
+  useEffect(() => {
+    setKWhPrice(Number(localStorage.getItem("kWhPrice")) || 0.12);
+  }, []);
+
+  const { data: defsData, isLoading } = trpc.useQuery(
+    ["asics.get-asics-info"],
+    {
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      staleTime: Infinity,
+      onSuccess: (data) => {
+        const format = data.formattingAsicData.map((a) => {
+          if (a?.id) {
+            let asicBTCPrice =
+              Math.round(1000000 * (a.price / data.currentBTCPrice)) / 1000000;
+            let value = Math.round(a.price / a?.th);
+            let wattDollar = Number((value * Number(a?.efficiency)).toFixed(0));
+            let denverDerivative = Number(
+              (wattDollar / data.elongatedHashPrice).toFixed(2)
+            );
+            let btcPerMonth =
+              Math.round(
+                1000000 * ((a?.th / (data.currentHash * 1000000)) * 900 * 30.5)
+              ) / 1000000;
+            let dollarPerMonth = Math.round(
+              btcPerMonth * data.currentBTCPrice!
+            );
+            let monthlyEnergy =
+              Math.round(100 * (732 * (a?.watts * 0.001) * Number(kWhPrice))) /
+              100;
+            let profitMonth = Math.round(dollarPerMonth - monthlyEnergy);
+            let monthsToRoi =
+              Math.round(100 * (a.price / dollarPerMonth)) / 100;
+
+            return {
+              ...a,
+              asicBTCPrice,
+              value,
+              wattDollar,
+              denverDerivative,
+              btcPerMonth,
+              dollarPerMonth,
+              monthlyEnergy,
+              profitMonth,
+              monthsToRoi,
+            };
+          }
+        });
+
+        setData(format);
+        setDefs({
+          currentBTCPrice: data.currentBTCPrice.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          }),
+          currentHash: data.currentHash,
+          currentHashPrice: data.currentHashPrice.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          }),
+          elongatedHashPrice: data.elongatedHashPrice.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          }),
+          currentHashValue: data.currentHashValue,
+        });
+      },
+    }
+  );
+
+  useEffect(() => {
+    const format = data.map((a) => {
+      if (a?.id && defsData) {
+        let asicBTCPrice =
+          Math.round(1000000 * (a.price / defsData.currentBTCPrice)) / 1000000;
+        let value = Math.round(a.price / a?.th);
+        let wattDollar = Number((value * Number(a?.efficiency)).toFixed(0));
+        let denverDerivative = Number(
+          (wattDollar / defsData.elongatedHashPrice).toFixed(2)
+        );
+        let btcPerMonth =
+          Math.round(
+            1000000 * ((a?.th / (defsData.currentHash * 1000000)) * 900 * 30.5)
+          ) / 1000000;
+        let dollarPerMonth = Math.round(
+          btcPerMonth * defsData.currentBTCPrice!
+        );
+        let monthlyEnergy =
+          Math.round(100 * (732 * (a?.watts * 0.001) * Number(kWhPrice))) / 100;
+        let profitMonth = Math.round(dollarPerMonth - monthlyEnergy);
+        let monthsToRoi = Math.round(100 * (a.price / dollarPerMonth)) / 100;
+
+        return {
+          ...a,
+          asicBTCPrice,
+          value,
+          wattDollar,
+          denverDerivative,
+          btcPerMonth,
+          dollarPerMonth,
+          monthlyEnergy,
+          profitMonth,
+          monthsToRoi,
+        };
+      }
+    });
+    setData(format);
+
+    return () => {
+      setData([]);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [kWhPrice]);
 
   const [rowSelection, setRowSelection] = useState({});
 
@@ -184,6 +283,22 @@ const Home: NextPage = () => {
           <span className="text-white">Asic-tools</span>
           {isLoading && <span className="text-white">Loading...</span>}
         </h1>
+        <div>
+          <label>
+            <span className="text-white">kWh Price:</span>
+          </label>
+          <input
+            type={"number"}
+            className={"w-full h-12 p-2 bg-slate-800 text-white border"}
+            value={kWhPrice}
+            step={0.01}
+            onChange={(e) => {
+              let kWh = Number(e.target.value);
+              localStorage.setItem("kWhPrice", kWh.toString());
+              setKWhPrice(kWh);
+            }}
+          />
+        </div>
         <div className="block max-w-full overflow-x-scroll overflow-y-hidden">
           <table className="w-full">
             <thead className="border-b">

@@ -75,29 +75,9 @@ export const asicsRouter = createRouter().query("get-asics-info", {
       (currentBTCPrice! * currentHashValue * 0.00000001).toFixed(4)
     );
     let elongatedHashPrice = currentHashPrice * 347.22;
-    let kWhPrice = 0.12;
-
-    //TODO: next time i work on this, i should move this to the front end, I feel like it would be better to do this on the front end.
 
     let formattingAsicData = asicsWithMinerInfo.map((a) => {
       if (a?.id) {
-        let asicBTCPrice =
-          Math.round(1000000 * (a.price / currentBTCPrice!)) / 1000000;
-        let value = Math.round(a.price / a?.th);
-        let wattDollar = Number((value * a?.efficiency).toFixed(0));
-        let denverDerivative = Number(
-          (wattDollar / elongatedHashPrice).toFixed(2)
-        );
-        let btcPerMonth =
-          Math.round(
-            1000000 * ((a?.th / (currentHash! * 1000000)) * 900 * 30.5)
-          ) / 1000000;
-        let dollarPerMonth = Math.round(btcPerMonth * currentBTCPrice!);
-        let monthlyEnergy =
-          Math.round(100 * (732 * (a?.watts * 0.001) * Number(kWhPrice))) / 100;
-        let profitMonth = Math.round(dollarPerMonth - monthlyEnergy);
-        let monthsToRoi = Math.round(100 * (a.price / dollarPerMonth)) / 100;
-
         return {
           id: a.id,
           date: new Date(a.date.toISOString().slice(0, -1)).toLocaleDateString(
@@ -109,17 +89,8 @@ export const asicsRouter = createRouter().query("get-asics-info", {
           th: a?.th,
           vendor: a.vendor,
           watts: a?.watts,
-          asicBTCPrice,
-          value,
-          wattDollar,
           currentHashPrice,
           elongatedHashPrice,
-          denverDerivative,
-          btcPerMonth,
-          dollarPerMonth,
-          monthlyEnergy,
-          profitMonth,
-          monthsToRoi,
         };
       }
     });
@@ -143,20 +114,11 @@ export const asicsRouter = createRouter().query("get-asics-info", {
 
     return {
       formattingAsicData,
-      currentBTCPrice: currentBTCPrice.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
-      }),
+      currentBTCPrice,
       currentHash,
       currentHashValue,
-      currentHashPrice: currentHashPrice.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
-      }),
-      elongatedHashPrice: elongatedHashPrice.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
-      }),
+      currentHashPrice,
+      elongatedHashPrice,
     };
   },
 });
