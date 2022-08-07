@@ -230,9 +230,6 @@ const minefarmbuyScraper = async () => {
               asicPrice[0]?.replace("$", "").replace(",", "")
             )}`;
 
-            // this will remove the j/th, still debating if i want to do this.
-            // model = model.split(" ").slice(0,-1).join(" ")
-
             const matchedAsicNameInDb = await prisma.miner_data.findFirst({
               where: {
                 model: asicModel,
@@ -250,6 +247,9 @@ const minefarmbuyScraper = async () => {
                 },
               });
             }
+
+            //removing the j/th from the model
+            model = `${asicModel} ${th.split(/th/i)[0]}T`;
 
             minefarmbuyData.push({
               vendor,

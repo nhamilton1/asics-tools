@@ -141,6 +141,22 @@ export const asicsRouter = createRouter().query("get-asics-info", {
       })
       .reverse();
 
-    return formattingAsicData;
+    return {
+      formattingAsicData,
+      currentBTCPrice: currentBTCPrice.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      }),
+      currentHash,
+      currentHashValue,
+      currentHashPrice: currentHashPrice.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      }),
+      elongatedHashPrice: elongatedHashPrice.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      }),
+    };
   },
 });

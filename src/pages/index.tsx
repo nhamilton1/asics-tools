@@ -4,7 +4,6 @@ import { trpc } from "../utils/trpc";
 import {
   Column,
   ColumnDef,
-  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
@@ -42,14 +41,27 @@ type AsicData =
 
 const Home: NextPage = () => {
   const [data, setData] = useState<AsicData[]>([]);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [defs, setDefs] = useState<{
+    currentBTCPrice: string;
+    currentHash: number;
+    currentHashPrice: string;
+    elongatedHashPrice: string;
+    currentHashValue: number;
+  }>();
 
   const { isLoading } = trpc.useQuery(["asics.get-asics-info"], {
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     staleTime: Infinity,
     onSuccess: (data) => {
-      setData(data);
+      setData(data.formattingAsicData);
+      setDefs({
+        currentBTCPrice: data.currentBTCPrice,
+        currentHash: data.currentHash,
+        currentHashPrice: data.currentHashPrice,
+        elongatedHashPrice: data.elongatedHashPrice,
+        currentHashValue: data.currentHashValue,
+      });
     },
   });
 
@@ -68,8 +80,8 @@ const Home: NextPage = () => {
         cell: (info) => info.getValue(),
       },
       {
-        header: "TH",
-        accessorKey: "th",
+        header: "W/TH",
+        accessorKey: "efficiency",
         cell: (info) => info.getValue(),
       },
       {
@@ -78,8 +90,8 @@ const Home: NextPage = () => {
         cell: (info) => info.getValue(),
       },
       {
-        header: "Date",
-        accessorKey: "date",
+        header: "TH",
+        accessorKey: "th",
         cell: (info) => info.getValue(),
       },
       {
@@ -88,8 +100,8 @@ const Home: NextPage = () => {
         cell: (info) => info.getValue(),
       },
       {
-        header: "W/TH",
-        accessorKey: "efficiency",
+        header: "Date",
+        accessorKey: "date",
         cell: (info) => info.getValue(),
       },
       {
@@ -289,12 +301,89 @@ const Home: NextPage = () => {
             ))}
           </select>
         </div>
+        {DenverAndDefs(
+          defs?.currentBTCPrice,
+          defs?.currentHash,
+          defs?.currentHashPrice,
+          defs?.currentHashValue,
+          defs?.elongatedHashPrice
+        )}
       </main>
     </>
   );
 };
 
 export default Home;
+
+function DenverAndDefs(
+  price?: string,
+  hashrate?: number,
+  hashPrice?: string,
+  hashValue?: number,
+  enlongatedHashPrice?: string
+) {
+  return (
+    <div className="flex flex-row justify-center gap-10">
+      <div className="flex flex-col">
+        <h2 className="text-lg font-bold">Hidden Values</h2>
+        <ul>
+          <li className="py-2 border-b">
+            Values that are used in the table, but are not displayed
+          </li>
+          <li className="py-2 border-b flex flex-row justify-between gap-10">
+            Current BTC price: <span>{price}</span>
+          </li>
+          <li className="py-2 border-b flex flex-row justify-between gap-10">
+            Current Network Hashrate: <span>{hashrate} EH/s</span>
+          </li>
+          <li className="py-2 border-b flex flex-row justify-between gap-10">
+            Current Hash Price: <span>{hashPrice}</span>
+          </li>
+          <li className="py-2 border-b flex flex-row justify-between gap-10">
+            Elongated Hash Price: <span>{enlongatedHashPrice}</span>
+          </li>
+          <li className="py-2 border-b flex flex-row justify-between gap-10">
+            Current Hash Value: <span>{hashValue} sats</span>
+          </li>
+        </ul>
+      </div>
+      <div className="flex flex-col">
+        <h2 className="text-lg font-bold">Definitions</h2>
+        <ul>
+          {[
+            "Watts/Th = An ASIC's total watt consumption divided by its nominal Th/s rating.",
+            "$/Th = The total cost of an ASIC divided by its nominal Th/s rating.",
+            "WattDollar = The product of an ASIC's watts/Th multiplied by $/Th.",
+            "Hash price = USD value of 1 Th/s over the course of 24 hours.",
+            "Elongated hash price = USD value of 1 Th/s over the course of 50,000 blocks.",
+          ].map((denv) => (
+            <li key={denv} className="py-2 border-b">
+              {denv}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="flex flex-col">
+        <h2 className="text-lg font-bold">Denver&apos;s Derivative</h2>
+        <ul>
+          {[
+            "Denver's Derivative (DD) = WattDollar/Elongated hash price =",
+            ">50 = If your power is less than ~$0.035 OR you're going to run the ASIC for five-plus years.",
+            "<50 = If your power is less than ~$0.055 OR you're going to run the ASIC for four-plus years.",
+            "<40 = If your power is less than ~$0.075 OR you're going to run the ASIC for three-plus years.",
+            "<30 = If your power is less than ~$0.125 OR you're going to run the ASIC for three years.",
+            "<20 = If your power is less than ~$0.15 OR you're going to run the ASIC for two-plus years.",
+            "<15 = Borrow to buy all the hardware (just kidding but not really).",
+          ].map((denv) => (
+            <li key={denv} className="py-2 border-b">
+              {denv}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 function Filter({
   column,
