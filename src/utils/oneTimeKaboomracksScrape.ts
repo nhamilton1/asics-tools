@@ -1,7 +1,7 @@
 import { load } from "cheerio";
-import { sha1 } from "../../utils/helpers";
 import axios from "axios";
-import { asicModelDbCheck } from "../asicModelDbCheck";
+import { asicModelDbCheck } from "./asicModelDbCheck";
+import { sha1 } from "./helpers";
 
 export interface kaboomracksInterface {
   vendor: string;
@@ -16,11 +16,56 @@ export interface kaboomracksInterface {
 
 const vendor = "Kaboomracks";
 
-const kaboomracksScraper = async () => {
+const oneTimeKaboomracksScrape = async () => {
   /*
   Getting the data from the website
   */
   const minersScrapedFromTelegram: string[] = new Array();
+
+  let afterCount = 1;
+  let contentFound = true;
+
+  while (contentFound) {
+    try {
+      let URL = `https://t.me/s/kaboomracks?after=${afterCount}`;
+      const { data } = await axios.get(URL, {
+        method: "GET",
+        headers: {
+          Accept: "*/*",
+        },
+      });
+
+      const $miner = load(data);
+
+      if ($miner.length === 0) {
+        throw new Error("No miner data found");
+      }
+
+      if ($miner(".tme_no_messages_found").text() === "No posts found") {
+        console.log("made it here");
+        contentFound = false;
+      } else {
+        $miner(
+          "body > main > div > section > div > div > div > div.tgme_widget_message_text"
+        ).each((_idx, el) => {
+          const minerData = $miner(el)?.text() as string;
+
+          // only push unique strings to the array
+          if (!minersScrapedFromTelegram.includes(minerData)) {
+            minersScrapedFromTelegram.push(minerData);
+          }
+        });
+      }
+
+      console.log(afterCount);
+      console.log(URL);
+      console.log(minersScrapedFromTelegram.length);
+      afterCount = afterCount + 100;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   try {
     const { data } = await axios.get("https://t.me/s/kaboomracks", {
       method: "GET",
@@ -45,14 +90,22 @@ const kaboomracksScraper = async () => {
   }
 
   /*
-  Parsing the data
-  */
+    Parsing the data
+    */
 
   const asics: kaboomracksInterface[] = new Array();
+
+  // remove element if it contains the string "kaboomracks"
+  minersScrapedFromTelegram.forEach((minerData, index) => {
+    if (minerData.includes("Power Supplies")) {
+      minersScrapedFromTelegram.splice(index, 1);
+    }
+  });
 
   for (const minerData of minersScrapedFromTelegram) {
     // this will filter out any posts that do not each in them
     // they sell by lots some times.
+
     const individualSales = minerData.match(/(?=[—]\s*).*?(?=\s*each —)/gs);
     let moq = minerData.match(/(?=order \s*).*?(?=\s*ship)/g);
 
@@ -79,8 +132,8 @@ const kaboomracksScraper = async () => {
       )[0] || [];
 
     /*
-      ====================== Formatting for Antminers ======================
-    */
+          ====================== Formatting for Antminers ======================
+        */
 
     if (
       //might have to change this so it includes T versions
@@ -183,6 +236,7 @@ const kaboomracksScraper = async () => {
           date,
           id,
         };
+
         asics.push(asicsInfo);
       }
 
@@ -236,8 +290,8 @@ const kaboomracksScraper = async () => {
     }
 
     /*
-      ====================== Formatting for Whatsminers ======================
-    */
+          ====================== Formatting for Whatsminers ======================
+        */
     if (
       minerData.includes("Whatsminer M") &&
       individualSales != null &&
@@ -322,8 +376,8 @@ const kaboomracksScraper = async () => {
     }
 
     /*
-      ====================== Formatting for Canaan ======================
-    */
+          ====================== Formatting for Canaan ======================
+        */
 
     if (
       minerData.includes("Canaan A") &&
@@ -439,7 +493,10 @@ const kaboomracksScraper = async () => {
   //filters for dups
   const ids = asics.map((a) => a.id);
   const filtered = asics.filter(({ id }, idx) => !ids.includes(id, idx + 1));
+  console.log(filtered);
+  console.log(filtered.length);
   return filtered;
 };
-kaboomracksScraper();
-export default kaboomracksScraper;
+oneTimeKaboomracksScrape();
+
+export default oneTimeKaboomracksScrape;
