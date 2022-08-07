@@ -19,7 +19,7 @@ model miner_data {
 }
 
 model market_data {
-    id         String      @id @unique
+    id         String      @id @unique @default(cuid())
     vendor     String
     price      Float
     date       DateTime    @db.Date()
