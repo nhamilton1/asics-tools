@@ -135,7 +135,7 @@ const Home: NextPage = () => {
         cell: (info) => info.getValue(),
       },
       {
-        header: "Profit/Month",
+        header: "Profit per Month",
         accessorKey: "profitMonth",
         cell: (info) => info.getValue(),
       },
@@ -440,7 +440,7 @@ function Filter({
         value={(columnFilterValue ?? "") as string}
         onChange={(value) => column.setFilterValue(value)}
         placeholder={`Search... (${column.getFacetedUniqueValues().size})`}
-        className="w-36 border shadow rounded bg-slate-800 p-1 ml-2"
+        className="w-36 border shadow rounded bg-slate-800 p-1"
         list={column.id + "list"}
       />
     </>
@@ -472,10 +472,20 @@ function DebouncedInput({
   }, [value]);
 
   return (
-    <input
-      {...props}
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
+    <div className="flex flex-row gap-2">
+      <input
+        {...props}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      {!!value && (
+        <button
+          onClick={() => setValue("")}
+          className="bg-red-500 hover:bg-red-700 text-white font-bold p-2 rounded"
+        >
+          X
+        </button>
+      )}
+    </div>
   );
 }
