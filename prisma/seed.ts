@@ -7,7 +7,6 @@ const main = async () => {
   console.log(asics.length);
 
   const minerData = await prisma.miner_data.findMany();
-  const marketData = await prisma.market_data.findMany();
 
   const missingAsics = asics.filter((asic) => {
     return !minerData.find((miner) => miner.model === asic.model);
@@ -30,16 +29,18 @@ const main = async () => {
     });
   }
 
+  const marketData = await prisma.market_data.findMany();
+
   const missingMarketAsics = asics.filter((asic) => {
     return !marketData.find(
       (market) =>
-        market.id === asic.date &&
+        new Date(market.date).toLocaleDateString("en-US") ===
+          new Date(asic.date).toLocaleDateString("en-US") &&
         market.model === asic.model &&
         market.price === asic.price &&
         market.vendor === asic.vendor
     );
   });
-  console.log(`Missing ${missingMarketAsics.length} market data from db`);
 
   const uniqueMissingMarketAsics = missingMarketAsics.filter(
     (asic, index) =>
@@ -54,14 +55,14 @@ const main = async () => {
 
   console.log(`Missing ${uniqueMissingMarketAsics.length} asics from market`);
   if (uniqueMissingMarketAsics.length > 0) {
-    // await prisma.market_data.createMany({
-    //   data: uniqueMissingMarketAsics.map((market) => ({
-    //     date: new Date(market.date),
-    //     model: market.model,
-    //     vendor: market.vendor,
-    //     price: market.price,
-    //   })),
-    // });
+    await prisma.market_data.createMany({
+      data: uniqueMissingMarketAsics.map((market) => ({
+        date: new Date(market.date),
+        model: market.model,
+        vendor: market.vendor,
+        price: market.price,
+      })),
+    });
   }
 
   console.log("Seeding complete");
