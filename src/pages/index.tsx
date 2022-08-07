@@ -164,7 +164,11 @@ const Home: NextPage = () => {
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
+    enableColumnResizing: true,
+    columnResizeMode: "onChange",
     debugTable: true,
+    debugHeaders: true,
+    debugColumns: true,
   });
 
   return (
@@ -180,49 +184,66 @@ const Home: NextPage = () => {
           <span className="text-white">Asic-tools</span>
           {isLoading && <span className="text-white">Loading...</span>}
         </h1>
-        <table>
-          <thead className="border-b">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id} className="text-left">
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    className="text-sm font-medium px-4 py-2 whitespace-nowrap"
-                    colSpan={header.colSpan}
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                    {header.column.getCanFilter() &&
-                    header.column.columnDef.header === "Model" ? (
-                      <Filter column={header.column} table={table} />
-                    ) : null}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map((row) => (
-              <tr
-                key={row.id}
-                className="border-b transition duration-300 ease-in-out hover:bg-slate-700"
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <td
-                    key={cell.id}
-                    className="font-light px-4 py-6 whitespace-nowrap"
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="block max-w-full overflow-x-scroll overflow-y-hidden">
+          <table className="w-full">
+            <thead className="border-b">
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr key={headerGroup.id} className="text-left">
+                  {headerGroup.headers.map((header) => (
+                    <th
+                      key={header.id}
+                      className="text-sm font-medium px-4 py-2"
+                      colSpan={header.colSpan}
+                      style={{ position: "relative", width: header.getSize() }}
+                    >
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                      {header.column.getCanFilter() &&
+                      header.column.columnDef.header === "Model" ? (
+                        <Filter column={header.column} table={table} />
+                      ) : null}
+                      {header.column.getCanResize() && (
+                        <div
+                          onMouseDown={header.getResizeHandler()}
+                          onTouchStart={header.getResizeHandler()}
+                          className={`resizer ${
+                            header.column.getIsResizing() ? "isResizing" : ""
+                          }`}
+                        ></div>
+                      )}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {table.getRowModel().rows.map((row) => (
+                <tr
+                  key={row.id}
+                  className="border-b transition duration-300 ease-in-out hover:bg-slate-700"
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <td
+                      key={cell.id}
+                      className="font-light px-4 py-6 whitespace-nowrap"
+                      style={{ width: cell.column.getSize() }}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="h-4" />
+        </div>
         <div className="flex items-center gap-2">
           <button
             className={
@@ -323,7 +344,7 @@ function DenverAndDefs(
   enlongatedHashPrice?: string
 ) {
   return (
-    <div className="flex flex-row justify-center gap-10">
+    <div className="flex md:flex-row flex-col justify-center gap-10">
       <div className="flex flex-col">
         <h2 className="text-lg font-bold">Hidden Values</h2>
         <ul>
