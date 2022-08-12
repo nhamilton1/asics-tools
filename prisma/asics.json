@@ -1,5 +1,95 @@
 [
   {
+    "vendor": "Kaboomracks",
+    "price": 4477,
+    "date": "2022-08-11",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 2828,
+    "date": "2022-08-10",
+    "model": "Antminer S19j Pro 88T",
+    "th": 88,
+    "watts": 2596,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 4350,
+    "date": "2022-08-10",
+    "model": "Whatsminer M30S++ 108T",
+    "th": 108,
+    "watts": 3348,
+    "efficiency": 31
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 4350,
+    "date": "2022-08-09",
+    "model": "Whatsminer M30S++ 108T",
+    "th": 108,
+    "watts": 3348,
+    "efficiency": 31
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 5030,
+    "date": "2022-08-09",
+    "model": "Antminer S19 Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 29.545454
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 3999,
+    "date": "2022-08-09",
+    "model": "Antminer S19j Pro 100T",
+    "th": 100,
+    "watts": 3250,
+    "efficiency": 33
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 2828,
+    "date": "2022-08-08",
+    "model": "Antminer S19j Pro 88T",
+    "th": 88,
+    "watts": 2596,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 4444,
+    "date": "2022-08-08",
+    "model": "Antminer S19 Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 29.545454
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 4099,
+    "date": "2022-08-08",
+    "model": "Antminer S19j Pro 100T",
+    "th": 100,
+    "watts": 3250,
+    "efficiency": 33
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 3200,
+    "date": "2022-08-08",
+    "model": "Antminer S19j Pro 96T",
+    "th": 96,
+    "watts": 2832,
+    "efficiency": 29.5
+  },
+  {
     "vendor": "upstreamdata",
     "price": 6800,
     "date": "2022-08-07",
@@ -28,12 +118,12 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 6500,
+    "price": 2610,
     "date": "2022-08-04",
-    "model": "Whatsminer M50 118T",
-    "th": 118,
-    "watts": 3422,
-    "efficiency": 29
+    "model": "Antminer S19 90T",
+    "th": 90,
+    "watts": 3105,
+    "efficiency": 34.5
   },
   {
     "vendor": "Kaboomracks",
@@ -46,21 +136,21 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 2610,
+    "price": 6500,
     "date": "2022-08-04",
-    "model": "Antminer S19 90T",
-    "th": 90,
-    "watts": 3105,
-    "efficiency": 34.5
+    "model": "Whatsminer M50 118T",
+    "th": 118,
+    "watts": 3422,
+    "efficiency": 29
   },
   {
     "vendor": "minefarmbuy",
-    "price": 2456,
+    "price": 2560,
     "date": "2022-08-01",
-    "model": "Whatsminer M31s 76T 44J/th",
+    "model": "Whatsminer M31s+ 76T 42J/th",
     "th": 76,
-    "watts": 3344,
-    "efficiency": 44
+    "watts": 3192,
+    "efficiency": 42
   },
   {
     "vendor": "Kaboomracks",
@@ -87,6 +177,15 @@
     "model": "Whatsminer M31s 74T 44J/th",
     "th": 74,
     "watts": 3256,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 2456,
+    "date": "2022-08-01",
+    "model": "Whatsminer M31s 76T 44J/th",
+    "th": 76,
+    "watts": 3344,
     "efficiency": 44
   },
   {
@@ -133,15 +232,6 @@
     "th": 78,
     "watts": 3432,
     "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 2560,
-    "date": "2022-08-01",
-    "model": "Whatsminer M31s+ 76T 42J/th",
-    "th": 76,
-    "watts": 3192,
-    "efficiency": 42
   },
   {
     "vendor": "minefarmbuy",
@@ -199,15 +289,6 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 4416,
-    "date": "2022-07-29",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "Kaboomracks",
     "price": 3180,
     "date": "2022-07-29",
     "model": "Antminer S19 Pro 110T",
@@ -235,6 +316,15 @@
   },
   {
     "vendor": "Kaboomracks",
+    "price": 4416,
+    "date": "2022-07-29",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "Kaboomracks",
     "price": 5555,
     "date": "2022-07-28",
     "model": "Antminer S19 Pro 110T",
@@ -252,13 +342,22 @@
     "efficiency": 21.5
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 4425,
+    "vendor": "Kaboomracks",
+    "price": 5555,
     "date": "2022-07-26",
-    "model": "Antminer S19 Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
+    "model": "Antminer S19 Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 29.545454
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4255,
+    "date": "2022-07-26",
+    "model": "Antminer S19 Pro 100T",
+    "th": 100,
+    "watts": 3250,
+    "efficiency": 33
   },
   {
     "vendor": "Kaboomracks",
@@ -279,22 +378,22 @@
     "efficiency": 31
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 5555,
+    "vendor": "minefarmbuy",
+    "price": 4425,
     "date": "2022-07-26",
-    "model": "Antminer S19 Pro 110T",
-    "th": 110,
-    "watts": 3250,
-    "efficiency": 29.545454
+    "model": "Antminer S19 Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 4255,
-    "date": "2022-07-26",
-    "model": "Antminer S19 Pro 100T",
-    "th": 100,
-    "watts": 3250,
-    "efficiency": 33
+    "vendor": "Kaboomracks",
+    "price": 4433,
+    "date": "2022-07-25",
+    "model": "Whatsminer M30S++ 110T",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
   },
   {
     "vendor": "Kaboomracks",
@@ -325,15 +424,6 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 4433,
-    "date": "2022-07-25",
-    "model": "Whatsminer M30S++ 110T",
-    "th": 110,
-    "watts": 3410,
-    "efficiency": 31
-  },
-  {
-    "vendor": "Kaboomracks",
     "price": 2945,
     "date": "2022-07-23",
     "model": "Antminer S19 95T",
@@ -345,15 +435,6 @@
     "vendor": "Kaboomracks",
     "price": 4433,
     "date": "2022-07-22",
-    "model": "Whatsminer M30S++ 110T",
-    "th": 110,
-    "watts": 3410,
-    "efficiency": 31
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 4433,
-    "date": "2022-07-21",
     "model": "Whatsminer M30S++ 110T",
     "th": 110,
     "watts": 3410,
@@ -376,6 +457,15 @@
     "th": 96,
     "watts": 3312,
     "efficiency": 34.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 4433,
+    "date": "2022-07-21",
+    "model": "Whatsminer M30S++ 110T",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
   },
   {
     "vendor": "Kaboomracks",
@@ -459,6 +549,33 @@
     "efficiency": 34.5
   },
   {
+    "vendor": "minefarmbuy",
+    "price": 2628,
+    "date": "2022-07-12",
+    "model": "Whatsminer M31s+ 74T 44J/th",
+    "th": 74,
+    "watts": 3256,
+    "efficiency": 44
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 6500,
+    "date": "2022-07-12",
+    "model": "Whatsminer M50 118T",
+    "th": 118,
+    "watts": 3422,
+    "efficiency": 29
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 4850,
+    "date": "2022-07-12",
+    "model": "Whatsminer M30s++ 108T",
+    "th": 108,
+    "watts": 3500,
+    "efficiency": 31
+  },
+  {
     "vendor": "upstreamdata",
     "price": 4050,
     "date": "2022-07-12",
@@ -475,15 +592,6 @@
     "th": 88,
     "watts": 3500,
     "efficiency": 38
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3089,
-    "date": "2022-07-12",
-    "model": "Whatsminer M31s+ 84T 42J/th",
-    "th": 84,
-    "watts": 3528,
-    "efficiency": 42
   },
   {
     "vendor": "Kaboomracks",
@@ -532,15 +640,6 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 2628,
-    "date": "2022-07-12",
-    "model": "Whatsminer M31s+ 74T 44J/th",
-    "th": 74,
-    "watts": 3256,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
     "price": 2691,
     "date": "2022-07-12",
     "model": "Whatsminer M31s+ 76T 44J/th",
@@ -568,20 +667,20 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 2955,
-    "date": "2022-07-12",
-    "model": "Whatsminer M31s+ 80T 42J/th",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
     "price": 2889,
     "date": "2022-07-12",
     "model": "Whatsminer M31s+ 78T 42J/th",
     "th": 78,
     "watts": 3276,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 2955,
+    "date": "2022-07-12",
+    "model": "Whatsminer M31s+ 80T 42J/th",
+    "th": 80,
+    "watts": 3360,
     "efficiency": 42
   },
   {
@@ -594,22 +693,13 @@
     "efficiency": 42
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 6500,
+    "vendor": "minefarmbuy",
+    "price": 3089,
     "date": "2022-07-12",
-    "model": "Whatsminer M50 118T",
-    "th": 118,
-    "watts": 3422,
-    "efficiency": 29
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 4850,
-    "date": "2022-07-12",
-    "model": "Whatsminer M30s++ 108T",
-    "th": 108,
-    "watts": 3500,
-    "efficiency": 31
+    "model": "Whatsminer M31s+ 84T 42J/th",
+    "th": 84,
+    "watts": 3528,
+    "efficiency": 42
   },
   {
     "vendor": "Kaboomracks",
@@ -640,6 +730,15 @@
   },
   {
     "vendor": "Kaboomracks",
+    "price": 4444,
+    "date": "2022-07-08",
+    "model": "Whatsminer M30S++ 110T",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
+  },
+  {
+    "vendor": "Kaboomracks",
     "price": 3000,
     "date": "2022-07-08",
     "model": "Antminer S19a 96T",
@@ -649,11 +748,29 @@
   },
   {
     "vendor": "Kaboomracks",
+    "price": 4000,
+    "date": "2022-07-07",
+    "model": "Whatsminer M30S++ 108T",
+    "th": 108,
+    "watts": 3348,
+    "efficiency": 31
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 8299,
+    "date": "2022-07-07",
+    "model": "Antminer S19 XP 140T",
+    "th": 140,
+    "watts": 3010,
+    "efficiency": 21.5
+  },
+  {
+    "vendor": "Kaboomracks",
     "price": 4444,
-    "date": "2022-07-08",
-    "model": "Whatsminer M30S++ 110T",
-    "th": 110,
-    "watts": 3410,
+    "date": "2022-07-07",
+    "model": "Whatsminer M30S++ 108T",
+    "th": 108,
+    "watts": 3348,
     "efficiency": 31
   },
   {
@@ -667,21 +784,21 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 8299,
+    "price": 3837,
     "date": "2022-07-07",
-    "model": "Antminer S19 XP 140T",
-    "th": 140,
-    "watts": 3010,
-    "efficiency": 21.5
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
   },
   {
     "vendor": "Kaboomracks",
-    "price": 4000,
+    "price": 3210,
     "date": "2022-07-07",
-    "model": "Whatsminer M30S++ 108T",
-    "th": 108,
-    "watts": 3348,
-    "efficiency": 31
+    "model": "Antminer S19a 96T",
+    "th": 96,
+    "watts": 3312,
+    "efficiency": 34.5
   },
   {
     "vendor": "Kaboomracks",
@@ -693,31 +810,67 @@
     "efficiency": 31
   },
   {
+    "vendor": "minefarmbuy",
+    "price": 2439,
+    "date": "2022-07-06",
+    "model": "Whatsminer M31s+ 70T 44J/th",
+    "th": 70,
+    "watts": 3080,
+    "efficiency": 44
+  },
+  {
     "vendor": "Kaboomracks",
     "price": 3837,
-    "date": "2022-07-07",
+    "date": "2022-07-06",
     "model": "Antminer S19j Pro 104T",
     "th": 104,
     "watts": 3068,
     "efficiency": 29.5
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 4444,
-    "date": "2022-07-07",
-    "model": "Whatsminer M30S++ 108T",
-    "th": 108,
-    "watts": 3348,
-    "efficiency": 31
+    "vendor": "minefarmbuy",
+    "price": 2562,
+    "date": "2022-07-06",
+    "model": "Whatsminer M31s 74T 44J/th",
+    "th": 74,
+    "watts": 3256,
+    "efficiency": 44
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 3210,
-    "date": "2022-07-07",
-    "model": "Antminer S19a 96T",
-    "th": 96,
-    "watts": 3312,
-    "efficiency": 34.5
+    "vendor": "minefarmbuy",
+    "price": 2624,
+    "date": "2022-07-06",
+    "model": "Whatsminer M31s 76T 44J/th",
+    "th": 76,
+    "watts": 3344,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 2685,
+    "date": "2022-07-06",
+    "model": "Whatsminer M31s 78T 44J/th",
+    "th": 78,
+    "watts": 3432,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 2501,
+    "date": "2022-07-06",
+    "model": "Whatsminer M31s+ 72T 44J/th",
+    "th": 72,
+    "watts": 3168,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 2562,
+    "date": "2022-07-06",
+    "model": "Whatsminer M31s+ 74T 44J/th",
+    "th": 74,
+    "watts": 3256,
+    "efficiency": 44
   },
   {
     "vendor": "minefarmbuy",
@@ -756,24 +909,6 @@
     "efficiency": 42
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 3837,
-    "date": "2022-07-06",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 2992,
-    "date": "2022-07-06",
-    "model": "Whatsminer M31s+ 84T 42J/th",
-    "th": 84,
-    "watts": 3528,
-    "efficiency": 42
-  },
-  {
     "vendor": "minefarmbuy",
     "price": 2928,
     "date": "2022-07-06",
@@ -784,57 +919,12 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 2562,
+    "price": 2992,
     "date": "2022-07-06",
-    "model": "Whatsminer M31s 74T 44J/th",
-    "th": 74,
-    "watts": 3256,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 2624,
-    "date": "2022-07-06",
-    "model": "Whatsminer M31s 76T 44J/th",
-    "th": 76,
-    "watts": 3344,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 2685,
-    "date": "2022-07-06",
-    "model": "Whatsminer M31s 78T 44J/th",
-    "th": 78,
-    "watts": 3432,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 2439,
-    "date": "2022-07-06",
-    "model": "Whatsminer M31s+ 70T 44J/th",
-    "th": 70,
-    "watts": 3080,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 2501,
-    "date": "2022-07-06",
-    "model": "Whatsminer M31s+ 72T 44J/th",
-    "th": 72,
-    "watts": 3168,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 2562,
-    "date": "2022-07-06",
-    "model": "Whatsminer M31s+ 74T 44J/th",
-    "th": 74,
-    "watts": 3256,
-    "efficiency": 44
+    "model": "Whatsminer M31s+ 84T 42J/th",
+    "th": 84,
+    "watts": 3528,
+    "efficiency": 42
   },
   {
     "vendor": "Kaboomracks",
@@ -864,24 +954,6 @@
     "efficiency": 29.5
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 8299,
-    "date": "2022-07-03",
-    "model": "Antminer S19 XP 140T",
-    "th": 140,
-    "watts": 3010,
-    "efficiency": 21.5
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 4650,
-    "date": "2022-07-03",
-    "model": "Antminer S19j Pro 100T",
-    "th": 100,
-    "watts": 3250,
-    "efficiency": 33
-  },
-  {
     "vendor": "upstreamdata",
     "price": 3350,
     "date": "2022-07-03",
@@ -901,12 +973,30 @@
   },
   {
     "vendor": "upstreamdata",
+    "price": 4650,
+    "date": "2022-07-03",
+    "model": "Antminer S19j Pro 100T",
+    "th": 100,
+    "watts": 3250,
+    "efficiency": 33
+  },
+  {
+    "vendor": "upstreamdata",
     "price": 5000,
     "date": "2022-07-03",
     "model": "Antminer S19j Pro 104T",
     "th": 104,
     "watts": 3068,
     "efficiency": 29.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 8299,
+    "date": "2022-07-03",
+    "model": "Antminer S19 XP 140T",
+    "th": 140,
+    "watts": 3010,
+    "efficiency": 21.5
   },
   {
     "vendor": "upstreamdata",
@@ -955,11 +1045,11 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 3493,
+    "price": 3415,
     "date": "2022-06-29",
-    "model": "Whatsminer M31s+ 82T 42J/th",
-    "th": 82,
-    "watts": 3444,
+    "model": "Whatsminer M31s+ 80T 42J/th",
+    "th": 80,
+    "watts": 3360,
     "efficiency": 42
   },
   {
@@ -1036,33 +1126,6 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 3337,
-    "date": "2022-06-29",
-    "model": "Whatsminer M31s+ 78T 42J/th",
-    "th": 78,
-    "watts": 3276,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3415,
-    "date": "2022-06-29",
-    "model": "Whatsminer M31s+ 80T 42J/th",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3572,
-    "date": "2022-06-29",
-    "model": "Whatsminer M31s+ 84T 42J/th",
-    "th": 84,
-    "watts": 3528,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
     "price": 3053,
     "date": "2022-06-29",
     "model": "Whatsminer M31s 74T 44J/th",
@@ -1107,13 +1170,31 @@
     "efficiency": 42
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 5940,
-    "date": "2022-06-28",
-    "model": "Antminer S19 Pro 110T",
-    "th": 110,
-    "watts": 3250,
-    "efficiency": 29.545454
+    "vendor": "minefarmbuy",
+    "price": 3337,
+    "date": "2022-06-29",
+    "model": "Whatsminer M31s+ 78T 42J/th",
+    "th": 78,
+    "watts": 3276,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3493,
+    "date": "2022-06-29",
+    "model": "Whatsminer M31s+ 82T 42J/th",
+    "th": 82,
+    "watts": 3444,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3572,
+    "date": "2022-06-29",
+    "model": "Whatsminer M31s+ 84T 42J/th",
+    "th": 84,
+    "watts": 3528,
+    "efficiency": 42
   },
   {
     "vendor": "Kaboomracks",
@@ -1126,11 +1207,38 @@
   },
   {
     "vendor": "Kaboomracks",
+    "price": 5940,
+    "date": "2022-06-28",
+    "model": "Antminer S19 Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 29.545454
+  },
+  {
+    "vendor": "Kaboomracks",
     "price": 4545,
     "date": "2022-06-27",
     "model": "Whatsminer M30S++ 108T",
     "th": 108,
     "watts": 3348,
+    "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 2978,
+    "date": "2022-06-25",
+    "model": "Whatsminer M31s+ 72T 44J/th",
+    "th": 72,
+    "watts": 3168,
+    "efficiency": 44
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 6350,
+    "date": "2022-06-25",
+    "model": "Whatsminer M30s++ 108T",
+    "th": 108,
+    "watts": 3500,
     "efficiency": 31
   },
   {
@@ -1141,15 +1249,6 @@
     "th": 100,
     "watts": 3400,
     "efficiency": 34
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 6350,
-    "date": "2022-06-25",
-    "model": "Whatsminer M30s++ 108T",
-    "th": 108,
-    "watts": 3500,
-    "efficiency": 31
   },
   {
     "vendor": "upstreamdata",
@@ -1198,20 +1297,38 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 2968,
-    "date": "2022-06-25",
-    "model": "Whatsminer M31s 74T 46J/th",
-    "th": 74,
-    "watts": 3404,
-    "efficiency": 46
-  },
-  {
-    "vendor": "minefarmbuy",
     "price": 3040,
     "date": "2022-06-25",
     "model": "Whatsminer M31s 76T 46J/th",
     "th": 76,
     "watts": 3496,
+    "efficiency": 46
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3303,
+    "date": "2022-06-25",
+    "model": "Whatsminer M31s+ 76T 42J/th",
+    "th": 76,
+    "watts": 3192,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 2904,
+    "date": "2022-06-25",
+    "model": "Whatsminer M31s+ 70T 44J/th",
+    "th": 70,
+    "watts": 3080,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 2968,
+    "date": "2022-06-25",
+    "model": "Whatsminer M31s 74T 46J/th",
+    "th": 74,
+    "watts": 3404,
     "efficiency": 46
   },
   {
@@ -1225,29 +1342,11 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 2904,
+    "price": 3461,
     "date": "2022-06-25",
-    "model": "Whatsminer M31s+ 70T 44J/th",
-    "th": 70,
-    "watts": 3080,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 2978,
-    "date": "2022-06-25",
-    "model": "Whatsminer M31s+ 72T 44J/th",
-    "th": 72,
-    "watts": 3168,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3303,
-    "date": "2022-06-25",
-    "model": "Whatsminer M31s+ 76T 42J/th",
-    "th": 76,
-    "watts": 3192,
+    "model": "Whatsminer M31s+ 80T 42J/th",
+    "th": 80,
+    "watts": 3360,
     "efficiency": 42
   },
   {
@@ -1261,15 +1360,6 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 3461,
-    "date": "2022-06-25",
-    "model": "Whatsminer M31s+ 80T 42J/th",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
     "price": 3541,
     "date": "2022-06-25",
     "model": "Whatsminer M31s+ 82T 42J/th",
@@ -1279,21 +1369,21 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 8299,
-    "date": "2022-06-24",
-    "model": "Antminer S19 XP 140T",
-    "th": 140,
-    "watts": 3010,
-    "efficiency": 21.5
-  },
-  {
-    "vendor": "Kaboomracks",
     "price": 4966,
     "date": "2022-06-24",
     "model": "Antminer S19j Pro 104T",
     "th": 104,
     "watts": 3068,
     "efficiency": 29.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 8299,
+    "date": "2022-06-24",
+    "model": "Antminer S19 XP 140T",
+    "th": 140,
+    "watts": 3010,
+    "efficiency": 21.5
   },
   {
     "vendor": "Kaboomracks",
@@ -1350,42 +1440,6 @@
     "efficiency": 29.5
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 3879,
-    "date": "2022-06-18",
-    "model": "Whatsminer M31s+ 76T 42J/th",
-    "th": 76,
-    "watts": 3192,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3974,
-    "date": "2022-06-18",
-    "model": "Whatsminer M31s+ 78T 42J/th",
-    "th": 78,
-    "watts": 3276,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4068,
-    "date": "2022-06-18",
-    "model": "Whatsminer M31s+ 80T 42J/th",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4163,
-    "date": "2022-06-18",
-    "model": "Whatsminer M31s+ 82T 42J/th",
-    "th": 82,
-    "watts": 3444,
-    "efficiency": 42
-  },
-  {
     "vendor": "Kaboomracks",
     "price": 3820,
     "date": "2022-06-18",
@@ -1431,13 +1485,49 @@
     "efficiency": 44
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 1999,
+    "vendor": "minefarmbuy",
+    "price": 3879,
+    "date": "2022-06-18",
+    "model": "Whatsminer M31s+ 76T 42J/th",
+    "th": 76,
+    "watts": 3192,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3974,
+    "date": "2022-06-18",
+    "model": "Whatsminer M31s+ 78T 42J/th",
+    "th": 78,
+    "watts": 3276,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4068,
+    "date": "2022-06-18",
+    "model": "Whatsminer M31s+ 80T 42J/th",
+    "th": 80,
+    "watts": 3360,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4163,
+    "date": "2022-06-18",
+    "model": "Whatsminer M31s+ 82T 42J/th",
+    "th": 82,
+    "watts": 3444,
+    "efficiency": 42
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 6800,
     "date": "2022-06-17",
-    "model": "Whatsminer M20S 60T",
-    "th": 60,
-    "watts": 2880,
-    "efficiency": 48
+    "model": "Whatsminer M30s++ 108T",
+    "th": 108,
+    "watts": 3500,
+    "efficiency": 31
   },
   {
     "vendor": "upstreamdata",
@@ -1449,13 +1539,13 @@
     "efficiency": 38
   },
   {
-    "vendor": "upstreamdata",
-    "price": 6800,
+    "vendor": "Kaboomracks",
+    "price": 3820,
     "date": "2022-06-17",
-    "model": "Whatsminer M30s++ 108T",
-    "th": 108,
-    "watts": 3500,
-    "efficiency": 31
+    "model": "Whatsminer M31S+ 80T",
+    "th": 80,
+    "watts": 3360,
+    "efficiency": 42
   },
   {
     "vendor": "Kaboomracks",
@@ -1468,12 +1558,12 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 3820,
+    "price": 1999,
     "date": "2022-06-17",
-    "model": "Whatsminer M31S+ 80T",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
+    "model": "Whatsminer M20S 60T",
+    "th": 60,
+    "watts": 2880,
+    "efficiency": 48
   },
   {
     "vendor": "minefarmbuy",
@@ -1483,6 +1573,33 @@
     "th": 76,
     "watts": 3496,
     "efficiency": 46
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3608,
+    "date": "2022-06-16",
+    "model": "Whatsminer M31s 76T 44J/th",
+    "th": 76,
+    "watts": 3344,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3346,
+    "date": "2022-06-16",
+    "model": "Whatsminer M31s+ 70T 44J/th",
+    "th": 70,
+    "watts": 3080,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3696,
+    "date": "2022-06-16",
+    "model": "Whatsminer M31s 78T 44J/th",
+    "th": 78,
+    "watts": 3432,
+    "efficiency": 44
   },
   {
     "vendor": "Kaboomracks",
@@ -1557,12 +1674,57 @@
     "efficiency": 29.545454
   },
   {
+    "vendor": "minefarmbuy",
+    "price": 3783,
+    "date": "2022-06-16",
+    "model": "Whatsminer M31s+ 76T 42J/th",
+    "th": 76,
+    "watts": 3192,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3434,
+    "date": "2022-06-16",
+    "model": "Whatsminer M31s+ 72T 44J/th",
+    "th": 72,
+    "watts": 3168,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4059,
+    "date": "2022-06-16",
+    "model": "Whatsminer M31s+ 82T 42J/th",
+    "th": 82,
+    "watts": 3444,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3967,
+    "date": "2022-06-16",
+    "model": "Whatsminer M31s+ 80T 42J/th",
+    "th": 80,
+    "watts": 3360,
+    "efficiency": 42
+  },
+  {
     "vendor": "Kaboomracks",
     "price": 3820,
     "date": "2022-06-16",
     "model": "Whatsminer M31S+ 80T",
     "th": 80,
     "watts": 3360,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3875,
+    "date": "2022-06-16",
+    "model": "Whatsminer M31s+ 78T 42J/th",
+    "th": 78,
+    "watts": 3276,
     "efficiency": 42
   },
   {
@@ -1584,78 +1746,6 @@
     "efficiency": 46
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 3608,
-    "date": "2022-06-16",
-    "model": "Whatsminer M31s 76T 44J/th",
-    "th": 76,
-    "watts": 3344,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3696,
-    "date": "2022-06-16",
-    "model": "Whatsminer M31s 78T 44J/th",
-    "th": 78,
-    "watts": 3432,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3346,
-    "date": "2022-06-16",
-    "model": "Whatsminer M31s+ 70T 44J/th",
-    "th": 70,
-    "watts": 3080,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3434,
-    "date": "2022-06-16",
-    "model": "Whatsminer M31s+ 72T 44J/th",
-    "th": 72,
-    "watts": 3168,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3783,
-    "date": "2022-06-16",
-    "model": "Whatsminer M31s+ 76T 42J/th",
-    "th": 76,
-    "watts": 3192,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3875,
-    "date": "2022-06-16",
-    "model": "Whatsminer M31s+ 78T 42J/th",
-    "th": 78,
-    "watts": 3276,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3967,
-    "date": "2022-06-16",
-    "model": "Whatsminer M31s+ 80T 42J/th",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4059,
-    "date": "2022-06-16",
-    "model": "Whatsminer M31s+ 82T 42J/th",
-    "th": 82,
-    "watts": 3444,
-    "efficiency": 42
-  },
-  {
     "vendor": "Kaboomracks",
     "price": 6710,
     "date": "2022-06-15",
@@ -1665,31 +1755,13 @@
     "efficiency": 29.545454
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 4055,
+    "vendor": "Kaboomracks",
+    "price": 5555,
     "date": "2022-06-15",
-    "model": "Whatsminer M31s+ 78T 42J/th",
-    "th": 78,
-    "watts": 3276,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4151,
-    "date": "2022-06-15",
-    "model": "Whatsminer M31s+ 80T 42J/th",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4248,
-    "date": "2022-06-15",
-    "model": "Whatsminer M31s+ 82T 42J/th",
-    "th": 82,
-    "watts": 3444,
-    "efficiency": 42
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
   },
   {
     "vendor": "upstreamdata",
@@ -1753,15 +1825,6 @@
     "th": 110,
     "watts": 3250,
     "efficiency": 29.545454
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 5555,
-    "date": "2022-06-15",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
   },
   {
     "vendor": "Kaboomracks",
@@ -1845,13 +1908,40 @@
     "efficiency": 42
   },
   {
+    "vendor": "minefarmbuy",
+    "price": 4055,
+    "date": "2022-06-15",
+    "model": "Whatsminer M31s+ 78T 42J/th",
+    "th": 78,
+    "watts": 3276,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4151,
+    "date": "2022-06-15",
+    "model": "Whatsminer M31s+ 80T 42J/th",
+    "th": 80,
+    "watts": 3360,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4248,
+    "date": "2022-06-15",
+    "model": "Whatsminer M31s+ 82T 42J/th",
+    "th": 82,
+    "watts": 3444,
+    "efficiency": 42
+  },
+  {
     "vendor": "Kaboomracks",
-    "price": 1999,
+    "price": 3820,
     "date": "2022-06-14",
-    "model": "Whatsminer M20S 60T",
-    "th": 60,
-    "watts": 2880,
-    "efficiency": 48
+    "model": "Whatsminer M31S+ 80T",
+    "th": 80,
+    "watts": 3360,
+    "efficiency": 42
   },
   {
     "vendor": "Kaboomracks",
@@ -1864,21 +1954,12 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 3820,
+    "price": 1999,
     "date": "2022-06-14",
-    "model": "Whatsminer M31S+ 80T",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 3820,
-    "date": "2022-06-13",
-    "model": "Whatsminer M31S+ 80T",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
+    "model": "Whatsminer M20S 60T",
+    "th": 60,
+    "watts": 2880,
+    "efficiency": 48
   },
   {
     "vendor": "Kaboomracks",
@@ -1900,17 +1981,17 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 1999,
+    "price": 3820,
     "date": "2022-06-13",
-    "model": "Whatsminer M20S 60T",
-    "th": 60,
-    "watts": 2880,
-    "efficiency": 48
+    "model": "Whatsminer M31S+ 80T",
+    "th": 80,
+    "watts": 3360,
+    "efficiency": 42
   },
   {
     "vendor": "Kaboomracks",
-    "price": 2399,
-    "date": "2022-06-12",
+    "price": 1999,
+    "date": "2022-06-13",
     "model": "Whatsminer M20S 60T",
     "th": 60,
     "watts": 2880,
@@ -1927,7 +2008,7 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 1999,
+    "price": 2399,
     "date": "2022-06-12",
     "model": "Whatsminer M20S 60T",
     "th": 60,
@@ -1935,121 +2016,13 @@
     "efficiency": 48
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 7187,
-    "date": "2022-06-11",
-    "model": "Whatsminer M30s ++ 108T 31J/th",
-    "th": 108,
-    "watts": 3348,
-    "efficiency": 31
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4347,
-    "date": "2022-06-11",
-    "model": "Whatsminer M31s+ 78T 42J/th",
-    "th": 78,
-    "watts": 3276,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4452,
-    "date": "2022-06-11",
-    "model": "Whatsminer M31s+ 80T 42J/th",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4556,
-    "date": "2022-06-11",
-    "model": "Whatsminer M31s+ 82T 42J/th",
-    "th": 82,
-    "watts": 3444,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 7060,
-    "date": "2022-06-11",
-    "model": "Whatsminer M30s ++ 106T 31J/th",
-    "th": 106,
-    "watts": 3286,
-    "efficiency": 31
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 7315,
-    "date": "2022-06-11",
-    "model": "Whatsminer M30s ++ 110T 31J/th",
-    "th": 110,
-    "watts": 3410,
-    "efficiency": 31
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 7850,
-    "date": "2022-06-11",
-    "model": "Whatsminer M30s++ 108T",
-    "th": 108,
-    "watts": 3500,
-    "efficiency": 31
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 7650,
-    "date": "2022-06-11",
-    "model": "Whatsminer M30s++ 104T",
-    "th": 104,
-    "watts": 3224,
-    "efficiency": 31
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 7150,
-    "date": "2022-06-11",
-    "model": "Whatsminer M30s+ 100T",
-    "th": 100,
-    "watts": 3400,
-    "efficiency": 34
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 5925,
-    "date": "2022-06-11",
-    "model": "Whatsminer M30s 90T",
-    "th": 90,
-    "watts": 3500,
-    "efficiency": 38
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 6350,
-    "date": "2022-06-11",
-    "model": "Antminer S19j Pro 96T",
-    "th": 96,
-    "watts": 2832,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 7150,
-    "date": "2022-06-11",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 6550,
-    "date": "2022-06-11",
-    "model": "Antminer S19j Pro 100T",
-    "th": 100,
-    "watts": 3250,
-    "efficiency": 33
+    "vendor": "Kaboomracks",
+    "price": 1999,
+    "date": "2022-06-12",
+    "model": "Whatsminer M20S 60T",
+    "th": 60,
+    "watts": 2880,
+    "efficiency": 48
   },
   {
     "vendor": "upstreamdata",
@@ -2061,6 +2034,15 @@
     "efficiency": 29.545454
   },
   {
+    "vendor": "minefarmbuy",
+    "price": 7187,
+    "date": "2022-06-11",
+    "model": "Whatsminer M30s ++ 108T 31J/th",
+    "th": 108,
+    "watts": 3348,
+    "efficiency": 31
+  },
+  {
     "vendor": "Kaboomracks",
     "price": 1999,
     "date": "2022-06-11",
@@ -2068,6 +2050,15 @@
     "th": 60,
     "watts": 2880,
     "efficiency": 48
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 7060,
+    "date": "2022-06-11",
+    "model": "Whatsminer M30s ++ 106T 31J/th",
+    "th": 106,
+    "watts": 3286,
+    "efficiency": 31
   },
   {
     "vendor": "Kaboomracks",
@@ -2187,6 +2178,105 @@
     "efficiency": 42
   },
   {
+    "vendor": "minefarmbuy",
+    "price": 4452,
+    "date": "2022-06-11",
+    "model": "Whatsminer M31s+ 80T 42J/th",
+    "th": 80,
+    "watts": 3360,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4347,
+    "date": "2022-06-11",
+    "model": "Whatsminer M31s+ 78T 42J/th",
+    "th": 78,
+    "watts": 3276,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4556,
+    "date": "2022-06-11",
+    "model": "Whatsminer M31s+ 82T 42J/th",
+    "th": 82,
+    "watts": 3444,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 7315,
+    "date": "2022-06-11",
+    "model": "Whatsminer M30s ++ 110T 31J/th",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 7850,
+    "date": "2022-06-11",
+    "model": "Whatsminer M30s++ 108T",
+    "th": 108,
+    "watts": 3500,
+    "efficiency": 31
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 7650,
+    "date": "2022-06-11",
+    "model": "Whatsminer M30s++ 104T",
+    "th": 104,
+    "watts": 3224,
+    "efficiency": 31
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 7150,
+    "date": "2022-06-11",
+    "model": "Whatsminer M30s+ 100T",
+    "th": 100,
+    "watts": 3400,
+    "efficiency": 34
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 5925,
+    "date": "2022-06-11",
+    "model": "Whatsminer M30s 90T",
+    "th": 90,
+    "watts": 3500,
+    "efficiency": 38
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 6350,
+    "date": "2022-06-11",
+    "model": "Antminer S19j Pro 96T",
+    "th": 96,
+    "watts": 2832,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 7150,
+    "date": "2022-06-11",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 6550,
+    "date": "2022-06-11",
+    "model": "Antminer S19j Pro 100T",
+    "th": 100,
+    "watts": 3250,
+    "efficiency": 33
+  },
+  {
     "vendor": "Kaboomracks",
     "price": 1450,
     "date": "2022-06-10",
@@ -2233,12 +2323,12 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 7104,
+    "price": 4297,
     "date": "2022-06-02",
-    "model": "Whatsminer M30s ++ 104T 31J/th",
-    "th": 104,
-    "watts": 3224,
-    "efficiency": 31
+    "model": "Whatsminer M31s 78T 44J/th",
+    "th": 78,
+    "watts": 3432,
+    "efficiency": 44
   },
   {
     "vendor": "Kaboomracks",
@@ -2266,15 +2356,6 @@
     "th": 76,
     "watts": 3496,
     "efficiency": 46
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4297,
-    "date": "2022-06-02",
-    "model": "Whatsminer M31s 78T 44J/th",
-    "th": 78,
-    "watts": 3432,
-    "efficiency": 44
   },
   {
     "vendor": "minefarmbuy",
@@ -2404,6 +2485,15 @@
   },
   {
     "vendor": "minefarmbuy",
+    "price": 7104,
+    "date": "2022-06-02",
+    "model": "Whatsminer M30s ++ 104T 31J/th",
+    "th": 104,
+    "watts": 3224,
+    "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
     "price": 7497,
     "date": "2022-06-02",
     "model": "Whatsminer M30s ++ 110T 31J/th",
@@ -2413,21 +2503,21 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 2499,
-    "date": "2022-06-01",
-    "model": "Whatsminer M20S 60T",
-    "th": 60,
-    "watts": 2880,
-    "efficiency": 48
-  },
-  {
-    "vendor": "Kaboomracks",
     "price": 5000,
     "date": "2022-06-01",
     "model": "Antminer S19a 96T",
     "th": 96,
     "watts": 3312,
     "efficiency": 34.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 2499,
+    "date": "2022-06-01",
+    "model": "Whatsminer M20S 60T",
+    "th": 60,
+    "watts": 2880,
+    "efficiency": 48
   },
   {
     "vendor": "Kaboomracks",
@@ -2484,22 +2574,40 @@
     "efficiency": 29.5
   },
   {
-    "vendor": "upstreamdata",
-    "price": 7150,
+    "vendor": "minefarmbuy",
+    "price": 6994,
     "date": "2022-05-27",
-    "model": "Antminer S19j Pro 96T",
-    "th": 96,
-    "watts": 2832,
+    "model": "Whatsminer M30s ++ 108T 31J/th",
+    "th": 108,
+    "watts": 3348,
+    "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4748,
+    "date": "2022-05-27",
+    "model": "Whatsminer M31s+ 82T 42J/th",
+    "th": 82,
+    "watts": 3444,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 7463,
+    "date": "2022-05-27",
+    "model": "Antminer S19 Pro 104T",
+    "th": 104,
+    "watts": 3068,
     "efficiency": 29.5
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 4000,
+    "vendor": "minefarmbuy",
+    "price": 5800,
     "date": "2022-05-27",
-    "model": "Antminer S19j 90T",
-    "th": 90,
-    "watts": 2655,
-    "efficiency": 29.5
+    "model": "Whatsminer M30s+ 94T 34J/th",
+    "th": 94,
+    "watts": 3196,
+    "efficiency": 34
   },
   {
     "vendor": "minefarmbuy",
@@ -2512,12 +2620,12 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 5800,
+    "price": 6869,
     "date": "2022-05-27",
-    "model": "Whatsminer M30s+ 94T 34J/th",
-    "th": 94,
-    "watts": 3196,
-    "efficiency": 34
+    "model": "Whatsminer M30s ++ 106T 31J/th",
+    "th": 106,
+    "watts": 3286,
+    "efficiency": 31
   },
   {
     "vendor": "minefarmbuy",
@@ -2556,58 +2664,22 @@
     "efficiency": 34
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 7463,
+    "vendor": "Kaboomracks",
+    "price": 4000,
     "date": "2022-05-27",
-    "model": "Antminer S19 Pro 104T",
-    "th": 104,
-    "watts": 3068,
+    "model": "Antminer S19j 90T",
+    "th": 90,
+    "watts": 2655,
     "efficiency": 29.5
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 4748,
+    "vendor": "upstreamdata",
+    "price": 7150,
     "date": "2022-05-27",
-    "model": "Whatsminer M31s+ 82T 42J/th",
-    "th": 82,
-    "watts": 3444,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6869,
-    "date": "2022-05-27",
-    "model": "Whatsminer M30s ++ 106T 31J/th",
-    "th": 106,
-    "watts": 3286,
-    "efficiency": 31
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6994,
-    "date": "2022-05-27",
-    "model": "Whatsminer M30s ++ 108T 31J/th",
-    "th": 108,
-    "watts": 3348,
-    "efficiency": 31
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 7000,
-    "date": "2022-05-26",
-    "model": "Whatsminer M30S++ 110T",
-    "th": 110,
-    "watts": 3410,
-    "efficiency": 31
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 4000,
-    "date": "2022-05-26",
-    "model": "Whatsminer M30S 90T",
-    "th": 90,
-    "watts": 3420,
-    "efficiency": 38
+    "model": "Antminer S19j Pro 96T",
+    "th": 96,
+    "watts": 2832,
+    "efficiency": 29.5
   },
   {
     "vendor": "Kaboomracks",
@@ -2620,12 +2692,30 @@
   },
   {
     "vendor": "Kaboomracks",
+    "price": 4000,
+    "date": "2022-05-26",
+    "model": "Whatsminer M30S 90T",
+    "th": 90,
+    "watts": 3420,
+    "efficiency": 38
+  },
+  {
+    "vendor": "Kaboomracks",
     "price": 2900,
     "date": "2022-05-26",
     "model": "Whatsminer M20S 60T",
     "th": 60,
     "watts": 2880,
     "efficiency": 48
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 7000,
+    "date": "2022-05-26",
+    "model": "Whatsminer M30S++ 110T",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
   },
   {
     "vendor": "Kaboomracks",
@@ -2638,20 +2728,20 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 4567,
-    "date": "2022-05-25",
-    "model": "Antminer S19 95T",
-    "th": 95,
-    "watts": 3277.5,
-    "efficiency": 34.5
-  },
-  {
-    "vendor": "Kaboomracks",
     "price": 4321,
     "date": "2022-05-25",
     "model": "Antminer S19 90T",
     "th": 90,
     "watts": 3105,
+    "efficiency": 34.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 4567,
+    "date": "2022-05-25",
+    "model": "Antminer S19 95T",
+    "th": 95,
+    "watts": 3277.5,
     "efficiency": 34.5
   },
   {
@@ -2683,24 +2773,6 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 3932,
-    "date": "2022-05-21",
-    "model": "Whatsminer M31s+ 70T 44J/th",
-    "th": 70,
-    "watts": 3080,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4754,
-    "date": "2022-05-21",
-    "model": "Whatsminer M31s+ 82T 42J/th",
-    "th": 82,
-    "watts": 3444,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
     "price": 4536,
     "date": "2022-05-21",
     "model": "Whatsminer M31s+ 78T 42J/th",
@@ -2719,20 +2791,56 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 4427,
+    "price": 4754,
     "date": "2022-05-21",
-    "model": "Whatsminer M31s+ 76T 42J/th",
-    "th": 76,
-    "watts": 3192,
+    "model": "Whatsminer M31s+ 82T 42J/th",
+    "th": 82,
+    "watts": 3444,
     "efficiency": 42
   },
   {
     "vendor": "minefarmbuy",
-    "price": 4243,
+    "price": 8582,
     "date": "2022-05-21",
-    "model": "Whatsminer M31s+ 76T 44J/th",
-    "th": 76,
-    "watts": 3344,
+    "model": "Whatsminer M30s ++ 106T 31J/th",
+    "th": 106,
+    "watts": 3286,
+    "efficiency": 31
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 8700,
+    "date": "2022-05-21",
+    "model": "Antminer S19 Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 29.545454
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 7879,
+    "date": "2022-05-21",
+    "model": "Antminer S19 Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 3932,
+    "date": "2022-05-21",
+    "model": "Whatsminer M31s+ 70T 44J/th",
+    "th": 70,
+    "watts": 3080,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4035,
+    "date": "2022-05-21",
+    "model": "Whatsminer M31s+ 72T 44J/th",
+    "th": 72,
+    "watts": 3168,
     "efficiency": 44
   },
   {
@@ -2746,39 +2854,21 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 7538,
+    "price": 4243,
     "date": "2022-05-21",
-    "model": "Whatsminer M30s+ 100T 34J/th",
-    "th": 100,
-    "watts": 3400,
-    "efficiency": 34
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 8700,
-    "date": "2022-05-21",
-    "model": "Antminer S19 Pro 110T",
-    "th": 110,
-    "watts": 3250,
-    "efficiency": 29.545454
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4035,
-    "date": "2022-05-21",
-    "model": "Whatsminer M31s+ 72T 44J/th",
-    "th": 72,
-    "watts": 3168,
+    "model": "Whatsminer M31s+ 76T 44J/th",
+    "th": 76,
+    "watts": 3344,
     "efficiency": 44
   },
   {
     "vendor": "minefarmbuy",
-    "price": 7879,
+    "price": 4427,
     "date": "2022-05-21",
-    "model": "Antminer S19 Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
+    "model": "Whatsminer M31s+ 76T 42J/th",
+    "th": 76,
+    "watts": 3192,
+    "efficiency": 42
   },
   {
     "vendor": "minefarmbuy",
@@ -2791,12 +2881,21 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 8582,
+    "price": 7538,
     "date": "2022-05-21",
-    "model": "Whatsminer M30s ++ 106T 31J/th",
-    "th": 106,
-    "watts": 3286,
-    "efficiency": 31
+    "model": "Whatsminer M30s+ 100T 34J/th",
+    "th": 100,
+    "watts": 3400,
+    "efficiency": 34
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 7333,
+    "date": "2022-05-20",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
   },
   {
     "vendor": "Kaboomracks",
@@ -2818,16 +2917,7 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 7333,
-    "date": "2022-05-20",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 7333,
+    "price": 6968,
     "date": "2022-05-19",
     "model": "Antminer S19j Pro 104T",
     "th": 104,
@@ -2836,7 +2926,7 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 6968,
+    "price": 7333,
     "date": "2022-05-19",
     "model": "Antminer S19j Pro 104T",
     "th": 104,
@@ -2860,6 +2950,33 @@
     "th": 50,
     "watts": 3300,
     "efficiency": 66
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 1899,
+    "date": "2022-05-17",
+    "model": "Whatsminer M21S 50T",
+    "th": 50,
+    "watts": 3300,
+    "efficiency": 66
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 6920,
+    "date": "2022-05-17",
+    "model": "Antminer S19 Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 29.545454
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 7900,
+    "date": "2022-05-17",
+    "model": "Whatsminer M30S++ 110T",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
   },
   {
     "vendor": "upstreamdata",
@@ -2908,30 +3025,12 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 6920,
-    "date": "2022-05-17",
+    "price": 7199,
+    "date": "2022-05-16",
     "model": "Antminer S19 Pro 110T",
     "th": 110,
     "watts": 3250,
     "efficiency": 29.545454
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 7900,
-    "date": "2022-05-17",
-    "model": "Whatsminer M30S++ 110T",
-    "th": 110,
-    "watts": 3410,
-    "efficiency": 31
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 1899,
-    "date": "2022-05-17",
-    "model": "Whatsminer M21S 50T",
-    "th": 50,
-    "watts": 3300,
-    "efficiency": 66
   },
   {
     "vendor": "Kaboomracks",
@@ -2941,15 +3040,6 @@
     "th": 96,
     "watts": 3312,
     "efficiency": 34.5
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 7199,
-    "date": "2022-05-16",
-    "model": "Antminer S19 Pro 110T",
-    "th": 110,
-    "watts": 3250,
-    "efficiency": 29.545454
   },
   {
     "vendor": "upstreamdata",
@@ -2971,15 +3061,6 @@
   },
   {
     "vendor": "upstreamdata",
-    "price": 8550,
-    "date": "2022-05-14",
-    "model": "Whatsminer M30s++ 108T",
-    "th": 108,
-    "watts": 3500,
-    "efficiency": 31
-  },
-  {
-    "vendor": "upstreamdata",
     "price": 5600,
     "date": "2022-05-14",
     "model": "Whatsminer M31s+ 82T",
@@ -2989,11 +3070,11 @@
   },
   {
     "vendor": "upstreamdata",
-    "price": 8650,
+    "price": 8550,
     "date": "2022-05-14",
-    "model": "Whatsminer M30s++ 110T",
-    "th": 110,
-    "watts": 3410,
+    "model": "Whatsminer M30s++ 108T",
+    "th": 108,
+    "watts": 3500,
     "efficiency": 31
   },
   {
@@ -3006,22 +3087,76 @@
     "efficiency": 31
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 4287,
+    "vendor": "upstreamdata",
+    "price": 8650,
+    "date": "2022-05-14",
+    "model": "Whatsminer M30s++ 110T",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 4950,
     "date": "2022-05-13",
-    "model": "Whatsminer M31s 76T 44J/th",
-    "th": 76,
-    "watts": 3344,
-    "efficiency": 44
+    "model": "Whatsminer M30S 90T",
+    "th": 90,
+    "watts": 3420,
+    "efficiency": 38
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 6500,
+    "date": "2022-05-13",
+    "model": "Antminer S19j Pro 100T",
+    "th": 100,
+    "watts": 3250,
+    "efficiency": 33
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 5985,
+    "date": "2022-05-13",
+    "model": "Antminer S19 95T",
+    "th": 95,
+    "watts": 3277.5,
+    "efficiency": 34.5
   },
   {
     "vendor": "minefarmbuy",
-    "price": 9400,
+    "price": 3819,
     "date": "2022-05-13",
-    "model": "Antminer S19 Pro 110T",
-    "th": 110,
+    "model": "Whatsminer M31s+ 70T 46J/th",
+    "th": 70,
+    "watts": 3220,
+    "efficiency": 46
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 5580,
+    "date": "2022-05-13",
+    "model": "Antminer S19 90T",
+    "th": 90,
+    "watts": 3105,
+    "efficiency": 34.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 6800,
+    "date": "2022-05-13",
+    "model": "Antminer S19j Pro 100T",
+    "th": 100,
     "watts": 3250,
-    "efficiency": 29.545454
+    "efficiency": 33
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4287,
+    "date": "2022-05-13",
+    "model": "Whatsminer M31s+ 76T 44J/th",
+    "th": 76,
+    "watts": 3344,
+    "efficiency": 44
   },
   {
     "vendor": "Kaboomracks",
@@ -3060,24 +3195,6 @@
     "efficiency": 29.5
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 4182,
-    "date": "2022-05-13",
-    "model": "Whatsminer M31s+ 74T 44J/th",
-    "th": 74,
-    "watts": 3256,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3819,
-    "date": "2022-05-13",
-    "model": "Whatsminer M31s+ 70T 46J/th",
-    "th": 70,
-    "watts": 3220,
-    "efficiency": 46
-  },
-  {
     "vendor": "Kaboomracks",
     "price": 6240,
     "date": "2022-05-13",
@@ -3105,40 +3222,22 @@
     "efficiency": 42
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 4950,
+    "vendor": "minefarmbuy",
+    "price": 9400,
     "date": "2022-05-13",
-    "model": "Whatsminer M30S 90T",
-    "th": 90,
-    "watts": 3420,
-    "efficiency": 38
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 6500,
-    "date": "2022-05-13",
-    "model": "Antminer S19j Pro 100T",
-    "th": 100,
+    "model": "Antminer S19 Pro 110T",
+    "th": 110,
     "watts": 3250,
-    "efficiency": 33
+    "efficiency": 29.545454
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 5985,
+    "vendor": "minefarmbuy",
+    "price": 4182,
     "date": "2022-05-13",
-    "model": "Antminer S19 95T",
-    "th": 95,
-    "watts": 3277.5,
-    "efficiency": 34.5
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 5580,
-    "date": "2022-05-13",
-    "model": "Antminer S19 90T",
-    "th": 90,
-    "watts": 3105,
-    "efficiency": 34.5
+    "model": "Whatsminer M31s+ 74T 44J/th",
+    "th": 74,
+    "watts": 3256,
+    "efficiency": 44
   },
   {
     "vendor": "minefarmbuy",
@@ -3151,30 +3250,21 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 4287,
-    "date": "2022-05-13",
-    "model": "Whatsminer M31s+ 76T 44J/th",
-    "th": 76,
-    "watts": 3344,
-    "efficiency": 44
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 6800,
-    "date": "2022-05-13",
-    "model": "Antminer S19j Pro 100T",
-    "th": 100,
-    "watts": 3250,
-    "efficiency": 33
-  },
-  {
-    "vendor": "minefarmbuy",
     "price": 8894,
     "date": "2022-05-13",
     "model": "Whatsminer M30s ++ 110T 31J/th",
     "th": 110,
     "watts": 3410,
     "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4287,
+    "date": "2022-05-13",
+    "model": "Whatsminer M31s 76T 44J/th",
+    "th": 76,
+    "watts": 3344,
+    "efficiency": 44
   },
   {
     "vendor": "Kaboomracks",
@@ -3187,15 +3277,6 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 3060,
-    "date": "2022-05-12",
-    "model": "Whatsminer M20S 65T",
-    "th": 65,
-    "watts": 3120,
-    "efficiency": 48
-  },
-  {
-    "vendor": "Kaboomracks",
     "price": 7399,
     "date": "2022-05-12",
     "model": "Antminer S19 Pro 110T",
@@ -3205,11 +3286,20 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 6080,
+    "price": 3060,
+    "date": "2022-05-12",
+    "model": "Whatsminer M20S 65T",
+    "th": 65,
+    "watts": 3120,
+    "efficiency": 48
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 6299,
     "date": "2022-05-11",
-    "model": "Antminer S19 90T",
-    "th": 90,
-    "watts": 3105,
+    "model": "Antminer S19 95T",
+    "th": 95,
+    "watts": 3277.5,
     "efficiency": 34.5
   },
   {
@@ -3220,6 +3310,15 @@
     "th": 104,
     "watts": 3224,
     "efficiency": 31
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 6080,
+    "date": "2022-05-11",
+    "model": "Antminer S19 90T",
+    "th": 90,
+    "watts": 3105,
+    "efficiency": 34.5
   },
   {
     "vendor": "Kaboomracks",
@@ -3256,15 +3355,6 @@
     "th": 82,
     "watts": 3444,
     "efficiency": 42
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 6299,
-    "date": "2022-05-11",
-    "model": "Antminer S19 95T",
-    "th": 95,
-    "watts": 3277.5,
-    "efficiency": 34.5
   },
   {
     "vendor": "upstreamdata",
@@ -3556,15 +3646,6 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 9191,
-    "date": "2022-04-13",
-    "model": "Whatsminer M30s ++ 106T 31J/th",
-    "th": 106,
-    "watts": 3286,
-    "efficiency": 31
-  },
-  {
-    "vendor": "minefarmbuy",
     "price": 9359,
     "date": "2022-04-13",
     "model": "Whatsminer M30s ++ 108T 31J/th",
@@ -3601,6 +3682,15 @@
   },
   {
     "vendor": "minefarmbuy",
+    "price": 9780,
+    "date": "2022-04-13",
+    "model": "Whatsminer M30s ++ 110T 31J/th",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
     "price": 5992,
     "date": "2022-04-13",
     "model": "Whatsminer M30s 84T 38J/th",
@@ -3610,21 +3700,21 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 9780,
+    "price": 9191,
     "date": "2022-04-13",
-    "model": "Whatsminer M30s ++ 110T 31J/th",
-    "th": 110,
-    "watts": 3410,
+    "model": "Whatsminer M30s ++ 106T 31J/th",
+    "th": 106,
+    "watts": 3286,
     "efficiency": 31
   },
   {
     "vendor": "Kaboomracks",
-    "price": 7388,
+    "price": 5500,
     "date": "2022-04-11",
-    "model": "Antminer S19j Pro 96T",
-    "th": 96,
-    "watts": 2832,
-    "efficiency": 29.5
+    "model": "Whatsminer M31S 76T",
+    "th": 76,
+    "watts": 3496,
+    "efficiency": 46
   },
   {
     "vendor": "Kaboomracks",
@@ -3673,21 +3763,21 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 5500,
-    "date": "2022-04-11",
-    "model": "Whatsminer M31S 76T",
-    "th": 76,
-    "watts": 3496,
-    "efficiency": 46
-  },
-  {
-    "vendor": "Kaboomracks",
     "price": 5150,
     "date": "2022-04-11",
     "model": "Whatsminer M31S 74T",
     "th": 74,
     "watts": 3404,
     "efficiency": 46
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 7388,
+    "date": "2022-04-11",
+    "model": "Antminer S19j Pro 96T",
+    "th": 96,
+    "watts": 2832,
+    "efficiency": 29.5
   },
   {
     "vendor": "Kaboomracks",
@@ -3709,24 +3799,6 @@
   },
   {
     "vendor": "upstreamdata",
-    "price": 8750,
-    "date": "2022-04-05",
-    "model": "Antminer S19j Pro 100T",
-    "th": 100,
-    "watts": 3250,
-    "efficiency": 33
-  },
-  {
-    "vendor": "upstreamdata",
-    "price": 8700,
-    "date": "2022-04-05",
-    "model": "Whatsminer M30s++ 102T",
-    "th": 102,
-    "watts": 3200,
-    "efficiency": 31
-  },
-  {
-    "vendor": "upstreamdata",
     "price": 7150,
     "date": "2022-04-05",
     "model": "Whatsminer M30s 92T",
@@ -3736,21 +3808,21 @@
   },
   {
     "vendor": "upstreamdata",
-    "price": 8500,
-    "date": "2022-04-05",
-    "model": "Antminer S19j Pro 96T",
-    "th": 96,
-    "watts": 2832,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "upstreamdata",
     "price": 11000,
     "date": "2022-04-05",
     "model": "Antminer S19 Pro 110T",
     "th": 110,
     "watts": 3250,
     "efficiency": 29.545454
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 8750,
+    "date": "2022-04-05",
+    "model": "Antminer S19j Pro 100T",
+    "th": 100,
+    "watts": 3250,
+    "efficiency": 33
   },
   {
     "vendor": "upstreamdata",
@@ -3778,6 +3850,24 @@
     "th": 104,
     "watts": 3224,
     "efficiency": 31
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 8700,
+    "date": "2022-04-05",
+    "model": "Whatsminer M30s++ 102T",
+    "th": 102,
+    "watts": 3200,
+    "efficiency": 31
+  },
+  {
+    "vendor": "upstreamdata",
+    "price": 8500,
+    "date": "2022-04-05",
+    "model": "Antminer S19j Pro 96T",
+    "th": 96,
+    "watts": 2832,
+    "efficiency": 29.5
   },
   {
     "vendor": "Kaboomracks",
@@ -3817,57 +3907,12 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 5056,
+    "price": 4623,
     "date": "2022-03-29",
-    "model": "Whatsminer M31s 76T 44J/th",
+    "model": "Whatsminer M31s 76T 48J/th",
     "th": 76,
-    "watts": 3344,
-    "efficiency": 44
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 8500,
-    "date": "2022-03-29",
-    "model": "Whatsminer M30S++ 106T",
-    "th": 106,
-    "watts": 3472,
-    "efficiency": 32.75472
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 8484,
-    "date": "2022-03-29",
-    "model": "Whatsminer M30S++ 106T",
-    "th": 106,
-    "watts": 3472,
-    "efficiency": 32.75472
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 9000,
-    "date": "2022-03-29",
-    "model": "Whatsminer M30S++ 110T",
-    "th": 110,
-    "watts": 3410,
-    "efficiency": 31
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 5896,
-    "date": "2022-03-29",
-    "model": "Whatsminer M30s 84T 36J/th",
-    "th": 84,
-    "watts": 3024,
-    "efficiency": 36
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 5896,
-    "date": "2022-03-29",
-    "model": "Whatsminer M30s 86T 36J/th",
-    "th": 86,
-    "watts": 3096,
-    "efficiency": 36
+    "watts": 3648,
+    "efficiency": 48
   },
   {
     "vendor": "minefarmbuy",
@@ -4053,15 +4098,6 @@
     "vendor": "minefarmbuy",
     "price": 4623,
     "date": "2022-03-29",
-    "model": "Whatsminer M31s 76T 48J/th",
-    "th": 76,
-    "watts": 3648,
-    "efficiency": 48
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4623,
-    "date": "2022-03-29",
     "model": "Whatsminer M31s 78T 48J/th",
     "th": 78,
     "watts": 3744,
@@ -4075,6 +4111,15 @@
     "th": 72,
     "watts": 3312,
     "efficiency": 46
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 5056,
+    "date": "2022-03-29",
+    "model": "Whatsminer M31s 76T 44J/th",
+    "th": 76,
+    "watts": 3344,
+    "efficiency": 44
   },
   {
     "vendor": "minefarmbuy",
@@ -4222,30 +4267,48 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 8900,
-    "date": "2022-03-28",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
+    "price": 8500,
+    "date": "2022-03-29",
+    "model": "Whatsminer M30S++ 106T",
+    "th": 106,
+    "watts": 3472,
+    "efficiency": 32.75472
   },
   {
     "vendor": "Kaboomracks",
-    "price": 6543,
-    "date": "2022-03-28",
-    "model": "Whatsminer M30S 90T",
-    "th": 90,
-    "watts": 3420,
-    "efficiency": 38
+    "price": 8484,
+    "date": "2022-03-29",
+    "model": "Whatsminer M30S++ 106T",
+    "th": 106,
+    "watts": 3472,
+    "efficiency": 32.75472
   },
   {
     "vendor": "Kaboomracks",
     "price": 9000,
-    "date": "2022-03-28",
+    "date": "2022-03-29",
     "model": "Whatsminer M30S++ 110T",
     "th": 110,
     "watts": 3410,
     "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 5896,
+    "date": "2022-03-29",
+    "model": "Whatsminer M30s 84T 36J/th",
+    "th": 84,
+    "watts": 3024,
+    "efficiency": 36
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 5896,
+    "date": "2022-03-29",
+    "model": "Whatsminer M30s 86T 36J/th",
+    "th": 86,
+    "watts": 3096,
+    "efficiency": 36
   },
   {
     "vendor": "Kaboomracks",
@@ -4255,15 +4318,6 @@
     "th": 50,
     "watts": 3250,
     "efficiency": 65
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 8500,
-    "date": "2022-03-28",
-    "model": "Whatsminer M30S++ 106T",
-    "th": 106,
-    "watts": 3472,
-    "efficiency": 32.75472
   },
   {
     "vendor": "Kaboomracks",
@@ -4282,6 +4336,42 @@
     "th": 74,
     "watts": 3404,
     "efficiency": 46
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 9000,
+    "date": "2022-03-28",
+    "model": "Whatsminer M30S++ 110T",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 6543,
+    "date": "2022-03-28",
+    "model": "Whatsminer M30S 90T",
+    "th": 90,
+    "watts": 3420,
+    "efficiency": 38
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 8900,
+    "date": "2022-03-28",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 8500,
+    "date": "2022-03-28",
+    "model": "Whatsminer M30S++ 106T",
+    "th": 106,
+    "watts": 3472,
+    "efficiency": 32.75472
   },
   {
     "vendor": "Kaboomracks",
@@ -4312,21 +4402,12 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 8900,
+    "price": 7654,
     "date": "2022-03-24",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 8200,
-    "date": "2022-03-24",
-    "model": "Antminer S19 Pro 110T",
-    "th": 110,
-    "watts": 3250,
-    "efficiency": 29.545454
+    "model": "Antminer S19 90T",
+    "th": 90,
+    "watts": 3105,
+    "efficiency": 34.5
   },
   {
     "vendor": "Kaboomracks",
@@ -4339,12 +4420,21 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 7654,
+    "price": 8200,
     "date": "2022-03-24",
-    "model": "Antminer S19 90T",
-    "th": 90,
-    "watts": 3105,
-    "efficiency": 34.5
+    "model": "Antminer S19 Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 29.545454
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 8900,
+    "date": "2022-03-24",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
   },
   {
     "vendor": "Kaboomracks",
@@ -4366,12 +4456,12 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 8900,
+    "price": 8500,
     "date": "2022-03-23",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
+    "model": "Whatsminer M30S++ 106T",
+    "th": 106,
+    "watts": 3472,
+    "efficiency": 32.75472
   },
   {
     "vendor": "minefarmbuy",
@@ -4384,21 +4474,12 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 8500,
+    "price": 8900,
     "date": "2022-03-23",
-    "model": "Whatsminer M30S++ 106T",
-    "th": 106,
-    "watts": 3472,
-    "efficiency": 32.75472
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 5715,
-    "date": "2022-03-22",
-    "model": "Whatsminer M31s+ 82T 40J/th",
-    "th": 82,
-    "watts": 3280,
-    "efficiency": 40
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
   },
   {
     "vendor": "minefarmbuy",
@@ -4408,6 +4489,15 @@
     "th": 84,
     "watts": 3360,
     "efficiency": 40
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4391,
+    "date": "2022-03-22",
+    "model": "Whatsminer M31s 72T 52J/th",
+    "th": 72,
+    "watts": 3744,
+    "efficiency": 52
   },
   {
     "vendor": "minefarmbuy",
@@ -4426,6 +4516,42 @@
     "th": 108,
     "watts": 3348,
     "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4391,
+    "date": "2022-03-22",
+    "model": "Whatsminer M31s 78T 52J/th",
+    "th": 78,
+    "watts": 4056,
+    "efficiency": 52
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4391,
+    "date": "2022-03-22",
+    "model": "Whatsminer M31s 72T 50J/th",
+    "th": 72,
+    "watts": 3600,
+    "efficiency": 50
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4391,
+    "date": "2022-03-22",
+    "model": "Whatsminer M31s 78T 50J/th",
+    "th": 78,
+    "watts": 3900,
+    "efficiency": 50
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4391,
+    "date": "2022-03-22",
+    "model": "Whatsminer M31s 72T 48J/th",
+    "th": 72,
+    "watts": 3456,
+    "efficiency": 48
   },
   {
     "vendor": "minefarmbuy",
@@ -4471,6 +4597,15 @@
     "th": 76,
     "watts": 3192,
     "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 5715,
+    "date": "2022-03-22",
+    "model": "Whatsminer M31s+ 82T 40J/th",
+    "th": 82,
+    "watts": 3280,
+    "efficiency": 40
   },
   {
     "vendor": "Kaboomracks",
@@ -4527,51 +4662,6 @@
     "efficiency": 54
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 4391,
-    "date": "2022-03-22",
-    "model": "Whatsminer M31s 72T 52J/th",
-    "th": 72,
-    "watts": 3744,
-    "efficiency": 52
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4391,
-    "date": "2022-03-22",
-    "model": "Whatsminer M31s 78T 52J/th",
-    "th": 78,
-    "watts": 4056,
-    "efficiency": 52
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4391,
-    "date": "2022-03-22",
-    "model": "Whatsminer M31s 72T 50J/th",
-    "th": 72,
-    "watts": 3600,
-    "efficiency": 50
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4391,
-    "date": "2022-03-22",
-    "model": "Whatsminer M31s 78T 50J/th",
-    "th": 78,
-    "watts": 3900,
-    "efficiency": 50
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4391,
-    "date": "2022-03-22",
-    "model": "Whatsminer M31s 72T 48J/th",
-    "th": 72,
-    "watts": 3456,
-    "efficiency": 48
-  },
-  {
     "vendor": "Kaboomracks",
     "price": 7654,
     "date": "2022-03-18",
@@ -4584,9 +4674,9 @@
     "vendor": "minefarmbuy",
     "price": 5449,
     "date": "2022-03-18",
-    "model": "Whatsminer M31s+ 84T 42J/th",
-    "th": 84,
-    "watts": 3528,
+    "model": "Whatsminer M31s+ 76T 42J/th",
+    "th": 76,
+    "watts": 3192,
     "efficiency": 42
   },
   {
@@ -4602,9 +4692,9 @@
     "vendor": "minefarmbuy",
     "price": 5449,
     "date": "2022-03-18",
-    "model": "Whatsminer M31s+ 76T 42J/th",
-    "th": 76,
-    "watts": 3192,
+    "model": "Whatsminer M31s+ 84T 42J/th",
+    "th": 84,
+    "watts": 3528,
     "efficiency": 42
   },
   {
@@ -4618,66 +4708,12 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 13568,
-    "date": "2022-03-16",
-    "model": "Whatsminer M36s 148T 38J/th",
-    "th": 148,
-    "watts": 5624,
-    "efficiency": 38
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6576,
-    "date": "2022-03-16",
-    "model": "Whatsminer M30s 88T 36J/th",
-    "th": 88,
-    "watts": 3168,
-    "efficiency": 36
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 7500,
-    "date": "2022-03-16",
-    "model": "Antminer S19j Pro 92T",
-    "th": 92,
-    "watts": 2714,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6576,
-    "date": "2022-03-16",
-    "model": "Whatsminer M30s 88T 38J/th",
-    "th": 88,
-    "watts": 3344,
-    "efficiency": 38
-  },
-  {
-    "vendor": "minefarmbuy",
     "price": 4318,
     "date": "2022-03-16",
-    "model": "Whatsminer M31s 70T 54J/th",
+    "model": "Whatsminer M31s 70T 48J/th",
     "th": 70,
-    "watts": 3780,
-    "efficiency": 54
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4318,
-    "date": "2022-03-16",
-    "model": "Whatsminer M31s 72T 54J/th",
-    "th": 72,
-    "watts": 3888,
-    "efficiency": 54
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4318,
-    "date": "2022-03-16",
-    "model": "Whatsminer M31s 70T 52J/th",
-    "th": 70,
-    "watts": 3640,
-    "efficiency": 52
+    "watts": 3360,
+    "efficiency": 48
   },
   {
     "vendor": "minefarmbuy",
@@ -4705,15 +4741,6 @@
     "th": 72,
     "watts": 3600,
     "efficiency": 50
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 4318,
-    "date": "2022-03-16",
-    "model": "Whatsminer M31s 70T 48J/th",
-    "th": 70,
-    "watts": 3360,
-    "efficiency": 48
   },
   {
     "vendor": "minefarmbuy",
@@ -4872,6 +4899,15 @@
     "vendor": "minefarmbuy",
     "price": 13568,
     "date": "2022-03-16",
+    "model": "Whatsminer M36s 148T 38J/th",
+    "th": 148,
+    "watts": 5624,
+    "efficiency": 38
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 13568,
+    "date": "2022-03-16",
     "model": "Whatsminer M36s 152T 38J/th",
     "th": 152,
     "watts": 5776,
@@ -4905,6 +4941,60 @@
     "efficiency": 31
   },
   {
+    "vendor": "minefarmbuy",
+    "price": 6576,
+    "date": "2022-03-16",
+    "model": "Whatsminer M30s 88T 36J/th",
+    "th": 88,
+    "watts": 3168,
+    "efficiency": 36
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 7500,
+    "date": "2022-03-16",
+    "model": "Antminer S19j Pro 92T",
+    "th": 92,
+    "watts": 2714,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 6576,
+    "date": "2022-03-16",
+    "model": "Whatsminer M30s 88T 38J/th",
+    "th": 88,
+    "watts": 3344,
+    "efficiency": 38
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4318,
+    "date": "2022-03-16",
+    "model": "Whatsminer M31s 70T 54J/th",
+    "th": 70,
+    "watts": 3780,
+    "efficiency": 54
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4318,
+    "date": "2022-03-16",
+    "model": "Whatsminer M31s 72T 54J/th",
+    "th": 72,
+    "watts": 3888,
+    "efficiency": 54
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 4318,
+    "date": "2022-03-16",
+    "model": "Whatsminer M31s 70T 52J/th",
+    "th": 70,
+    "watts": 3640,
+    "efficiency": 52
+  },
+  {
     "vendor": "Kaboomracks",
     "price": 7890,
     "date": "2022-03-15",
@@ -4912,15 +5002,6 @@
     "th": 96,
     "watts": 3312,
     "efficiency": 34.5
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 7789,
-    "date": "2022-03-14",
-    "model": "Antminer S19j Pro 92T",
-    "th": 92,
-    "watts": 2714,
-    "efficiency": 29.5
   },
   {
     "vendor": "Kaboomracks",
@@ -4933,6 +5014,15 @@
   },
   {
     "vendor": "Kaboomracks",
+    "price": 9200,
+    "date": "2022-03-14",
+    "model": "Antminer S19 Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 29.545454
+  },
+  {
+    "vendor": "Kaboomracks",
     "price": 7777,
     "date": "2022-03-14",
     "model": "Antminer S19 90T",
@@ -4942,12 +5032,12 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 9200,
+    "price": 7789,
     "date": "2022-03-14",
-    "model": "Antminer S19 Pro 110T",
-    "th": 110,
-    "watts": 3250,
-    "efficiency": 29.545454
+    "model": "Antminer S19j Pro 92T",
+    "th": 92,
+    "watts": 2714,
+    "efficiency": 29.5
   },
   {
     "vendor": "Kaboomracks",
@@ -4969,6 +5059,15 @@
   },
   {
     "vendor": "Kaboomracks",
+    "price": 8008,
+    "date": "2022-03-10",
+    "model": "Antminer S19a 96T",
+    "th": 96,
+    "watts": 3312,
+    "efficiency": 34.5
+  },
+  {
+    "vendor": "Kaboomracks",
     "price": 7878,
     "date": "2022-03-10",
     "model": "Antminer S19j Pro 92T",
@@ -4984,15 +5083,6 @@
     "th": 104,
     "watts": 3068,
     "efficiency": 29.5
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 8008,
-    "date": "2022-03-10",
-    "model": "Antminer S19a 96T",
-    "th": 96,
-    "watts": 3312,
-    "efficiency": 34.5
   },
   {
     "vendor": "Kaboomracks",
@@ -5014,15 +5104,6 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 10200,
-    "date": "2022-03-06",
-    "model": "Antminer S19 Pro 110T",
-    "th": 110,
-    "watts": 3250,
-    "efficiency": 29.545454
-  },
-  {
-    "vendor": "Kaboomracks",
     "price": 7200,
     "date": "2022-03-06",
     "model": "Whatsminer M30S 90T",
@@ -5032,30 +5113,21 @@
   },
   {
     "vendor": "Kaboomracks",
+    "price": 10200,
+    "date": "2022-03-06",
+    "model": "Antminer S19 Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 29.545454
+  },
+  {
+    "vendor": "Kaboomracks",
     "price": 9200,
     "date": "2022-03-06",
     "model": "Antminer S19j Pro 104T",
     "th": 104,
     "watts": 3068,
     "efficiency": 29.5
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 9200,
-    "date": "2022-03-05",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6328,
-    "date": "2022-03-05",
-    "model": "Whatsminer M31s+ 82T 44J/th",
-    "th": 82,
-    "watts": 3608,
-    "efficiency": 44
   },
   {
     "vendor": "minefarmbuy",
@@ -5067,9 +5139,18 @@
     "efficiency": 42
   },
   {
+    "vendor": "minefarmbuy",
+    "price": 6328,
+    "date": "2022-03-05",
+    "model": "Whatsminer M31s+ 82T 44J/th",
+    "th": 82,
+    "watts": 3608,
+    "efficiency": 44
+  },
+  {
     "vendor": "Kaboomracks",
     "price": 9200,
-    "date": "2022-03-04",
+    "date": "2022-03-05",
     "model": "Antminer S19j Pro 104T",
     "th": 104,
     "watts": 3068,
@@ -5078,7 +5159,7 @@
   {
     "vendor": "Kaboomracks",
     "price": 9200,
-    "date": "2022-03-03",
+    "date": "2022-03-04",
     "model": "Antminer S19j Pro 104T",
     "th": 104,
     "watts": 3068,
@@ -5096,7 +5177,7 @@
   {
     "vendor": "Kaboomracks",
     "price": 9200,
-    "date": "2022-03-02",
+    "date": "2022-03-03",
     "model": "Antminer S19j Pro 104T",
     "th": 104,
     "watts": 3068,
@@ -5113,6 +5194,15 @@
   },
   {
     "vendor": "Kaboomracks",
+    "price": 8100,
+    "date": "2022-03-02",
+    "model": "Antminer S19a 96T",
+    "th": 96,
+    "watts": 3312,
+    "efficiency": 34.5
+  },
+  {
+    "vendor": "Kaboomracks",
     "price": 600,
     "date": "2022-03-02",
     "model": "Antminer S9 13.5T",
@@ -5122,12 +5212,12 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 8100,
+    "price": 9200,
     "date": "2022-03-02",
-    "model": "Antminer S19a 96T",
-    "th": 96,
-    "watts": 3312,
-    "efficiency": 34.5
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
   },
   {
     "vendor": "minefarmbuy",
@@ -5137,96 +5227,6 @@
     "th": 100,
     "watts": 3250,
     "efficiency": 33
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 10339,
-    "date": "2022-03-01",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 11930,
-    "date": "2022-03-01",
-    "model": "Antminer S19j Pro 110T",
-    "th": 110,
-    "watts": 3250,
-    "efficiency": 30
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6328,
-    "date": "2022-03-01",
-    "model": "Whatsminer M31s+ 82T 40J/th",
-    "th": 82,
-    "watts": 3280,
-    "efficiency": 40
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 14419,
-    "date": "2022-03-01",
-    "model": "Whatsminer M36s 148T 34J/th",
-    "th": 148,
-    "watts": 5032,
-    "efficiency": 34
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 14800,
-    "date": "2022-03-01",
-    "model": "Whatsminer M36s 152T 34J/th",
-    "th": 152,
-    "watts": 5168,
-    "efficiency": 34
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 15182,
-    "date": "2022-03-01",
-    "model": "Whatsminer M36s 156T 34J/th",
-    "th": 156,
-    "watts": 5304,
-    "efficiency": 34
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 12068,
-    "date": "2022-03-01",
-    "model": "Whatsminer M36s 128T 38J/th",
-    "th": 128,
-    "watts": 4864,
-    "efficiency": 38
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 12252,
-    "date": "2022-03-01",
-    "model": "Whatsminer M36s 130T 38J/th",
-    "th": 130,
-    "watts": 4940,
-    "efficiency": 38
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 9980,
-    "date": "2022-03-01",
-    "model": "Whatsminer M30s ++ 108T 31J/th",
-    "th": 108,
-    "watts": 3348,
-    "efficiency": 31
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 10665,
-    "date": "2022-03-01",
-    "model": "Whatsminer M30s ++ 110T 31J/th",
-    "th": 110,
-    "watts": 3410,
-    "efficiency": 31
   },
   {
     "vendor": "Kaboomracks",
@@ -5328,6 +5328,96 @@
     "efficiency": 29.5
   },
   {
+    "vendor": "minefarmbuy",
+    "price": 10339,
+    "date": "2022-03-01",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 11930,
+    "date": "2022-03-01",
+    "model": "Antminer S19j Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 30
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 6328,
+    "date": "2022-03-01",
+    "model": "Whatsminer M31s+ 82T 40J/th",
+    "th": 82,
+    "watts": 3280,
+    "efficiency": 40
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 14419,
+    "date": "2022-03-01",
+    "model": "Whatsminer M36s 148T 34J/th",
+    "th": 148,
+    "watts": 5032,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 14800,
+    "date": "2022-03-01",
+    "model": "Whatsminer M36s 152T 34J/th",
+    "th": 152,
+    "watts": 5168,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 15182,
+    "date": "2022-03-01",
+    "model": "Whatsminer M36s 156T 34J/th",
+    "th": 156,
+    "watts": 5304,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 12068,
+    "date": "2022-03-01",
+    "model": "Whatsminer M36s 128T 38J/th",
+    "th": 128,
+    "watts": 4864,
+    "efficiency": 38
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 12252,
+    "date": "2022-03-01",
+    "model": "Whatsminer M36s 130T 38J/th",
+    "th": 130,
+    "watts": 4940,
+    "efficiency": 38
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 9980,
+    "date": "2022-03-01",
+    "model": "Whatsminer M30s ++ 108T 31J/th",
+    "th": 108,
+    "watts": 3348,
+    "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 10665,
+    "date": "2022-03-01",
+    "model": "Whatsminer M30s ++ 110T 31J/th",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
+  },
+  {
     "vendor": "Kaboomracks",
     "price": 5002,
     "date": "2022-02-28",
@@ -5356,6 +5446,15 @@
   },
   {
     "vendor": "minefarmbuy",
+    "price": 8687,
+    "date": "2022-02-25",
+    "model": "Whatsminer M30s+ 100T 34J/th",
+    "th": 100,
+    "watts": 3400,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
     "price": 6871,
     "date": "2022-02-25",
     "model": "Whatsminer M30s 88T 38J/th",
@@ -5364,13 +5463,22 @@
     "efficiency": 38
   },
   {
+    "vendor": "Kaboomracks",
+    "price": 8100,
+    "date": "2022-02-23",
+    "model": "Antminer S19a 96T",
+    "th": 96,
+    "watts": 3312,
+    "efficiency": 34.5
+  },
+  {
     "vendor": "minefarmbuy",
-    "price": 8687,
-    "date": "2022-02-25",
-    "model": "Whatsminer M30s+ 100T 34J/th",
-    "th": 100,
-    "watts": 3400,
-    "efficiency": 34
+    "price": 3110,
+    "date": "2022-02-23",
+    "model": "Antminer S17+ 70T",
+    "th": 70,
+    "watts": 3100,
+    "efficiency": 45
   },
   {
     "vendor": "Kaboomracks",
@@ -5392,30 +5500,12 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 8100,
-    "date": "2022-02-23",
-    "model": "Antminer S19a 96T",
-    "th": 96,
-    "watts": 3312,
-    "efficiency": 34.5
-  },
-  {
-    "vendor": "Kaboomracks",
     "price": 7800,
     "date": "2022-02-23",
     "model": "Whatsminer M30S 90T",
     "th": 90,
     "watts": 3420,
     "efficiency": 38
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 3110,
-    "date": "2022-02-23",
-    "model": "Antminer S17+ 70T",
-    "th": 70,
-    "watts": 3100,
-    "efficiency": 45
   },
   {
     "vendor": "minefarmbuy",
@@ -5427,21 +5517,12 @@
     "efficiency": 38
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 8000,
-    "date": "2022-02-22",
-    "model": "Whatsminer M30S 90T",
-    "th": 90,
-    "watts": 3420,
-    "efficiency": 38
-  },
-  {
     "vendor": "minefarmbuy",
-    "price": 10817,
+    "price": 10008,
     "date": "2022-02-22",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
+    "model": "Antminer S19j Pro 96T",
+    "th": 96,
+    "watts": 2832,
     "efficiency": 29.5
   },
   {
@@ -5455,12 +5536,21 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 10008,
+    "price": 10817,
     "date": "2022-02-22",
-    "model": "Antminer S19j Pro 96T",
-    "th": 96,
-    "watts": 2832,
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
     "efficiency": 29.5
+  },
+  {
+    "vendor": "Kaboomracks",
+    "price": 8000,
+    "date": "2022-02-22",
+    "model": "Whatsminer M30S 90T",
+    "th": 90,
+    "watts": 3420,
+    "efficiency": 38
   },
   {
     "vendor": "minefarmbuy",
@@ -5500,11 +5590,11 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 9985,
+    "price": 9800,
     "date": "2022-02-21",
-    "model": "Whatsminer M30s ++ 108T 31J/th",
-    "th": 108,
-    "watts": 3348,
+    "model": "Whatsminer M30s ++ 106T 31J/th",
+    "th": 106,
+    "watts": 3286,
     "efficiency": 31
   },
   {
@@ -5518,11 +5608,11 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 9800,
+    "price": 9985,
     "date": "2022-02-21",
-    "model": "Whatsminer M30s ++ 106T 31J/th",
-    "th": 106,
-    "watts": 3286,
+    "model": "Whatsminer M30s ++ 108T 31J/th",
+    "th": 108,
+    "watts": 3348,
     "efficiency": 31
   },
   {
@@ -5536,15 +5626,6 @@
   },
   {
     "vendor": "Kaboomracks",
-    "price": 9350,
-    "date": "2022-02-17",
-    "model": "Antminer S19j Pro 96T",
-    "th": 96,
-    "watts": 2832,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "Kaboomracks",
     "price": 9200,
     "date": "2022-02-17",
     "model": "Antminer S19a 96T",
@@ -5553,12 +5634,120 @@
     "efficiency": 34.5
   },
   {
+    "vendor": "Kaboomracks",
+    "price": 9350,
+    "date": "2022-02-17",
+    "model": "Antminer S19j Pro 96T",
+    "th": 96,
+    "watts": 2832,
+    "efficiency": 29.5
+  },
+  {
     "vendor": "minefarmbuy",
     "price": 7538,
     "date": "2022-02-16",
     "model": "Whatsminer M30s 90T 38J/th",
     "th": 90,
     "watts": 3420,
+    "efficiency": 38
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 8793,
+    "date": "2022-02-16",
+    "model": "Antminer S19j Pro 96T",
+    "th": 96,
+    "watts": 2832,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 10642,
+    "date": "2022-02-16",
+    "model": "Antminer S19j Pro 100T",
+    "th": 100,
+    "watts": 3250,
+    "efficiency": 33
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 11056,
+    "date": "2022-02-16",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 6705,
+    "date": "2022-02-16",
+    "model": "Whatsminer M31s+ 82T 44J/th",
+    "th": 82,
+    "watts": 3608,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 15541,
+    "date": "2022-02-16",
+    "model": "Whatsminer M36s 156T 34J/th",
+    "th": 156,
+    "watts": 5304,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 15150,
+    "date": "2022-02-16",
+    "model": "Whatsminer M36s 152T 34J/th",
+    "th": 152,
+    "watts": 5168,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 14759,
+    "date": "2022-02-16",
+    "model": "Whatsminer M36s 148T 34J/th",
+    "th": 148,
+    "watts": 5032,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 6705,
+    "date": "2022-02-16",
+    "model": "Whatsminer M31s+ 82T 40J/th",
+    "th": 82,
+    "watts": 3280,
+    "efficiency": 40
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 6705,
+    "date": "2022-02-16",
+    "model": "Whatsminer M31s+ 82T 42J/th",
+    "th": 82,
+    "watts": 3444,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 12551,
+    "date": "2022-02-16",
+    "model": "Whatsminer M36s 130T 38J/th",
+    "th": 130,
+    "watts": 4940,
+    "efficiency": 38
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 12363,
+    "date": "2022-02-16",
+    "model": "Whatsminer M36s 128T 38J/th",
+    "th": 128,
+    "watts": 4864,
     "efficiency": 38
   },
   {
@@ -5625,150 +5814,6 @@
     "efficiency": 29.5
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 8793,
-    "date": "2022-02-16",
-    "model": "Antminer S19j Pro 96T",
-    "th": 96,
-    "watts": 2832,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 10642,
-    "date": "2022-02-16",
-    "model": "Antminer S19j Pro 100T",
-    "th": 100,
-    "watts": 3250,
-    "efficiency": 33
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 11056,
-    "date": "2022-02-16",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6705,
-    "date": "2022-02-16",
-    "model": "Whatsminer M31s+ 82T 44J/th",
-    "th": 82,
-    "watts": 3608,
-    "efficiency": 44
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6705,
-    "date": "2022-02-16",
-    "model": "Whatsminer M31s+ 82T 42J/th",
-    "th": 82,
-    "watts": 3444,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6705,
-    "date": "2022-02-16",
-    "model": "Whatsminer M31s+ 82T 40J/th",
-    "th": 82,
-    "watts": 3280,
-    "efficiency": 40
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 14759,
-    "date": "2022-02-16",
-    "model": "Whatsminer M36s 148T 34J/th",
-    "th": 148,
-    "watts": 5032,
-    "efficiency": 34
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 15150,
-    "date": "2022-02-16",
-    "model": "Whatsminer M36s 152T 34J/th",
-    "th": 152,
-    "watts": 5168,
-    "efficiency": 34
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 15541,
-    "date": "2022-02-16",
-    "model": "Whatsminer M36s 156T 34J/th",
-    "th": 156,
-    "watts": 5304,
-    "efficiency": 34
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 12363,
-    "date": "2022-02-16",
-    "model": "Whatsminer M36s 128T 38J/th",
-    "th": 128,
-    "watts": 4864,
-    "efficiency": 38
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 12551,
-    "date": "2022-02-16",
-    "model": "Whatsminer M36s 130T 38J/th",
-    "th": 130,
-    "watts": 4940,
-    "efficiency": 38
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 11045,
-    "date": "2022-02-14",
-    "model": "Whatsminer M30s ++ 110T 31J/th",
-    "th": 110,
-    "watts": 3410,
-    "efficiency": 31
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 8500,
-    "date": "2022-02-14",
-    "model": "Antminer S19 90T",
-    "th": 90,
-    "watts": 3105,
-    "efficiency": 34.5
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 7299,
-    "date": "2022-02-14",
-    "model": "Whatsminer M30S 88T",
-    "th": 88,
-    "watts": 3344,
-    "efficiency": 38
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 9400,
-    "date": "2022-02-14",
-    "model": "Antminer S19j Pro 96T",
-    "th": 96,
-    "watts": 2832,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 8999,
-    "date": "2022-02-14",
-    "model": "Antminer S19j Pro 92T",
-    "th": 92,
-    "watts": 2714,
-    "efficiency": 29.5
-  },
-  {
     "vendor": "Kaboomracks",
     "price": 8000,
     "date": "2022-02-14",
@@ -5776,15 +5821,6 @@
     "th": 90,
     "watts": 3420,
     "efficiency": 38
-  },
-  {
-    "vendor": "Kaboomracks",
-    "price": 10001,
-    "date": "2022-02-14",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
   },
   {
     "vendor": "minefarmbuy",
@@ -5805,31 +5841,22 @@
     "efficiency": 31
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 10458,
+    "vendor": "Kaboomracks",
+    "price": 7299,
     "date": "2022-02-14",
-    "model": "Whatsminer M30s ++ 104T 31J/th",
-    "th": 104,
-    "watts": 3224,
-    "efficiency": 31
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 10654,
-    "date": "2022-02-14",
-    "model": "Whatsminer M30s ++ 106T 31J/th",
-    "th": 106,
-    "watts": 3286,
-    "efficiency": 31
+    "model": "Whatsminer M30S 88T",
+    "th": 88,
+    "watts": 3344,
+    "efficiency": 38
   },
   {
     "vendor": "Kaboomracks",
-    "price": 10000,
+    "price": 8500,
     "date": "2022-02-14",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
+    "model": "Antminer S19 90T",
+    "th": 90,
+    "watts": 3105,
+    "efficiency": 34.5
   },
   {
     "vendor": "Kaboomracks",
@@ -5869,6 +5896,15 @@
   },
   {
     "vendor": "Kaboomracks",
+    "price": 10000,
+    "date": "2022-02-14",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "Kaboomracks",
     "price": 9200,
     "date": "2022-02-14",
     "model": "Antminer S19a 96T",
@@ -5877,27 +5913,27 @@
     "efficiency": 34.5
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 12436,
-    "date": "2022-02-10",
-    "model": "Antminer S19j Pro 110T",
-    "th": 110,
-    "watts": 3250,
-    "efficiency": 30
+    "vendor": "Kaboomracks",
+    "price": 9400,
+    "date": "2022-02-14",
+    "model": "Antminer S19j Pro 96T",
+    "th": 96,
+    "watts": 2832,
+    "efficiency": 29.5
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 10757,
-    "date": "2022-02-10",
-    "model": "Antminer S19j Pro 100T",
-    "th": 100,
-    "watts": 3250,
-    "efficiency": 33
+    "vendor": "Kaboomracks",
+    "price": 8999,
+    "date": "2022-02-14",
+    "model": "Antminer S19j Pro 92T",
+    "th": 92,
+    "watts": 2714,
+    "efficiency": 29.5
   },
   {
-    "vendor": "minefarmbuy",
-    "price": 11176,
-    "date": "2022-02-10",
+    "vendor": "Kaboomracks",
+    "price": 10001,
+    "date": "2022-02-14",
     "model": "Antminer S19j Pro 104T",
     "th": 104,
     "watts": 3068,
@@ -5905,12 +5941,30 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 8400,
-    "date": "2022-02-10",
-    "model": "Whatsminer M30s 94T 36J/th",
-    "th": 94,
-    "watts": 3384,
-    "efficiency": 36
+    "price": 11045,
+    "date": "2022-02-14",
+    "model": "Whatsminer M30s ++ 110T 31J/th",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 10654,
+    "date": "2022-02-14",
+    "model": "Whatsminer M30s ++ 106T 31J/th",
+    "th": 106,
+    "watts": 3286,
+    "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 10458,
+    "date": "2022-02-14",
+    "model": "Whatsminer M30s ++ 104T 31J/th",
+    "th": 104,
+    "watts": 3224,
+    "efficiency": 31
   },
   {
     "vendor": "minefarmbuy",
@@ -5923,12 +5977,21 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 9262,
+    "price": 12436,
     "date": "2022-02-10",
-    "model": "Whatsminer M30s+ 100T 34J/th",
-    "th": 100,
-    "watts": 3400,
-    "efficiency": 34
+    "model": "Antminer S19j Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 30
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 8400,
+    "date": "2022-02-10",
+    "model": "Whatsminer M30s 94T 36J/th",
+    "th": 94,
+    "watts": 3384,
+    "efficiency": 36
   },
   {
     "vendor": "minefarmbuy",
@@ -5940,13 +6003,31 @@
     "efficiency": 34
   },
   {
-    "vendor": "Kaboomracks",
-    "price": 9499,
-    "date": "2022-02-09",
-    "model": "Antminer S19a 96T",
-    "th": 96,
-    "watts": 3312,
-    "efficiency": 34.5
+    "vendor": "minefarmbuy",
+    "price": 11176,
+    "date": "2022-02-10",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 9262,
+    "date": "2022-02-10",
+    "model": "Whatsminer M30s+ 100T 34J/th",
+    "th": 100,
+    "watts": 3400,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 10757,
+    "date": "2022-02-10",
+    "model": "Antminer S19j Pro 100T",
+    "th": 100,
+    "watts": 3250,
+    "efficiency": 33
   },
   {
     "vendor": "Kaboomracks",
@@ -5958,13 +6039,31 @@
     "efficiency": 65
   },
   {
+    "vendor": "Kaboomracks",
+    "price": 9499,
+    "date": "2022-02-09",
+    "model": "Antminer S19a 96T",
+    "th": 96,
+    "watts": 3312,
+    "efficiency": 34.5
+  },
+  {
     "vendor": "minefarmbuy",
-    "price": 6089,
+    "price": 10654,
     "date": "2022-02-08",
-    "model": "Whatsminer M31s 80T 44J/th",
-    "th": 80,
-    "watts": 3520,
-    "efficiency": 44
+    "model": "Whatsminer M30s++ 106T",
+    "th": 106,
+    "watts": 3286,
+    "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 8486,
+    "date": "2022-02-08",
+    "model": "Antminer S19 95T",
+    "th": 95,
+    "watts": 3277.5,
+    "efficiency": 34.5
   },
   {
     "vendor": "minefarmbuy",
@@ -6040,21 +6139,12 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 10654,
+    "price": 16723,
     "date": "2022-02-08",
-    "model": "Whatsminer M30s++ 106T",
-    "th": 106,
-    "watts": 3286,
-    "efficiency": 31
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 10458,
-    "date": "2022-02-08",
-    "model": "Whatsminer M30s++ 104T",
-    "th": 104,
-    "watts": 3224,
-    "efficiency": 31
+    "model": "Whatsminer M36s 152T 34J/th",
+    "th": 152,
+    "watts": 5168,
+    "efficiency": 34
   },
   {
     "vendor": "minefarmbuy",
@@ -6063,69 +6153,6 @@
     "model": "Whatsminer M36s 156T 34J/th",
     "th": 156,
     "watts": 5304,
-    "efficiency": 34
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 8486,
-    "date": "2022-02-08",
-    "model": "Antminer S19 95T",
-    "th": 95,
-    "watts": 3277.5,
-    "efficiency": 34.5
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6392,
-    "date": "2022-02-08",
-    "model": "Whatsminer M31s 78T 42J/th",
-    "th": 78,
-    "watts": 3276,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 6549,
-    "date": "2022-02-08",
-    "model": "Whatsminer M31s 80T 42J/th",
-    "th": 80,
-    "watts": 3360,
-    "efficiency": 42
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 9676,
-    "date": "2022-02-08",
-    "model": "Whatsminer M30s+ 102T 34J/th",
-    "th": 102,
-    "watts": 3468,
-    "efficiency": 34
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 9492,
-    "date": "2022-02-08",
-    "model": "Whatsminer M30s+ 100T 34J/th",
-    "th": 100,
-    "watts": 3400,
-    "efficiency": 34
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 11045,
-    "date": "2022-02-08",
-    "model": "Whatsminer M30s++ 110T",
-    "th": 110,
-    "watts": 3410,
-    "efficiency": 31
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 16723,
-    "date": "2022-02-08",
-    "model": "Whatsminer M36s 152T 34J/th",
-    "th": 152,
-    "watts": 5168,
     "efficiency": 34
   },
   {
@@ -6139,66 +6166,30 @@
   },
   {
     "vendor": "minefarmbuy",
-    "price": 9308,
-    "date": "2022-02-08",
-    "model": "Whatsminer M30s+ 98T 34J/th",
-    "th": 98,
-    "watts": 3332,
-    "efficiency": 34
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 11217,
-    "date": "2022-02-08",
-    "model": "Antminer S19j Pro 100T",
-    "th": 100,
-    "watts": 3250,
-    "efficiency": 33
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 11654,
-    "date": "2022-02-08",
-    "model": "Antminer S19j Pro 104T",
-    "th": 104,
-    "watts": 3068,
-    "efficiency": 29.5
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 12310,
-    "date": "2022-02-08",
-    "model": "Antminer S19j Pro 110T",
-    "th": 110,
-    "watts": 3250,
-    "efficiency": 30
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 7710,
-    "date": "2022-02-08",
-    "model": "Antminer S19 86T",
-    "th": 86,
-    "watts": 2967,
-    "efficiency": 34.5
-  },
-  {
-    "vendor": "minefarmbuy",
-    "price": 8055,
-    "date": "2022-02-08",
-    "model": "Antminer S19 90T",
-    "th": 90,
-    "watts": 3105,
-    "efficiency": 34.5
-  },
-  {
-    "vendor": "minefarmbuy",
     "price": 14046,
     "date": "2022-02-08",
     "model": "Whatsminer M36s 130T 38J/th",
     "th": 130,
     "watts": 4940,
     "efficiency": 38
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 10458,
+    "date": "2022-02-08",
+    "model": "Whatsminer M30s++ 104T",
+    "th": 104,
+    "watts": 3224,
+    "efficiency": 31
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 11045,
+    "date": "2022-02-08",
+    "model": "Whatsminer M30s++ 110T",
+    "th": 110,
+    "watts": 3410,
+    "efficiency": 31
   },
   {
     "vendor": "minefarmbuy",
@@ -6388,6 +6379,105 @@
     "th": 78,
     "watts": 3432,
     "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 6089,
+    "date": "2022-02-08",
+    "model": "Whatsminer M31s 80T 44J/th",
+    "th": 80,
+    "watts": 3520,
+    "efficiency": 44
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 6392,
+    "date": "2022-02-08",
+    "model": "Whatsminer M31s 78T 42J/th",
+    "th": 78,
+    "watts": 3276,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 6549,
+    "date": "2022-02-08",
+    "model": "Whatsminer M31s 80T 42J/th",
+    "th": 80,
+    "watts": 3360,
+    "efficiency": 42
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 9676,
+    "date": "2022-02-08",
+    "model": "Whatsminer M30s+ 102T 34J/th",
+    "th": 102,
+    "watts": 3468,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 9492,
+    "date": "2022-02-08",
+    "model": "Whatsminer M30s+ 100T 34J/th",
+    "th": 100,
+    "watts": 3400,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 9308,
+    "date": "2022-02-08",
+    "model": "Whatsminer M30s+ 98T 34J/th",
+    "th": 98,
+    "watts": 3332,
+    "efficiency": 34
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 11217,
+    "date": "2022-02-08",
+    "model": "Antminer S19j Pro 100T",
+    "th": 100,
+    "watts": 3250,
+    "efficiency": 33
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 11654,
+    "date": "2022-02-08",
+    "model": "Antminer S19j Pro 104T",
+    "th": 104,
+    "watts": 3068,
+    "efficiency": 29.5
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 12310,
+    "date": "2022-02-08",
+    "model": "Antminer S19j Pro 110T",
+    "th": 110,
+    "watts": 3250,
+    "efficiency": 30
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 7710,
+    "date": "2022-02-08",
+    "model": "Antminer S19 86T",
+    "th": 86,
+    "watts": 2967,
+    "efficiency": 34.5
+  },
+  {
+    "vendor": "minefarmbuy",
+    "price": 8055,
+    "date": "2022-02-08",
+    "model": "Antminer S19 90T",
+    "th": 90,
+    "watts": 3105,
+    "efficiency": 34.5
   },
   {
     "vendor": "Kaboomracks",

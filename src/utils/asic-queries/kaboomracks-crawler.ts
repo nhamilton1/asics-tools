@@ -2,6 +2,7 @@ import { load } from "cheerio";
 import { sha1 } from "../../utils/helpers";
 import axios from "axios";
 import { asicModelDbCheck } from "../asicModelDbCheck";
+import { prisma } from "../../server/db/client";
 
 export interface kaboomracksInterface {
   vendor: string;
@@ -174,6 +175,24 @@ const kaboomracksScraper = async () => {
         let watts = addAsicToDb.watts;
         let efficiency = addAsicToDb.efficiency;
 
+        const matchedAsicNameInDb = await prisma.miner_data.findFirst({
+          where: {
+            model,
+          },
+        });
+
+        if (!matchedAsicNameInDb) {
+          console.log(`${model} not found in db`);
+          await prisma.miner_data.create({
+            data: {
+              model,
+              th,
+              watts,
+              efficiency,
+            },
+          });
+        }
+
         const asicsInfo = {
           vendor,
           model,
@@ -221,6 +240,24 @@ const kaboomracksScraper = async () => {
 
         let model = `${asicName}T`;
         let id = sha1(vendor + model + price + date);
+
+        const matchedAsicNameInDb = await prisma.miner_data.findFirst({
+          where: {
+            model,
+          },
+        });
+
+        if (!matchedAsicNameInDb) {
+          console.log(`${model} not found in db`);
+          await prisma.miner_data.create({
+            data: {
+              model,
+              th,
+              watts,
+              efficiency,
+            },
+          });
+        }
 
         const asicsInfo = {
           vendor,
@@ -308,6 +345,24 @@ const kaboomracksScraper = async () => {
 
       let model = `${asicName![0]}T`;
       let id = sha1(vendor + model + price + date);
+
+      const matchedAsicNameInDb = await prisma.miner_data.findFirst({
+        where: {
+          model,
+        },
+      });
+
+      if (!matchedAsicNameInDb) {
+        console.log(`${model} not found in db`);
+        // await prisma.miner_data.create({
+        //   data: {
+        //     model,
+        //     th,
+        //     watts,
+        //     efficiency,
+        //   },
+        // });
+      }
 
       const asicsInfo = {
         vendor,

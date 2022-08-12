@@ -161,15 +161,15 @@ const minefarmbuyScraper = async () => {
 
           const matchedAsicNameInDb = await prisma.miner_data.findFirst({
             where: {
-              model: asicModel,
+              model,
             },
           });
 
           if (!matchedAsicNameInDb) {
-            console.log(`${asicModel} not found in db`);
+            console.log(`${model} not found in db`);
             await prisma.miner_data.create({
               data: {
-                model: asicModel,
+                model,
                 th: Number(th.split(/th/i)[0]),
                 watts: convertPowerDraw(powerDraw, th),
                 efficiency: convertEfficiency(powerDraw, th),
@@ -239,15 +239,15 @@ const minefarmbuyScraper = async () => {
 
             const matchedAsicNameInDb = await prisma.miner_data.findFirst({
               where: {
-                model: asicModel,
+                model,
               },
             });
 
             if (!matchedAsicNameInDb) {
-              console.log(`${asicModel} not found in db`);
+              console.log(`${model} not found in db`);
               await prisma.miner_data.create({
                 data: {
-                  model: asicModel,
+                  model,
                   th: Number(th.split(/th/i)[0]),
                   watts: convertPowerDraw(effic, th),
                   efficiency: Number(effic.split(/j\/th/i)[0]),
@@ -256,7 +256,7 @@ const minefarmbuyScraper = async () => {
             }
 
             //removing the j/th from the model
-            model = `${asicModel} ${th.split(/th/i)[0]}T`;
+            // model = `${asicModel} ${th.split(/th/i)[0]}T`;
 
             let id = `minefarmbuy ${model} ${Number(
               asicPrice[0]?.replace("$", "").replace(",", "")
@@ -289,5 +289,5 @@ const minefarmbuyScraper = async () => {
     console.error("Could not create a browser instance => : ", err);
   }
 };
-
+// minefarmbuyScraper();
 export default minefarmbuyScraper;

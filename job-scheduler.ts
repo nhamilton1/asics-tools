@@ -40,7 +40,7 @@ const scheduler = async () => {
     let allData: allDataType;
 
     let marketInfoDupCheck: marketInfoDupCheckType;
-    let minerInfoDubCheck;
+    let minerInfoDupCheck;
 
     //combine all three scrapers into one array.
     allData = [
@@ -49,16 +49,17 @@ const scheduler = async () => {
       ...scrapeForUpstreamData,
     ];
 
-    minerInfoDubCheck = allData?.filter(
+    minerInfoDupCheck = allData?.filter(
       (scapeData) =>
-        minerInfo?.findIndex((miner) => miner.model === scapeData.model) === -1
+        !minerInfo.find((allAsicData) => allAsicData.model === scapeData.model)
     );
+    console.log(minerInfoDupCheck);
+    console.log(minerInfoDupCheck.length);
 
-    if (minerInfoDubCheck?.length > 0) {
+    if (minerInfoDupCheck?.length > 0) {
       await prisma.miner_data.createMany({
-        data: minerInfoDubCheck.map((miner) => ({
+        data: minerInfoDupCheck.map((miner) => ({
           model: miner.model,
-          vendor: miner.vendor,
           th: miner.th,
           watts: miner.watts,
           efficiency: miner.efficiency,
@@ -78,10 +79,14 @@ const scheduler = async () => {
         await prisma.market_data.create({
           data: {
             date: market.date,
-            model: market.model,
             vendor: market.vendor,
             price: market.price,
             id: market.id,
+            miner_data: {
+              connect: {
+                model: market.model,
+              },
+            },
           },
         });
       }
