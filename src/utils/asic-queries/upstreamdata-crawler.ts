@@ -22,6 +22,7 @@ interface upstreamdataInterface {
 const vendor: string = "upstreamdata";
 
 const upStreamDataCrawler = async () => {
+  console.log("Upstreamdata scraper is running");
   let browser;
   try {
     browser = await Puppeteer.launch({
@@ -115,7 +116,7 @@ const upStreamDataCrawler = async () => {
         ? asicModel.replace(/Th\/s/i, "T")
         : asicModel.replace(/th/i, "T");
 
-      const id = sha1(`upstreamdata ${asicModel} ${price}`);
+      const id = sha1(`upstreamdata ${asicModel} ${price} ${date}`);
 
       const matchedAsicNameInDb = await prisma.miner_data.findFirst({
         where: {

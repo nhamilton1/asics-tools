@@ -22,6 +22,9 @@ interface removeImgEtcInterface {
 const vendor = "minefarmbuy";
 
 const minefarmbuyScraper = async () => {
+  // create a noticable message to display the minefarmbuy scraper is running
+  console.log("minefarmbuy scraper is running");
+
   let browser;
   try {
     // adding slowMo: 5 fixes the bug where asics with just the hashrate
@@ -65,7 +68,6 @@ const minefarmbuyScraper = async () => {
     });
 
     //removes all duplicate urls from the filteredUrls not using Set
-
     const uniqueUrls = filteredUrls.filter((url, index) => {
       return filteredUrls.indexOf(url) === index;
     });
@@ -76,10 +78,19 @@ const minefarmbuyScraper = async () => {
     for (const url of uniqueUrls) {
       await page.goto(url, { waitUntil: "domcontentloaded" });
 
-      const asicModel = await page.$eval(
+      let asicModel = await page.$eval(
         "div > div.summary.entry-summary > h1",
         (el): string => (el as HTMLElement).innerText
       );
+
+      // remove "3rd Party" from the model name
+      // asicModel = asicModel.includes("3rd Party")
+      //   ? (asicModel.replace("3rd Party", "") as string)
+      //   : asicModel;
+
+      // asicModel = asicModel.includes("Series")
+      //   ? asicModel.replace("Series", "")
+      //   : asicModel;
 
       //checks for ddp and dap, which usually means MOQ of 100 or more from what i saw on mfb
       const incoterms = await page.$$eval("#incoterms > option", (node) =>
@@ -148,15 +159,6 @@ const minefarmbuyScraper = async () => {
 
           const model = `${asicName![0]} ${Number(th.split(/th/i)[0])}T`;
 
-          //creating a unique id so later i can use it to check already found miners
-          let id = `minefarmbuy ${model} ${
-            asicPrice[0] === undefined
-              ? Number(
-                  ifNoPriceFromAsicPrice[0]?.replace("$", "").replace(",", "")
-                )
-              : Number(asicPrice[0].replace("$", "").replace(",", ""))
-          }`;
-
           const matchedAsicNameInDb = await prisma.miner_data.findFirst({
             where: {
               model: asicModel,
@@ -174,6 +176,15 @@ const minefarmbuyScraper = async () => {
               },
             });
           }
+
+          //creating a unique id so later i can use it to check already found miners
+          let id = `minefarmbuy ${model} ${
+            asicPrice[0] === undefined
+              ? Number(
+                  ifNoPriceFromAsicPrice[0]?.replace("$", "").replace(",", "")
+                )
+              : Number(asicPrice[0].replace("$", "").replace(",", ""))
+          } ${new Date().toLocaleDateString("en-US")}`;
 
           minefarmbuyData.push({
             vendor,
@@ -226,10 +237,6 @@ const minefarmbuyScraper = async () => {
               effic.split(/j\/th/i)[0]
             }J/th`;
 
-            let id = `minefarmbuy ${model} ${Number(
-              asicPrice[0]?.replace("$", "").replace(",", "")
-            )}`;
-
             const matchedAsicNameInDb = await prisma.miner_data.findFirst({
               where: {
                 model: asicModel,
@@ -250,6 +257,10 @@ const minefarmbuyScraper = async () => {
 
             //removing the j/th from the model
             model = `${asicModel} ${th.split(/th/i)[0]}T`;
+
+            let id = `minefarmbuy ${model} ${Number(
+              asicPrice[0]?.replace("$", "").replace(",", "")
+            )} ${new Date().toLocaleDateString("en-US")}`;
 
             minefarmbuyData.push({
               vendor,

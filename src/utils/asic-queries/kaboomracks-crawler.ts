@@ -17,6 +17,7 @@ export interface kaboomracksInterface {
 const vendor = "Kaboomracks";
 
 const kaboomracksScraper = async () => {
+  console.log("kaboomracks scraper is running");
   /*
   Getting the data from the website
   */
@@ -441,5 +442,5 @@ const kaboomracksScraper = async () => {
   const filtered = asics.filter(({ id }, idx) => !ids.includes(id, idx + 1));
   return filtered;
 };
-kaboomracksScraper();
+
 export default kaboomracksScraper;
