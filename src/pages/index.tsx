@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import Head from "next/head";
 import { trpc } from "../utils/trpc";
 import {
@@ -13,7 +12,15 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { InputHTMLAttributes, useEffect, useMemo, useState } from "react";
+import {
+  InputHTMLAttributes,
+  ReactElement,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import AsicLayout from "../components/asicLayout.tsx/asicLayout";
+import { NextPageWithLayout } from "./_app";
 
 type AsicData =
   | {
@@ -39,7 +46,7 @@ type AsicData =
     }
   | undefined;
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   const [data, setData] = useState<AsicData[]>([]);
   const [kWhPrice, setKWhPrice] = useState<number>(0.12);
   const [defs, setDefs] = useState<{
@@ -273,23 +280,22 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Asic-tools</title>
+        <title>ASIC Tools - NextJS</title>
         <meta name="description" content="List of Bitcoin miners on sale" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center m-4 bg-slate-800 text-white gap-10">
+      <main className="flex flex-col items-start justify-start m-4 bg-slate-800 text-white gap-10">
         <h1 className="text-4xl font-bold">
-          <span className="text-white">Asic-tools</span>
           {isLoading && <span className="text-white">Loading...</span>}
         </h1>
         <div>
           <label>
-            <span className="text-white">kWh Price:</span>
+            <span className="text-white">Enter your kWh Price: </span>
           </label>
           <input
             type={"number"}
-            className={"w-full h-12 p-2 bg-slate-800 text-white border"}
+            className={"w-1/4 p-1 bg-slate-800 text-white border"}
             value={kWhPrice}
             step={0.01}
             onChange={(e) => {
@@ -299,7 +305,7 @@ const Home: NextPage = () => {
             }}
           />
         </div>
-        <div className="block max-w-full overflow-x-scroll overflow-y-hidden">
+        <div className="block max-w-full overflow-y-hidden">
           <table className="w-full">
             <thead className="border-b">
               {table.getHeaderGroups().map((headerGroup) => (
@@ -359,7 +365,7 @@ const Home: NextPage = () => {
           </table>
           <div className="h-4" />
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2 w-full">
           <button
             className={
               !table.getCanPreviousPage()
@@ -451,6 +457,10 @@ const Home: NextPage = () => {
 
 export default Home;
 
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <AsicLayout>{page}</AsicLayout>;
+};
+
 function DenverAndDefs(
   price?: string,
   hashrate?: number,
@@ -459,7 +469,7 @@ function DenverAndDefs(
   enlongatedHashPrice?: string
 ) {
   return (
-    <div className="flex md:flex-row flex-col justify-center gap-10">
+    <div className="flex md:flex-row flex-col justify-center gap-10 w-full">
       <div className="flex flex-col">
         <h2 className="text-lg font-bold">Hidden Values</h2>
         <ul>
