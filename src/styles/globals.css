@@ -5,3 +5,8 @@
 html {
   background-color: rgb(30 41 59);
 }
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../public/fonts/Roboto-Regular.ttf");
+}

@@ -21,6 +21,7 @@ import {
 } from "react";
 import AsicLayout from "../components/asicLayout.tsx/asicLayout";
 import { NextPageWithLayout } from "./_app";
+import Link from "next/link";
 
 type AsicData =
   | {
@@ -285,11 +286,11 @@ const Home: NextPageWithLayout = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-start justify-start m-4 bg-slate-800 text-white gap-10">
+      <main className="flex flex-col items-start justify-start bg-slate-800 text-white font-Roboto">
         <h1 className="text-4xl font-bold">
           {isLoading && <span className="text-white">Loading...</span>}
         </h1>
-        <div>
+        <div className="p-5">
           <label>
             <span className="text-white">Enter your kWh Price: </span>
           </label>
@@ -342,10 +343,12 @@ const Home: NextPageWithLayout = () => {
               ))}
             </thead>
             <tbody>
-              {table.getRowModel().rows.map((row) => (
+              {table.getRowModel().rows.map((row, index) => (
                 <tr
                   key={row.id}
-                  className="border-b transition duration-300 ease-in-out hover:bg-slate-700"
+                  className={`border-b transition duration-300 ease-in-out hover:bg-slate-700 ${
+                    index % 2 ? "bg-slate-900" : "bg-slate-800"
+                  }`}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td
@@ -365,7 +368,7 @@ const Home: NextPageWithLayout = () => {
           </table>
           <div className="h-4" />
         </div>
-        <div className="flex items-center justify-center gap-2 w-full">
+        <div className="flex items-center justify-center gap-2 w-full my-4">
           <button
             className={
               !table.getCanPreviousPage()
@@ -450,6 +453,19 @@ const Home: NextPageWithLayout = () => {
           defs?.currentHashValue,
           defs?.elongatedHashPrice
         )}
+        <div className="flex flex-col justify-start items-start ml-5">
+          <p className="font-extrabold text-white">
+            Credit to Joe Rodgers for the idea.
+          </p>
+          <p className="text-white">
+            Joe&apos;s twitter:{" "}
+            <Link href={"https://twitter.com/_joerodgers"}>
+              <a target="_blank" className="text-blue-500">
+                @_joerodgers
+              </a>
+            </Link>
+          </p>
+        </div>
       </main>
     </>
   );
