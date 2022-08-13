@@ -5,7 +5,7 @@ import twitterLogo from "../../../public/images/twitter.png";
 
 const AsicFooter = () => {
   return (
-    <div className="w-full p-5 flex flex-row justify-center items-center my-5 gap-52">
+    <div className="w-full p-5 flex flex-row justify-center items-center  gap-52 bg-slate-900">
       <div className="flex flex-col justify-center items-center text-white">
         <div className="flex flex-row gap-4">
           <Link href="https://twitter.com/AdrenaIine">

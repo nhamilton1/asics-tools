@@ -290,7 +290,7 @@ const Home: NextPageWithLayout = () => {
         <h1 className="text-4xl font-bold">
           {isLoading && <span className="text-white">Loading...</span>}
         </h1>
-        <div className="p-5">
+        <div className="mx-5 my-2">
           <label>
             <span className="text-white">Enter your kWh Price: </span>
           </label>
@@ -355,6 +355,12 @@ const Home: NextPageWithLayout = () => {
                       key={cell.id}
                       className="font-light px-4 py-6 whitespace-nowrap"
                       style={{ width: cell.column.getSize() }}
+                      onClick={() => {
+                        if (cell.column.columnDef.header === "Model") {
+                          console.log(cell.row);
+                          console.log(cell.row.original?.model);
+                        } else return;
+                      }}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
@@ -366,105 +372,106 @@ const Home: NextPageWithLayout = () => {
               ))}
             </tbody>
           </table>
-          <div className="h-4" />
         </div>
-        <div className="flex items-center justify-center gap-2 w-full my-4">
-          <button
-            className={
-              !table.getCanPreviousPage()
-                ? "text-gray-500 border-gray-500 border p-1 rounded"
-                : "border rounded p-1 cursor-pointer"
-            }
-            onClick={() => table.setPageIndex(0)}
-            disabled={!table.getCanPreviousPage()}
-          >
-            {"<<"}
-          </button>
-          <button
-            className={
-              !table.getCanPreviousPage()
-                ? "text-gray-500 border-gray-500 border p-1 rounded"
-                : "border rounded p-1 cursor-pointer"
-            }
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            {"<"}
-          </button>
-          <button
-            className={
-              !table.getCanNextPage()
-                ? "text-gray-500 border-gray-500 border p-1 rounded"
-                : "border rounded p-1 cursor-pointer"
-            }
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            {">"}
-          </button>
-          <button
-            className={
-              !table.getCanNextPage()
-                ? "text-gray-500 border-gray-500 border p-1 rounded"
-                : "border rounded p-1 cursor-pointer"
-            }
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
-          >
-            {">>"}
-          </button>
-          <span className="flex items-center gap-1">
-            <div>Page</div>
-            <strong>
-              {table.getState().pagination.pageIndex + 1} of{" "}
-              {table.getPageCount()}
-            </strong>
-          </span>
-          <span className="flex items-center gap-1">
-            | Go to page:
-            <input
-              type="number"
-              defaultValue={table.getState().pagination.pageIndex + 1}
+        <div className="bg-slate-900 w-full p-4">
+          <div className="flex items-center justify-center gap-2 w-full my-4">
+            <button
+              className={
+                !table.getCanPreviousPage()
+                  ? "text-gray-500 border-gray-500 border p-1 rounded"
+                  : "border rounded p-1 cursor-pointer"
+              }
+              onClick={() => table.setPageIndex(0)}
+              disabled={!table.getCanPreviousPage()}
+            >
+              {"<<"}
+            </button>
+            <button
+              className={
+                !table.getCanPreviousPage()
+                  ? "text-gray-500 border-gray-500 border p-1 rounded"
+                  : "border rounded p-1 cursor-pointer"
+              }
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              {"<"}
+            </button>
+            <button
+              className={
+                !table.getCanNextPage()
+                  ? "text-gray-500 border-gray-500 border p-1 rounded"
+                  : "border rounded p-1 cursor-pointer"
+              }
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              {">"}
+            </button>
+            <button
+              className={
+                !table.getCanNextPage()
+                  ? "text-gray-500 border-gray-500 border p-1 rounded"
+                  : "border rounded p-1 cursor-pointer"
+              }
+              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+              disabled={!table.getCanNextPage()}
+            >
+              {">>"}
+            </button>
+            <span className="flex items-center gap-1">
+              <div>Page</div>
+              <strong>
+                {table.getState().pagination.pageIndex + 1} of{" "}
+                {table.getPageCount()}
+              </strong>
+            </span>
+            <span className="flex items-center gap-1">
+              | Go to page:
+              <input
+                type="number"
+                defaultValue={table.getState().pagination.pageIndex + 1}
+                onChange={(e) => {
+                  let page = e.target.value ? Number(e.target.value) - 1 : 0;
+                  table.setPageIndex(page);
+                }}
+                className="border p-1 rounded w-12 text-black"
+              />
+            </span>
+            <select
+              value={table.getState().pagination.pageSize}
               onChange={(e) => {
-                let page = e.target.value ? Number(e.target.value) - 1 : 0;
-                table.setPageIndex(page);
+                table.setPageSize(Number(e.target.value));
               }}
-              className="border p-1 rounded w-12 text-black"
-            />
-          </span>
-          <select
-            value={table.getState().pagination.pageSize}
-            onChange={(e) => {
-              table.setPageSize(Number(e.target.value));
-            }}
-            className="text-black"
-          >
-            {[10, 20, 30, 40, 50].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </select>
-        </div>
-        {DenverAndDefs(
-          defs?.currentBTCPrice,
-          defs?.currentHash,
-          defs?.currentHashPrice,
-          defs?.currentHashValue,
-          defs?.elongatedHashPrice
-        )}
-        <div className="flex flex-col justify-start items-start ml-5">
-          <p className="font-extrabold text-white">
-            Credit to Joe Rodgers for the idea.
-          </p>
-          <p className="text-white">
-            Joe&apos;s twitter:{" "}
-            <Link href={"https://twitter.com/_joerodgers"}>
-              <a target="_blank" className="text-blue-500">
-                @_joerodgers
-              </a>
-            </Link>
-          </p>
+              className="text-black"
+            >
+              {[10, 20, 30, 40, 50].map((pageSize) => (
+                <option key={pageSize} value={pageSize}>
+                  Show {pageSize}
+                </option>
+              ))}
+            </select>
+          </div>
+          {DenverAndDefs(
+            defs?.currentBTCPrice,
+            defs?.currentHash,
+            defs?.currentHashPrice,
+            defs?.currentHashValue,
+            defs?.elongatedHashPrice
+          )}
+          <div className="flex flex-col justify-start items-start ml-5">
+            <p className="font-extrabold text-white">
+              Credit to Joe Rodgers for the idea.
+            </p>
+            <p className="text-white">
+              Joe&apos;s twitter:{" "}
+              <Link href={"https://twitter.com/_joerodgers"}>
+                <a target="_blank" className="text-blue-500">
+                  @_joerodgers
+                </a>
+              </Link>
+            </p>
+          </div>
         </div>
       </main>
     </>
