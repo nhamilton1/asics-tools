@@ -22,6 +22,7 @@ import {
 import AsicLayout from "../components/asicLayout.tsx/asicLayout";
 import { NextPageWithLayout } from "./_app";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 type AsicData =
   | {
@@ -48,45 +49,38 @@ type AsicData =
   | undefined;
 
 const Home: NextPageWithLayout = () => {
-  const [data, setData] = useState<AsicData[]>([]);
-  const [kWhPrice, setKWhPrice] = useState<number>(0.12);
-  const [defs, setDefs] = useState<{
-    currentBTCPrice: string;
-    currentHash: number;
-    currentHashPrice: string;
-    elongatedHashPrice: string;
-    currentHashValue: number;
-  }>();
+  const localStorage =
+    typeof window !== `undefined` ? window.localStorage : null;
 
-  useEffect(() => {
-    setKWhPrice(Number(localStorage.getItem("kWhPrice")) || 0.12);
-  }, []);
+  const router = useRouter();
+  const [kWhPrice, setKWhPrice] = useState<number>(
+    Number(localStorage?.getItem("kWhPrice")) || 0.12
+  );
 
-  const { data: defsData, isLoading } = trpc.useQuery(
+  const { data: asicData, isLoading } = trpc.useQuery(
     ["asics.get-asics-info"],
     {
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       staleTime: Infinity,
-      onSuccess: (data) => {
+      keepPreviousData: true,
+      select: (data) => {
         const format = data.formattingAsicData.map((a) => {
           if (a?.id) {
             let asicBTCPrice =
               Math.round(1000000 * (a.price / data.currentBTCPrice)) / 1000000;
-            let value = Math.round(a.price / a?.th);
-            let wattDollar = Number((value * Number(a?.efficiency)).toFixed(0));
+            let value = Math.round(a.price / a.th);
+            let wattDollar = Number((value * Number(a.efficiency)).toFixed(0));
             let denverDerivative = Number(
               (wattDollar / data.elongatedHashPrice).toFixed(2)
             );
             let btcPerMonth =
               Math.round(
-                1000000 * ((a?.th / (data.currentHash * 1000000)) * 900 * 30.5)
+                1000000 * ((a.th / (data.currentHash * 1000000)) * 900 * 30.5)
               ) / 1000000;
-            let dollarPerMonth = Math.round(
-              btcPerMonth * data.currentBTCPrice!
-            );
+            let dollarPerMonth = Math.round(btcPerMonth * data.currentBTCPrice);
             let monthlyEnergy =
-              Math.round(100 * (732 * (a?.watts * 0.001) * Number(kWhPrice))) /
+              Math.round(100 * (732 * (a.watts * 0.001) * Number(kWhPrice))) /
               100;
             let profitMonth = Math.round(dollarPerMonth - monthlyEnergy);
             let monthsToRoi =
@@ -106,44 +100,56 @@ const Home: NextPageWithLayout = () => {
             };
           }
         });
-
-        setData(format);
-        setDefs({
-          currentBTCPrice: data.currentBTCPrice.toLocaleString("en-US", {
+        return {
+          formattingAsicData: format,
+          formattedBTCPrice: data.currentBTCPrice.toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
           }),
+          currentBTCPrice: data.currentBTCPrice,
           currentHash: data.currentHash,
-          currentHashPrice: data.currentHashPrice.toLocaleString("en-US", {
+          currentHashPrice: data.currentHashPrice,
+          formattedHashPrice: data.currentHashPrice.toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
           }),
-          elongatedHashPrice: data.elongatedHashPrice.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-          }),
+          elongatedHashPrice: data.elongatedHashPrice,
+          formattedElongatedHashPrice: data.elongatedHashPrice.toLocaleString(
+            "en-US",
+            {
+              style: "currency",
+              currency: "USD",
+            }
+          ),
           currentHashValue: data.currentHashValue,
-        });
+        };
+      },
+      onSuccess: (data) => {
+        setData(data.formattingAsicData);
       },
     }
   );
 
+  const [data, setData] = useState<AsicData[]>(
+    asicData?.formattingAsicData || []
+  );
+
   useEffect(() => {
     const format = data.map((a) => {
-      if (a?.id && defsData) {
+      if (a?.id && asicData) {
         let asicBTCPrice =
-          Math.round(1000000 * (a.price / defsData.currentBTCPrice)) / 1000000;
+          Math.round(1000000 * (a.price / asicData.currentBTCPrice)) / 1000000;
         let value = Math.round(a.price / a?.th);
         let wattDollar = Number((value * Number(a?.efficiency)).toFixed(0));
         let denverDerivative = Number(
-          (wattDollar / defsData.elongatedHashPrice).toFixed(2)
+          (wattDollar / asicData.elongatedHashPrice).toFixed(2)
         );
         let btcPerMonth =
           Math.round(
-            1000000 * ((a?.th / (defsData.currentHash * 1000000)) * 900 * 30.5)
+            1000000 * ((a?.th / (asicData.currentHash * 1000000)) * 900 * 30.5)
           ) / 1000000;
         let dollarPerMonth = Math.round(
-          btcPerMonth * defsData.currentBTCPrice!
+          btcPerMonth * asicData.currentBTCPrice!
         );
         let monthlyEnergy =
           Math.round(100 * (732 * (a?.watts * 0.001) * Number(kWhPrice))) / 100;
@@ -261,7 +267,7 @@ const Home: NextPageWithLayout = () => {
   );
 
   const table = useReactTable({
-    data: !data ? [] : data,
+    data: data.length === 0 ? [] : data,
     columns,
     state: {
       rowSelection,
@@ -282,14 +288,20 @@ const Home: NextPageWithLayout = () => {
     <>
       <Head>
         <title>ASIC Tools - NextJS</title>
-        <meta name="description" content="List of Bitcoin miners on sale" />
+        <meta
+          name="description"
+          content="List of Bitcoin ASIC miners for sale"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      {isLoading && (
+        <div className="h-screen flex items-center justify-center flex-col">
+          <h1 className="text-4xl font-bold">
+            <span className="text-white ">Loading...</span>
+          </h1>
+        </div>
+      )}
       <main className="flex flex-col items-start justify-start bg-slate-800 text-white font-Roboto">
-        <h1 className="text-4xl font-bold">
-          {isLoading && <span className="text-white">Loading...</span>}
-        </h1>
         <div className="mx-5 my-2">
           <label>
             <span className="text-white">Enter your kWh Price: </span>
@@ -301,7 +313,7 @@ const Home: NextPageWithLayout = () => {
             step={0.01}
             onChange={(e) => {
               let kWh = Number(e.target.value);
-              localStorage.setItem("kWhPrice", kWh.toString());
+              localStorage?.setItem("kWhPrice", kWh.toString());
               setKWhPrice(kWh);
             }}
           />
@@ -353,12 +365,21 @@ const Home: NextPageWithLayout = () => {
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className="font-light px-4 py-6 whitespace-nowrap"
+                      className={`px-4 py-6 whitespace-nowrap ${
+                        cell.column.columnDef.header === "Model"
+                          ? "cursor-pointer hover:text-orange-400"
+                          : ""
+                      }`}
                       style={{ width: cell.column.getSize() }}
                       onClick={() => {
                         if (cell.column.columnDef.header === "Model") {
-                          console.log(cell.row);
-                          console.log(cell.row.original?.model);
+                          const model = cell.row.original?.model.includes(
+                            "J/th"
+                          )
+                            ? cell.row.original?.model.replace("J/th", "J th")
+                            : cell.row.original?.model;
+
+                          router.push(`/[model]`, `/${model}`);
                         } else return;
                       }}
                     >
@@ -453,11 +474,11 @@ const Home: NextPageWithLayout = () => {
             </select>
           </div>
           {DenverAndDefs(
-            defs?.currentBTCPrice,
-            defs?.currentHash,
-            defs?.currentHashPrice,
-            defs?.currentHashValue,
-            defs?.elongatedHashPrice
+            asicData?.formattedBTCPrice,
+            asicData?.currentHash,
+            asicData?.formattedHashPrice,
+            asicData?.currentHashValue,
+            asicData?.formattedElongatedHashPrice
           )}
           <div className="flex flex-col justify-start items-start ml-5">
             <p className="font-extrabold text-white">

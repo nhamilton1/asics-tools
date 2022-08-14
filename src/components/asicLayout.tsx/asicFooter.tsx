@@ -19,7 +19,7 @@ const AsicFooter = () => {
             </a>
           </Link>
           <Link href="https://github.com/nhamilton1">
-            <a className="text-white">
+            <a className="text-white" target="_blank">
               <Image
                 src={GitHubLogo}
                 alt="github logo"
