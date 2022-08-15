@@ -1,6 +1,17 @@
 import { z } from "zod";
 import { createRouter } from "./context";
 import { prisma } from "../db/client";
+import { TRPCError } from "@trpc/server";
+
+interface btcPriceRange {
+  next_page_token: string;
+  next_page_url: string;
+  data: {
+    asset: string;
+    ReferenceRate: string;
+    time: string;
+  }[];
+}
 
 export const minerRouter = createRouter()
   .query("get-all-miners", {
@@ -44,6 +55,44 @@ export const minerRouter = createRouter()
           },
         },
       });
-      return miner;
+
+      const getBtcPriceRange = await fetch(
+        "https://community-api.coinmetrics.io/v4/timeseries/asset-metrics?assets=btc&metrics=ReferenceRate&frequency=1d&pretty=true"
+      ).catch((err) => {
+        console.log(err);
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "failed to fetch btc price range",
+        });
+      });
+
+      let { data: btcPriceRange }: btcPriceRange =
+        await getBtcPriceRange.json();
+      // we are removing the last value, today's date, bec its inaccurate in the api
+      btcPriceRange.pop();
+
+      // remove all dates that are not within the last month
+      btcPriceRange = btcPriceRange.filter(
+        (date) =>
+          new Date(date.time).getTime() >
+          new Date(new Date().getTime() - 90 * 24 * 60 * 60 * 1000).getTime()
+      );
+
+      const chartData: {
+        btcPrice: number;
+        date: string;
+      }[] = [];
+
+      btcPriceRange.forEach((x) => {
+        chartData.push({
+          btcPrice: Number(Number(x.ReferenceRate).toFixed(2)),
+          date: new Date(x.time).toLocaleDateString(),
+        });
+      });
+
+      return {
+        ...miner,
+        chartData,
+      };
     },
   });
