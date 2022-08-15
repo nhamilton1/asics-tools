@@ -56,6 +56,35 @@ export const minerRouter = createRouter()
         },
       });
 
+      if (!miner) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Miner not found",
+        });
+      }
+
+      const hashRateStats =
+        "https://insights.braiins.com/api/v1.0/hash-rate-stats";
+
+      const hashRate: {
+        avg_fees_per_block: number;
+        current_hashrate: number;
+        fees_percent: number;
+        hash_price: number;
+        hash_rate_30: number;
+        hash_value: number;
+        rev_usd: number;
+      } = await fetch(hashRateStats)
+        .then((res) => res.json())
+        .catch((e) => {
+          console.log("catch log", e);
+          return {
+            error: e.message as string,
+          };
+        });
+
+      let currentHash = hashRate.current_hashrate;
+
       const getBtcPriceRange = await fetch(
         "https://community-api.coinmetrics.io/v4/timeseries/asset-metrics?assets=btc&metrics=ReferenceRate&frequency=1d&pretty=true"
       ).catch((err) => {
@@ -93,6 +122,7 @@ export const minerRouter = createRouter()
       return {
         ...miner,
         chartData,
+        currentHash,
       };
     },
   });
