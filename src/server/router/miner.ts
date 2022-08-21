@@ -38,7 +38,17 @@ export const minerRouter = createRouter()
         ? input.replace("J th", "J/th")
         : input;
 
-      const miner = await ctx.prisma.miner_data.findUnique({
+      const miner: {
+        model: string;
+        efficiency: number;
+        th: number;
+        watts: number;
+        market_data: {
+          price: number;
+          vendor: string;
+          date: Date | string;
+        }[];
+      } | null = await ctx.prisma.miner_data.findUnique({
         where: {
           model,
         },
@@ -51,6 +61,7 @@ export const minerRouter = createRouter()
             select: {
               price: true,
               vendor: true,
+              date: true,
             },
           },
         },
@@ -119,10 +130,65 @@ export const minerRouter = createRouter()
         });
       });
 
+      const historyLowestPrice:
+        | {
+            price: number;
+            vendor: string;
+            date: Date | string;
+          }
+        | undefined = miner.market_data.sort(
+        (
+          a: { price: number; vendor: string },
+          b: { price: number; vendor: string }
+        ) => {
+          return a.price - b.price;
+        }
+      )[0];
+
+      const historyHighestPrice:
+        | {
+            price: number;
+            vendor: string;
+            date: Date | string;
+          }
+        | undefined = miner.market_data.sort(
+        (
+          a: { price: number; vendor: string },
+          b: { price: number; vendor: string }
+        ) => {
+          return b.price - a.price;
+        }
+      )[0];
+
+      if (!historyHighestPrice || !historyLowestPrice) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Miner not found",
+        });
+      }
+
+      const minerPriceHistory = miner.market_data
+        .map((x) => {
+          return {
+            price: x.price,
+            vendor: x.vendor,
+            date: new Date(x.date).toLocaleDateString(),
+          };
+        })
+        .sort((a, b) => {
+          return new Date(a.date).getTime() - new Date(b.date).getTime();
+        });
+
+      const amountOfTimesListed = minerPriceHistory.length;
+
       return {
         ...miner,
         chartData,
         currentHash,
+        historyLowestPrice,
+        historyHighestPrice,
+        minerPriceHistory,
+        amountOfTimesListed,
       };
     },
   });

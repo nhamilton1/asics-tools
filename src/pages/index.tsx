@@ -515,31 +515,43 @@ function DenverAndDefs(
   return (
     <div className="flex md:flex-row flex-col justify-center gap-10 w-full">
       <div className="flex flex-col">
-        <h2 className="text-lg font-bold">Hidden Values</h2>
-        <ul>
-          <li className="py-2 border-b">
+        <div className="flex flex-row items-center justify-center">
+          <div className="w-1/4 h-[1px] bg-white" />
+          <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
+            Hidden Values
+          </h2>
+          <div className="w-full h-[1px] bg-white" />
+        </div>
+        <ul className="border">
+          <li className="py-2 border-b px-4">
             Values that are used in the table, but are not displayed
           </li>
-          <li className="py-2 border-b flex flex-row justify-between gap-10">
+          <li className="py-2 border-b flex flex-row justify-between gap-10 px-4">
             Current BTC price: <span>{price}</span>
           </li>
-          <li className="py-2 border-b flex flex-row justify-between gap-10">
+          <li className="py-2 border-b flex flex-row justify-between gap-10 px-4">
             Current Network Hashrate: <span>{hashrate} EH/s</span>
           </li>
-          <li className="py-2 border-b flex flex-row justify-between gap-10">
+          <li className="py-2 border-b flex flex-row justify-between gap-10 px-4">
             Current Hash Price: <span>{hashPrice}</span>
           </li>
-          <li className="py-2 border-b flex flex-row justify-between gap-10">
+          <li className="py-2 border-b flex flex-row justify-between gap-10 px-4">
             Elongated Hash Price: <span>{enlongatedHashPrice}</span>
           </li>
-          <li className="py-2 border-b flex flex-row justify-between gap-10">
+          <li className="py-2 border-b flex flex-row justify-between gap-10 px-4">
             Current Hash Value: <span>{hashValue} sats</span>
           </li>
         </ul>
       </div>
       <div className="flex flex-col">
-        <h2 className="text-lg font-bold">Definitions</h2>
-        <ul>
+        <div className="flex flex-row items-center justify-center">
+          <div className="w-1/4 h-[1px] bg-white" />
+          <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
+            Definitions
+          </h2>
+          <div className="w-full h-[1px] bg-white" />
+        </div>
+        <ul className="border">
           {[
             "Watts/Th = An ASIC's total watt consumption divided by its nominal Th/s rating.",
             "$/Th = The total cost of an ASIC divided by its nominal Th/s rating.",
@@ -547,15 +559,21 @@ function DenverAndDefs(
             "Hash price = USD value of 1 Th/s over the course of 24 hours.",
             "Elongated hash price = USD value of 1 Th/s over the course of 50,000 blocks.",
           ].map((denv) => (
-            <li key={denv} className="py-2 border-b">
+            <li key={denv} className="py-2 border-b px-4">
               {denv}
             </li>
           ))}
         </ul>
       </div>
       <div className="flex flex-col">
-        <h2 className="text-lg font-bold">Denver&apos;s Derivative</h2>
-        <ul>
+        <div className="flex flex-row items-center justify-center">
+          <div className="w-1/4 h-[1px] bg-white" />
+          <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
+            Denver&apos;s Derivative
+          </h2>
+          <div className="w-full h-[1px] bg-white" />
+        </div>
+        <ul className="border">
           {[
             "Denver's Derivative (DD) = WattDollar/Elongated hash price =",
             ">50 = If your power is less than ~$0.035 OR you're going to run the ASIC for five-plus years.",
@@ -565,7 +583,7 @@ function DenverAndDefs(
             "<20 = If your power is less than ~$0.15 OR you're going to run the ASIC for two-plus years.",
             "<15 = Borrow to buy all the hardware (just kidding but not really).",
           ].map((denv) => (
-            <li key={denv} className="py-2 border-b">
+            <li key={denv} className="py-2 border-b px-4">
               {denv}
             </li>
           ))}
