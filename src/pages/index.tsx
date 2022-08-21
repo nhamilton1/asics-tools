@@ -347,7 +347,7 @@ const Home: NextPageWithLayout = () => {
                           className={`resizer ${
                             header.column.getIsResizing() ? "isResizing" : ""
                           }`}
-                        ></div>
+                        />
                       )}
                     </th>
                   ))}
@@ -365,7 +365,7 @@ const Home: NextPageWithLayout = () => {
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className={`px-4 py-6 whitespace-nowrap ${
+                      className={`px-4 py-4 whitespace-nowrap ${
                         cell.column.columnDef.header === "Model"
                           ? "cursor-pointer hover:text-orange-400"
                           : ""
