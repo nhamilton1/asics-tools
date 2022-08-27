@@ -181,14 +181,143 @@ export const minerRouter = createRouter()
 
       const amountOfTimesListed = minerPriceHistory.length;
 
+      const averagePrice =
+        miner.market_data.map((x) => x.price).reduce((a, b) => a + b, 0) /
+        amountOfTimesListed;
+
+      // Kaboomracks stats
+      const kaboomracksAveragePrice =
+        miner.market_data
+          .filter((x) => x.vendor === "Kaboomracks")
+          .map((x) => x.price)
+          .reduce((a, b) => a + b, 0) /
+        miner.market_data.filter((x) => x.vendor === "Kaboomracks").length;
+
+      const kaboomracksTimesListed = miner.market_data.filter(
+        (x) => x.vendor === "Kaboomracks"
+      ).length;
+
+      let kaboomracksLowestListedPrice = miner.market_data
+        .filter((x) => x.vendor === "Kaboomracks")
+        .sort((a, b) => a.price - b.price)[0];
+
+      if (kaboomracksLowestListedPrice) {
+        kaboomracksLowestListedPrice.date = new Date(
+          kaboomracksLowestListedPrice.date
+        ).toLocaleDateString("en-US");
+      }
+
+      let kaboomracksHighestListedPrice = miner.market_data
+        .filter((x) => x.vendor === "Kaboomracks")
+        .sort((a, b) => b.price - a.price)[0];
+
+      if (kaboomracksHighestListedPrice) {
+        kaboomracksHighestListedPrice.date = new Date(
+          kaboomracksHighestListedPrice.date
+        ).toLocaleDateString("en-US");
+      }
+
+      //upstreamdata stats
+      const upstreamdataAveragePrice =
+        miner.market_data
+          .filter((x) => x.vendor === "upstreamdata")
+          .map((x) => x.price)
+          .reduce((a, b) => a + b, 0) /
+        miner.market_data.filter((x) => x.vendor === "upstreamdata").length;
+
+      const upstreamdataTimesListed = miner.market_data.filter(
+        (x) => x.vendor === "upstreamdata"
+      ).length;
+
+      let upstreamdataLowestListedPrice = miner.market_data
+        .filter((x) => x.vendor === "upstreamdata")
+        .sort((a, b) => a.price - b.price)[0];
+
+      if (upstreamdataLowestListedPrice) {
+        upstreamdataLowestListedPrice.date = new Date(
+          upstreamdataLowestListedPrice.date
+        ).toLocaleDateString("en-US");
+      }
+
+      let upstreamdataHighestListedPrice = miner.market_data
+        .filter((x) => x.vendor === "upstreamdata")
+        .sort((a, b) => b.price - a.price)[0];
+
+      if (upstreamdataHighestListedPrice) {
+        upstreamdataHighestListedPrice.date = new Date(
+          upstreamdataHighestListedPrice.date
+        ).toLocaleDateString("en-US");
+      }
+
+      // minefarmbuy stats
+      const minefarmbuyAveragePrice =
+        miner.market_data
+          .filter((x) => x.vendor === "minefarmbuy")
+          .map((x) => x.price)
+          .reduce((a, b) => a + b, 0) /
+        miner.market_data.filter((x) => x.vendor === "minefarmbuy").length;
+
+      const minefarmbuyTimesListed = miner.market_data.filter(
+        (x) => x.vendor === "minefarmbuy"
+      ).length;
+
+      let minefarmbuyLowestListedPrice = miner.market_data
+        .filter((x) => x.vendor === "minefarmbuy")
+        .sort((a, b) => a.price - b.price)[0];
+
+      if (minefarmbuyLowestListedPrice) {
+        minefarmbuyLowestListedPrice.date = new Date(
+          minefarmbuyLowestListedPrice.date
+        ).toLocaleDateString("en-US");
+      }
+
+      let minefarmbuyHighestListedPrice = miner.market_data
+        .filter((x) => x.vendor === "minefarmbuy")
+        .sort((a, b) => b.price - a.price)[0];
+
+      if (minefarmbuyHighestListedPrice) {
+        minefarmbuyHighestListedPrice.date = new Date(
+          minefarmbuyHighestListedPrice.date
+        ).toLocaleDateString("en-US");
+      }
+
+      const kaboomracksStats = {
+        averagePrice: kaboomracksAveragePrice,
+        timesListed: kaboomracksTimesListed,
+        lowestListedPrice: kaboomracksLowestListedPrice,
+        highestListedPrice: kaboomracksHighestListedPrice,
+      };
+
+      const upstreamdataStats = {
+        averagePrice: upstreamdataAveragePrice,
+        timesListed: upstreamdataTimesListed,
+        lowestListedPrice: upstreamdataLowestListedPrice,
+        highestListedPrice: upstreamdataHighestListedPrice,
+      };
+
+      const minefarmbuyStats = {
+        averagePrice: minefarmbuyAveragePrice,
+        timesListed: minefarmbuyTimesListed,
+        lowestListedPrice: minefarmbuyLowestListedPrice,
+        highestListedPrice: minefarmbuyHighestListedPrice,
+      };
+
+      const histroicalStats = {
+        lowestPrice: historyLowestPrice,
+        highestPrice: historyHighestPrice,
+        timesListed: amountOfTimesListed,
+        averagePrice: averagePrice,
+      };
+
       return {
         ...miner,
+        kaboomracksStats,
+        upstreamdataStats,
+        minefarmbuyStats,
         chartData,
         currentHash,
-        historyLowestPrice,
-        historyHighestPrice,
+        histroicalStats,
         minerPriceHistory,
-        amountOfTimesListed,
       };
     },
   });
