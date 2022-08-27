@@ -60,6 +60,7 @@ const Model = () => {
         efficiency: data.efficiency,
         th: data.th,
         watts: data.watts,
+        manufacturer: data.manufacturer,
         chartData,
       };
     },
@@ -75,7 +76,7 @@ const Model = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex flex-col justify-center items-center text-white gap-10 ">
-        <div className="flex lg:flex-row flex-col justify-center items-center gap-10 w-full lg:px-10 px-3">
+        <div className="flex lg:flex-row flex-col justify-center flex-wrap items-center gap-10 w-full lg:px-10 px-3">
           <div className="flex flex-col w-full sm:max-w-sm">
             <div className="flex flex-row items-center justify-center">
               <div className="w-1/4 h-[1px] bg-white" />
@@ -93,6 +94,9 @@ const Model = () => {
               </li>
               <li className="py-2 border-b flex flex-row justify-between gap-10">
                 watts: <span>{asicInfo?.watts}</span>
+              </li>
+              <li className="py-2 border-b flex flex-row justify-between gap-10">
+                manufacturer: <span>{asicInfo?.manufacturer}</span>
               </li>
             </ul>
           </div>

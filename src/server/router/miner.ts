@@ -309,6 +309,14 @@ export const minerRouter = createRouter()
         averagePrice: averagePrice,
       };
 
+      const manufacturer = miner.model.includes("Antminer")
+        ? "Bitmain"
+        : miner.model.includes("Whatsminer")
+        ? "MicroBT"
+        : miner.model.includes("Canaan")
+        ? "Canaan"
+        : "";
+
       return {
         ...miner,
         kaboomracksStats,
@@ -318,6 +326,7 @@ export const minerRouter = createRouter()
         currentHash,
         histroicalStats,
         minerPriceHistory,
+        manufacturer,
       };
     },
   });
