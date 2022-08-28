@@ -100,3 +100,44 @@ export const LoadingSkeletonTable = () => {
     </div>
   );
 };
+
+export const LoadingSkeletonCard = () => {
+  return (
+    <div className="flex flex-col lg:flex-row w-full gap-10 justify-center items-center">
+      {Array(3)
+        .fill(0)
+        .map((_, i) => (
+          <div
+            className="flex flex-col w-full sm:max-w-sm animate-pulse"
+            key={i}
+          >
+            <div>
+              <div className="flex flex-row items-center justify-center">
+                <div className="w-1/4 h-[1px] bg-white" />
+                <div className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-32 px-1" />
+                <div className="w-full h-[1px] bg-white" />
+              </div>
+              <ul>
+                <li className="py-2 border-b flex flex-row justify-between gap-10">
+                  <div className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-20" />
+                  <span className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-16" />
+                </li>
+                <li className="py-2 border-b flex flex-row justify-between gap-10">
+                  <div className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-20" />
+                  <span className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-16" />
+                </li>
+                <li className="py-2 border-b flex flex-row justify-between gap-10">
+                  <div className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-20" />
+                  <span className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-16" />
+                </li>
+                <li className="py-2 border-b flex flex-row justify-between gap-10">
+                  <div className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-20" />
+                  <span className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-16" />
+                </li>
+              </ul>
+            </div>
+          </div>
+        ))}
+    </div>
+  );
+};

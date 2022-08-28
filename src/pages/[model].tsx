@@ -13,6 +13,7 @@ import {
   YAxis,
 } from "recharts";
 import AsicLayout from "../components/asicLayout.tsx/asicLayout";
+import { LoadingSkeletonCard } from "../components/loadingSkeletons";
 import { trpc } from "../utils/trpc";
 
 const Model = () => {
@@ -66,16 +67,6 @@ const Model = () => {
     },
   });
 
-  if (isLoading) {
-    return (
-      <div className="h-screen flex items-center justify-center flex-col">
-        <h1 className="text-4xl font-bold">
-          <span className="text-white ">Loading...</span>
-        </h1>
-      </div>
-    );
-  }
-
   return (
     <>
       <Head>
@@ -86,46 +77,112 @@ const Model = () => {
         />
       </Head>
       <div className="flex flex-col justify-center items-center text-white gap-10 ">
-        <div className="flex lg:flex-row flex-col justify-center flex-wrap items-center gap-10 w-full lg:px-10 px-3">
-          <div className="flex flex-col w-full sm:max-w-sm">
-            <div className="flex flex-row items-center justify-center">
-              <div className="w-1/4 h-[1px] bg-white" />
-              <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
-                {model}
-              </h2>
-              <div className="w-full h-[1px] bg-white" />
+        {isLoading ? (
+          <LoadingSkeletonCard />
+        ) : (
+          <div className="flex lg:flex-row flex-col justify-center flex-wrap items-center gap-10 w-full lg:px-10 px-3">
+            <div className="flex flex-col w-full sm:max-w-sm">
+              <div className="flex flex-row items-center justify-center">
+                <div className="w-1/4 h-[1px] bg-white" />
+                <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
+                  {model}
+                </h2>
+                <div className="w-full h-[1px] bg-white" />
+              </div>
+              <ul>
+                <li className="py-2 border-b flex flex-row justify-between gap-10">
+                  th/s: <span>{asicInfo?.th} TH</span>
+                </li>
+                <li className="py-2 border-b flex flex-row justify-between gap-10">
+                  efficiency: <span>{asicInfo?.efficiency} W/TH</span>
+                </li>
+                <li className="py-2 border-b flex flex-row justify-between gap-10">
+                  watts: <span>{asicInfo?.watts}</span>
+                </li>
+                <li className="py-2 border-b flex flex-row justify-between gap-10">
+                  manufacturer: <span>{asicInfo?.manufacturer}</span>
+                </li>
+              </ul>
             </div>
-            <ul>
-              <li className="py-2 border-b flex flex-row justify-between gap-10">
-                th/s: <span>{asicInfo?.th} TH</span>
-              </li>
-              <li className="py-2 border-b flex flex-row justify-between gap-10">
-                efficiency: <span>{asicInfo?.efficiency} W/TH</span>
-              </li>
-              <li className="py-2 border-b flex flex-row justify-between gap-10">
-                watts: <span>{asicInfo?.watts}</span>
-              </li>
-              <li className="py-2 border-b flex flex-row justify-between gap-10">
-                manufacturer: <span>{asicInfo?.manufacturer}</span>
-              </li>
-            </ul>
-          </div>
 
-          <div className="flex flex-col w-full sm:max-w-sm">
-            <div className="flex flex-row items-center justify-center">
-              <div className="w-1/4 h-[1px] bg-white" />
-              <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
-                Historical Stats
-              </h2>
-              <div className="w-full h-[1px] bg-white" />
+            <div className="flex flex-col w-full sm:max-w-sm">
+              <div className="flex flex-row items-center justify-center">
+                <div className="w-1/4 h-[1px] bg-white" />
+                <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
+                  Historical Stats
+                </h2>
+                <div className="w-full h-[1px] bg-white" />
+              </div>
+              <ul>
+                {asicInfo?.histroicalStats.highestPrice.date ? (
+                  <>
+                    <li className="py-2 border-b flex flex-row justify-between gap-10">
+                      Average Price:
+                      <span>
+                        {asicInfo?.histroicalStats.averagePrice.toLocaleString(
+                          "en-US",
+                          {
+                            style: "currency",
+                            currency: "USD",
+                          }
+                        )}
+                      </span>
+                    </li>
+                    <li className="py-2 border-b flex flex-row justify-between gap-10">
+                      Highest Price:
+                      <span>
+                        {asicInfo.histroicalStats.highestPrice.price.toLocaleString(
+                          "en-US",
+                          {
+                            style: "currency",
+                            currency: "USD",
+                          }
+                        )}{" "}
+                        on{" "}
+                        {new Date(
+                          asicInfo.histroicalStats.highestPrice.date
+                        ).toLocaleDateString("en-US")}
+                      </span>
+                    </li>
+                    <li className="py-2 border-b flex flex-row justify-between gap-10">
+                      Lowest Price:
+                      <span>
+                        {asicInfo.histroicalStats.lowestPrice.price.toLocaleString(
+                          "en-US",
+                          {
+                            style: "currency",
+                            currency: "USD",
+                          }
+                        )}{" "}
+                        on{" "}
+                        {new Date(
+                          asicInfo.histroicalStats.lowestPrice.date
+                        ).toLocaleDateString("en-US")}
+                      </span>
+                    </li>
+                  </>
+                ) : null}
+                <li className="py-2 border-b flex flex-row justify-between gap-10">
+                  Amount of Times Listed:{" "}
+                  <span>{asicInfo?.histroicalStats.timesListed}</span>
+                </li>
+              </ul>
             </div>
-            <ul>
-              {asicInfo?.histroicalStats.highestPrice.date ? (
-                <>
+
+            {!!asicInfo?.kaboomracksStats.timesListed && (
+              <div className="flex flex-col w-full sm:max-w-sm">
+                <div className="flex flex-row items-center justify-center">
+                  <div className="w-1/4 h-[1px] bg-white" />
+                  <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
+                    Kaboomracks Stats
+                  </h2>
+                  <div className="w-full h-[1px] bg-white" />
+                </div>
+                <ul>
                   <li className="py-2 border-b flex flex-row justify-between gap-10">
                     Average Price:
                     <span>
-                      {asicInfo?.histroicalStats.averagePrice.toLocaleString(
+                      {asicInfo.kaboomracksStats.averagePrice.toLocaleString(
                         "en-US",
                         {
                           style: "currency",
@@ -137,7 +194,7 @@ const Model = () => {
                   <li className="py-2 border-b flex flex-row justify-between gap-10">
                     Highest Price:
                     <span>
-                      {asicInfo.histroicalStats.highestPrice.price.toLocaleString(
+                      {asicInfo.kaboomracksStats.highestListedPrice?.price.toLocaleString(
                         "en-US",
                         {
                           style: "currency",
@@ -145,15 +202,13 @@ const Model = () => {
                         }
                       )}{" "}
                       on{" "}
-                      {new Date(
-                        asicInfo.histroicalStats.highestPrice.date
-                      ).toLocaleDateString("en-US")}
+                      {asicInfo.kaboomracksStats.highestListedPrice?.date.toLocaleString()}
                     </span>
                   </li>
                   <li className="py-2 border-b flex flex-row justify-between gap-10">
                     Lowest Price:
                     <span>
-                      {asicInfo.histroicalStats.lowestPrice.price.toLocaleString(
+                      {asicInfo.kaboomracksStats.lowestListedPrice?.price.toLocaleString(
                         "en-US",
                         {
                           style: "currency",
@@ -161,192 +216,132 @@ const Model = () => {
                         }
                       )}{" "}
                       on{" "}
-                      {new Date(
-                        asicInfo.histroicalStats.lowestPrice.date
-                      ).toLocaleDateString("en-US")}
+                      {asicInfo.kaboomracksStats.lowestListedPrice?.date.toLocaleString()}
                     </span>
                   </li>
-                </>
-              ) : null}
-              <li className="py-2 border-b flex flex-row justify-between gap-10">
-                Amount of Times Listed:{" "}
-                <span>{asicInfo?.histroicalStats.timesListed}</span>
-              </li>
-            </ul>
+                  <li className="py-2 border-b flex flex-row justify-between gap-10">
+                    Amount of Times Listed:
+                    <span>{asicInfo.kaboomracksStats.timesListed}</span>
+                  </li>
+                </ul>
+              </div>
+            )}
+            {!!asicInfo?.minefarmbuyStats.timesListed && (
+              <div className="flex flex-col w-full sm:max-w-sm">
+                <div className="flex flex-row items-center justify-center">
+                  <div className="w-1/4 h-[1px] bg-white" />
+                  <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
+                    minefarmbuy Stats
+                  </h2>
+                  <div className="w-full h-[1px] bg-white" />
+                </div>
+                <ul>
+                  <li className="py-2 border-b flex flex-row justify-between gap-10">
+                    Average Price:
+                    <span>
+                      {asicInfo?.minefarmbuyStats.averagePrice.toLocaleString(
+                        "en-US",
+                        {
+                          style: "currency",
+                          currency: "USD",
+                        }
+                      )}
+                    </span>
+                  </li>
+                  <li className="py-2 border-b flex flex-row justify-between gap-10">
+                    Highest Price:
+                    <span>
+                      {asicInfo.minefarmbuyStats.highestListedPrice?.price.toLocaleString(
+                        "en-US",
+                        {
+                          style: "currency",
+                          currency: "USD",
+                        }
+                      )}{" "}
+                      on{" "}
+                      {asicInfo.minefarmbuyStats.highestListedPrice?.date.toLocaleString()}
+                    </span>
+                  </li>
+                  <li className="py-2 border-b flex flex-row justify-between gap-10">
+                    Lowest Price:
+                    <span>
+                      {asicInfo.minefarmbuyStats.lowestListedPrice?.price.toLocaleString(
+                        "en-US",
+                        {
+                          style: "currency",
+                          currency: "USD",
+                        }
+                      )}{" "}
+                      on{" "}
+                      {asicInfo.minefarmbuyStats.lowestListedPrice?.date.toLocaleString()}
+                    </span>
+                  </li>
+                  <li className="py-2 border-b flex flex-row justify-between gap-10">
+                    Amount of Times Listed:
+                    <span>{asicInfo?.minefarmbuyStats.timesListed}</span>
+                  </li>
+                </ul>
+              </div>
+            )}
+            {!!asicInfo?.upstreamdataStats.timesListed && (
+              <div className="flex flex-col w-full sm:max-w-sm">
+                <div className="flex flex-row items-center justify-center">
+                  <div className="w-1/4 h-[1px] bg-white" />
+                  <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
+                    upsteamdata Stats
+                  </h2>
+                  <div className="w-full h-[1px] bg-white" />
+                </div>
+                <ul>
+                  <li className="py-2 border-b flex flex-row justify-between gap-10">
+                    Average Price:
+                    <span>
+                      {asicInfo?.upstreamdataStats.averagePrice.toLocaleString(
+                        "en-US",
+                        {
+                          style: "currency",
+                          currency: "USD",
+                        }
+                      )}
+                    </span>
+                  </li>
+                  <li className="py-2 border-b flex flex-row justify-between gap-10">
+                    Highest Price:
+                    <span>
+                      {asicInfo.upstreamdataStats.highestListedPrice?.price.toLocaleString(
+                        "en-US",
+                        {
+                          style: "currency",
+                          currency: "USD",
+                        }
+                      )}{" "}
+                      on{" "}
+                      {asicInfo.upstreamdataStats.highestListedPrice?.date.toLocaleString()}
+                    </span>
+                  </li>
+                  <li className="py-2 border-b flex flex-row justify-between gap-10">
+                    Lowest Price:
+                    <span>
+                      {asicInfo.upstreamdataStats.lowestListedPrice?.price.toLocaleString(
+                        "en-US",
+                        {
+                          style: "currency",
+                          currency: "USD",
+                        }
+                      )}{" "}
+                      on{" "}
+                      {asicInfo.upstreamdataStats.lowestListedPrice?.date.toLocaleString()}
+                    </span>
+                  </li>
+                  <li className="py-2 border-b flex flex-row justify-between gap-10">
+                    Amount of Times Listed:
+                    <span>{asicInfo?.upstreamdataStats.timesListed}</span>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
-
-          {!!asicInfo?.kaboomracksStats.timesListed && (
-            <div className="flex flex-col w-full sm:max-w-sm">
-              <div className="flex flex-row items-center justify-center">
-                <div className="w-1/4 h-[1px] bg-white" />
-                <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
-                  Kaboomracks Stats
-                </h2>
-                <div className="w-full h-[1px] bg-white" />
-              </div>
-              <ul>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Average Price:
-                  <span>
-                    {asicInfo.kaboomracksStats.averagePrice.toLocaleString(
-                      "en-US",
-                      {
-                        style: "currency",
-                        currency: "USD",
-                      }
-                    )}
-                  </span>
-                </li>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Highest Price:
-                  <span>
-                    {asicInfo.kaboomracksStats.highestListedPrice?.price.toLocaleString(
-                      "en-US",
-                      {
-                        style: "currency",
-                        currency: "USD",
-                      }
-                    )}{" "}
-                    on{" "}
-                    {asicInfo.kaboomracksStats.highestListedPrice?.date.toLocaleString()}
-                  </span>
-                </li>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Lowest Price:
-                  <span>
-                    {asicInfo.kaboomracksStats.lowestListedPrice?.price.toLocaleString(
-                      "en-US",
-                      {
-                        style: "currency",
-                        currency: "USD",
-                      }
-                    )}{" "}
-                    on{" "}
-                    {asicInfo.kaboomracksStats.lowestListedPrice?.date.toLocaleString()}
-                  </span>
-                </li>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Amount of Times Listed:
-                  <span>{asicInfo.kaboomracksStats.timesListed}</span>
-                </li>
-              </ul>
-            </div>
-          )}
-          {!!asicInfo?.minefarmbuyStats.timesListed && (
-            <div className="flex flex-col w-full sm:max-w-sm">
-              <div className="flex flex-row items-center justify-center">
-                <div className="w-1/4 h-[1px] bg-white" />
-                <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
-                  minefarmbuy Stats
-                </h2>
-                <div className="w-full h-[1px] bg-white" />
-              </div>
-              <ul>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Average Price:
-                  <span>
-                    {asicInfo?.minefarmbuyStats.averagePrice.toLocaleString(
-                      "en-US",
-                      {
-                        style: "currency",
-                        currency: "USD",
-                      }
-                    )}
-                  </span>
-                </li>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Highest Price:
-                  <span>
-                    {asicInfo.minefarmbuyStats.highestListedPrice?.price.toLocaleString(
-                      "en-US",
-                      {
-                        style: "currency",
-                        currency: "USD",
-                      }
-                    )}{" "}
-                    on{" "}
-                    {asicInfo.minefarmbuyStats.highestListedPrice?.date.toLocaleString()}
-                  </span>
-                </li>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Lowest Price:
-                  <span>
-                    {asicInfo.minefarmbuyStats.lowestListedPrice?.price.toLocaleString(
-                      "en-US",
-                      {
-                        style: "currency",
-                        currency: "USD",
-                      }
-                    )}{" "}
-                    on{" "}
-                    {asicInfo.minefarmbuyStats.lowestListedPrice?.date.toLocaleString()}
-                  </span>
-                </li>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Amount of Times Listed:
-                  <span>{asicInfo?.minefarmbuyStats.timesListed}</span>
-                </li>
-              </ul>
-            </div>
-          )}
-          {!!asicInfo?.upstreamdataStats.timesListed && (
-            <div className="flex flex-col w-full sm:max-w-sm">
-              <div className="flex flex-row items-center justify-center">
-                <div className="w-1/4 h-[1px] bg-white" />
-                <h2 className="text-lg font-bold text-center whitespace-nowrap px-1">
-                  upsteamdata Stats
-                </h2>
-                <div className="w-full h-[1px] bg-white" />
-              </div>
-              <ul>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Average Price:
-                  <span>
-                    {asicInfo?.upstreamdataStats.averagePrice.toLocaleString(
-                      "en-US",
-                      {
-                        style: "currency",
-                        currency: "USD",
-                      }
-                    )}
-                  </span>
-                </li>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Highest Price:
-                  <span>
-                    {asicInfo.upstreamdataStats.highestListedPrice?.price.toLocaleString(
-                      "en-US",
-                      {
-                        style: "currency",
-                        currency: "USD",
-                      }
-                    )}{" "}
-                    on{" "}
-                    {asicInfo.upstreamdataStats.highestListedPrice?.date.toLocaleString()}
-                  </span>
-                </li>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Lowest Price:
-                  <span>
-                    {asicInfo.upstreamdataStats.lowestListedPrice?.price.toLocaleString(
-                      "en-US",
-                      {
-                        style: "currency",
-                        currency: "USD",
-                      }
-                    )}{" "}
-                    on{" "}
-                    {asicInfo.upstreamdataStats.lowestListedPrice?.date.toLocaleString()}
-                  </span>
-                </li>
-                <li className="py-2 border-b flex flex-row justify-between gap-10">
-                  Amount of Times Listed:
-                  <span>{asicInfo?.upstreamdataStats.timesListed}</span>
-                </li>
-              </ul>
-            </div>
-          )}
-        </div>
+        )}
 
         <div className="flex flex-row flex-wrap w-full h-full">
           <div className="flex flex-row justify-center items-center gap-2 mb-2">
@@ -365,6 +360,33 @@ const Model = () => {
               }}
             />
           </div>
+          {isLoading && (
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart
+                width={600}
+                height={300}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />=
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip content={CustomTooltip} />
+                <Legend />
+                <Line
+                  type="monotone"
+                  dataKey="profitMonth"
+                  stroke="#82ca9d"
+                  strokeWidth={4}
+                  name="Profit per month"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          )}
           {!!asicInfo?.chartData && (
             <ResponsiveContainer width="100%" height={300}>
               <LineChart
@@ -396,6 +418,33 @@ const Model = () => {
             </ResponsiveContainer>
           )}
 
+          {isLoading && (
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart
+                width={600}
+                height={300}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Legend />
+                <Line
+                  type="monotone"
+                  dataKey="price"
+                  stroke="#FAA219"
+                  strokeWidth={4}
+                  dot={false}
+                  name="Historical ASIC price"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          )}
           {!!asicInfo?.minerPriceHistory && (
             <ResponsiveContainer width="100%" height={300}>
               <LineChart
