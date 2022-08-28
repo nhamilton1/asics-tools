@@ -29,8 +29,8 @@ const AsicNavbar = () => {
           <>
             <div className="flex flex-col justify-center items-center text-white">
               {" "}
-              Block {data?.blockHeight} mined by:
-              <span>{data?.poolMostRecentMinedBlock}</span>
+              Current Block Height:
+              <span> {data?.blockHeight}</span>
             </div>
 
             <div className="flex flex-col justify-center items-center text-white">

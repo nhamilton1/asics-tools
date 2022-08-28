@@ -57,6 +57,15 @@ const Home: NextPageWithLayout = () => {
     Number(localStorage?.getItem("kWhPrice")) || 0.12
   );
 
+  const { data: minedBlocks, isLoading: isLoadingMinedBlocks } = trpc.useQuery(
+    ["mempool.get-mined-blocks"],
+    {
+      cacheTime: 10000,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+    }
+  );
+
   const { data: asicData, isLoading } = trpc.useQuery(
     ["asics.get-asics-info"],
     {
@@ -302,21 +311,65 @@ const Home: NextPageWithLayout = () => {
         </div>
       )}
       <main className="flex flex-col items-start justify-start bg-slate-800 text-white font-Roboto">
-        <div className="mx-5 my-2">
-          <label>
-            <span className="text-white">Enter your kWh Price: </span>
-          </label>
-          <input
-            type={"number"}
-            className={"w-1/4 p-1 bg-slate-800 text-white border"}
-            value={kWhPrice}
-            step={0.01}
-            onChange={(e) => {
-              let kWh = Number(e.target.value);
-              localStorage?.setItem("kWhPrice", kWh.toString());
-              setKWhPrice(kWh);
-            }}
-          />
+        <div className="w-full flex lg:flex-row lg:items-center items-start justify-center flex-col-reverse lg:gap-0 gap-10">
+          <div className="flex flex-row items-center justify-start gap-2 lg:ml-5 ml-2">
+            <label>
+              <span className="text-white">Enter your kWh Price: </span>
+            </label>
+            <input
+              type={"number"}
+              className={"w-1/4 p-1 rounded-md bg-slate-800 text-white border"}
+              value={kWhPrice}
+              step={0.01}
+              onChange={(e) => {
+                let kWh = Number(e.target.value);
+                localStorage?.setItem("kWhPrice", kWh.toString());
+                setKWhPrice(kWh);
+              }}
+            />
+          </div>
+
+          {isLoadingMinedBlocks ? (
+            <div>Loading...</div>
+          ) : (
+            <div className="relative flex overflow-x-hidden w-full items-center justify-center mr-5">
+              {!!minedBlocks && (
+                <div className="animate-marquee whitespace-nowrap">
+                  {minedBlocks.map((block) => (
+                    <span className="mx-4 text-xl" key={block.height}>
+                      Block {block.height}: {block.pool}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {!!minedBlocks && (
+                <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
+                  {minedBlocks.map((block) => (
+                    <span className="mx-4 text-xl" key={block.height}>
+                      Block {block.height}: {block.pool}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* <div className="animate-marquee whitespace-nowrap">
+                <span className="mx-4 text-xl">Marquee Item 1</span>
+                <span className="mx-4 text-xl">Marquee Item 2</span>
+                <span className="mx-4 text-xl">Marquee Item 3</span>
+                <span className="mx-4 text-xl">Marquee Item 4</span>
+                <span className="mx-4 text-xl">Marquee Item 5</span>
+              </div>
+
+              <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
+                <span className="mx-4 text-xl">Marquee Item 1</span>
+                <span className="mx-4 text-xl">Marquee Item 2</span>
+                <span className="mx-4 text-xl">Marquee Item 3</span>
+                <span className="mx-4 text-xl">Marquee Item 4</span>
+                <span className="mx-4 text-xl">Marquee Item 5</span>
+              </div> */}
+            </div>
+          )}
         </div>
         <div className="block max-w-full overflow-y-hidden">
           <table className="w-full">
