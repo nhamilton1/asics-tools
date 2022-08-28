@@ -80,8 +80,10 @@ const Model = () => {
     <>
       <Head>
         <title>{model}</title>
-        <meta name="description" content="Single ASIC miner information" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content={`Single ASIC miner information ${model}`}
+        />
       </Head>
       <div className="flex flex-col justify-center items-center text-white gap-10 ">
         <div className="flex lg:flex-row flex-col justify-center flex-wrap items-center gap-10 w-full lg:px-10 px-3">

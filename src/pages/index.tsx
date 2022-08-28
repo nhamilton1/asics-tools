@@ -297,20 +297,12 @@ const Home: NextPageWithLayout = () => {
   return (
     <>
       <Head>
-        <title>ASIC Tools - NextJS</title>
+        <title>ASIC Tools</title>
         <meta
           name="description"
           content="List of Bitcoin ASIC miners for sale"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* {isLoading && (
-        <div className="h-screen flex items-center justify-center flex-col">
-          <h1 className="text-4xl font-bold">
-            <span className="text-white ">Loading...</span>
-          </h1>
-        </div>
-      )} */}
       <main className="flex flex-col items-start justify-start bg-slate-900 text-white font-Roboto">
         <div className="w-full flex lg:flex-row lg:items-center items-start justify-center flex-col-reverse lg:gap-0 gap-10">
           <div className="flex flex-row items-center justify-start gap-2 lg:ml-5 ml-2">
