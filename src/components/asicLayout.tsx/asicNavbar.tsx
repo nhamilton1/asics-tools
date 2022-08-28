@@ -5,10 +5,12 @@ import { trpc } from "../../utils/trpc";
 const AsicNavbar = () => {
   const router = useRouter();
 
-  const { data } = trpc.useQuery(["mempool.get-difficulty-adjustment"]);
+  const { data, isLoading } = trpc.useQuery([
+    "mempool.get-difficulty-adjustment",
+  ]);
 
   return (
-    <div className="w-full p-5 flex flex-row justify-between items-center">
+    <div className="w-full p-5 flex flex-row justify-between items-center flex-wrap gap-2">
       <div className="flex flex-row justify-start items-center">
         <h1 className="xl:text-4xl text-2xl font-extrabold text-[#ffffff]">
           {router.pathname === "/" ? (
@@ -18,59 +20,129 @@ const AsicNavbar = () => {
           )}
         </h1>
       </div>
-      <div className="flex flex-row gap-10 items-center justify-center">
-        <div className="text-white text-center">
-          <div>Difficulty Adjustment</div>
-          {!!data?.difficultyChange && data.difficultyChange > 0 ? (
-            <div className="flex flex-row gap-2 justify-center items-center">
-              <div className="h-0 w-0 border-x-8 border-x-transparent border-b-[16px] border-b-green-600" />
-              <span className="text-white">
-                {data.difficultyChange.toFixed(2)}%
-              </span>
+      <div className="flex flex-row gap-10 items-start justify-center flex-wrap">
+        {isLoading ? (
+          Array(5)
+            .fill(0)
+            .map((_, i) => <LoadingSkeleton key={i} />)
+        ) : (
+          <>
+            <div className="flex flex-col justify-center items-center text-white">
+              {" "}
+              Block {data?.blockHeight} mined by:
+              <span>{data?.poolMostRecentMinedBlock}</span>
             </div>
-          ) : (
-            <div className="flex flex-row gap-2 justify-center items-center">
-              <div className="h-0 w-0 border-x-8 border-x-transparent border-t-[16px] border-t-red-600" />
-              <span className="text-white">
-                {data?.difficultyChange.toFixed(2)}%
-              </span>
-            </div>
-          )}
-          <div className="flex flex-row justify-center items-center gap-2 text-sm">
-            Previous
-            {data?.previousRetarget && data.previousRetarget > 0 ? (
-              <>
-                <div className="h-0 w-0 border-x-4 border-x-transparent border-b-[8px] border-b-green-600" />
-                <span>{data?.previousRetarget.toFixed(2)}%</span>
-              </>
-            ) : (
-              <>
-                <div className="h-0 w-0 border-x-4 border-x-transparent border-t-[8px] border-t-red-600" />
-                <span>{data?.previousRetarget.toFixed(2)}%</span>
-              </>
-            )}
-          </div>
-        </div>
 
-        <div className="text-center">
-          <div className="flex justify-between mb-1">
-            <span className="text-base font-medium text-white dark:text-white">
-              Progress Precent
-            </span>
-          </div>
-          <div className="w-full bg-slate-900 rounded-full h-2.5 dark:bg-gray-700 text-center">
-            <div
-              className="bg-orange-600 h-2.5 rounded-full"
-              style={{ width: `${data?.progressPercent}%` }}
-            />
-          </div>
-          <span className="text-sm font-medium text-white dark:text-white">
-            {data?.progressPercent.toFixed(2)}%
-          </span>
-        </div>
+            <div className="flex flex-col justify-center items-center text-white">
+              <div>Blocks Remaining</div>
+              {!!data?.difficultyAdjustment.remainingBlocks && (
+                <span>{data.difficultyAdjustment.remainingBlocks}</span>
+              )}
+            </div>
+
+            <div className="flex flex-col justify-center items-center text-white">
+              <div>Next Adjustment</div>
+              {!!data?.difficultyAdjustment.remainingTime && (
+                <span>
+                  ~
+                  {
+                    //how many days until next adjustment from milliseconds
+                    (
+                      (new Date(
+                        data.difficultyAdjustment.remainingTime
+                      ).getTime() -
+                        new Date().getTime()) /
+                      1000 /
+                      60 /
+                      60 /
+                      24
+                    ).toFixed(0)
+                  }{" "}
+                  Days
+                </span>
+              )}
+            </div>
+
+            <div className="text-white text-center">
+              <div>Difficulty Adjustment</div>
+              {!!data?.difficultyAdjustment.difficultyChange &&
+              data.difficultyAdjustment.difficultyChange > 0 ? (
+                <div className="flex flex-row gap-2 justify-center items-center">
+                  <div className="h-0 w-0 border-x-8 border-x-transparent border-b-[16px] border-b-green-600" />
+                  <span className="text-white">
+                    {data.difficultyAdjustment.difficultyChange.toFixed(2)}%
+                  </span>
+                </div>
+              ) : (
+                <div className="flex flex-row gap-2 justify-center items-center">
+                  <div className="h-0 w-0 border-x-8 border-x-transparent border-t-[16px] border-t-red-600" />
+                  <span className="text-white">
+                    {data?.difficultyAdjustment.difficultyChange.toFixed(2)}%
+                  </span>
+                </div>
+              )}
+              <div className="flex flex-row justify-center items-center gap-2 text-xs">
+                Previous
+                {data?.difficultyAdjustment.previousRetarget &&
+                data.difficultyAdjustment.previousRetarget > 0 ? (
+                  <>
+                    <div className="h-0 w-0 border-x-4 border-x-transparent border-b-[8px] border-b-green-600" />
+                    <span>
+                      {data?.difficultyAdjustment.previousRetarget.toFixed(2)}%
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <div className="h-0 w-0 border-x-4 border-x-transparent border-t-[8px] border-t-red-600" />
+                    <span>
+                      {data?.difficultyAdjustment.previousRetarget.toFixed(2)}%
+                    </span>
+                  </>
+                )}
+              </div>
+            </div>
+
+            <div className="text-center">
+              <div className="flex justify-between mb-1">
+                <span className="text-base font-medium text-white dark:text-white">
+                  Progress Precent
+                </span>
+              </div>
+              <div className="w-full bg-slate-900 rounded-full h-2.5 dark:bg-gray-700 text-center">
+                <div
+                  className="bg-orange-500 h-2.5 rounded-full"
+                  style={{
+                    width: `${data?.difficultyAdjustment.progressPercent}%`,
+                  }}
+                />
+              </div>
+              <span className="text-sm font-medium text-white dark:text-white">
+                {data?.difficultyAdjustment.progressPercent.toFixed(2)}%
+              </span>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
 };
 
 export default AsicNavbar;
+
+const LoadingSkeleton = () => {
+  return (
+    <div
+      role="status"
+      className="max-w-sm animate-pulse flex flex-col justify-center items-center mt-2"
+    >
+      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
+
+      <div className="flex items-center mt-4 space-x-3">
+        <div>
+          <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-16 mb-2"></div>
+        </div>
+      </div>
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
+};
