@@ -66,6 +66,16 @@ const Model = () => {
     },
   });
 
+  if (isLoading) {
+    return (
+      <div className="h-screen flex items-center justify-center flex-col">
+        <h1 className="text-4xl font-bold">
+          <span className="text-white ">Loading...</span>
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <>
       <Head>
@@ -73,13 +83,6 @@ const Model = () => {
         <meta name="description" content="Single ASIC miner information" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {isLoading && (
-        <div className="h-screen flex items-center justify-center flex-col">
-          <h1 className="text-4xl font-bold">
-            <span className="text-white ">Loading...</span>
-          </h1>
-        </div>
-      )}
       <div className="flex flex-col justify-center items-center text-white gap-10 ">
         <div className="flex lg:flex-row flex-col justify-center flex-wrap items-center gap-10 w-full lg:px-10 px-3">
           <div className="flex flex-col w-full sm:max-w-sm">

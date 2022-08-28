@@ -23,6 +23,7 @@ import AsicLayout from "../components/asicLayout.tsx/asicLayout";
 import { NextPageWithLayout } from "./_app";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { LoadingSkeletonTicker } from "../components/loadingSkeletons";
 
 type AsicData =
   | {
@@ -303,13 +304,13 @@ const Home: NextPageWithLayout = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {isLoading && (
+      {/* {isLoading && (
         <div className="h-screen flex items-center justify-center flex-col">
           <h1 className="text-4xl font-bold">
             <span className="text-white ">Loading...</span>
           </h1>
         </div>
-      )}
+      )} */}
       <main className="flex flex-col items-start justify-start bg-slate-900 text-white font-Roboto">
         <div className="w-full flex lg:flex-row lg:items-center items-start justify-center flex-col-reverse lg:gap-0 gap-10">
           <div className="flex flex-row items-center justify-start gap-2 lg:ml-5 ml-2">
@@ -328,15 +329,16 @@ const Home: NextPageWithLayout = () => {
               }}
             />
           </div>
-
           {isLoadingMinedBlocks ? (
-            <div>Loading...</div>
+            <div className="relative flex overflow-x-hidden w-full items-center justify-center mr-5">
+              <LoadingSkeletonTicker />
+            </div>
           ) : (
             <div className="relative flex overflow-x-hidden w-full items-center justify-center mr-5">
               {!!minedBlocks && (
                 <div className="animate-marquee whitespace-nowrap">
                   {minedBlocks.map((block) => (
-                    <span className="mx-4 text-xl" key={block.height}>
+                    <span className="mx-4 text-lg" key={block.height}>
                       Block {block.height}: {block.pool}
                     </span>
                   ))}
@@ -346,107 +348,162 @@ const Home: NextPageWithLayout = () => {
               {!!minedBlocks && (
                 <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
                   {minedBlocks.map((block) => (
-                    <span className="mx-4 text-xl" key={block.height}>
+                    <span className="mx-4 text-lg" key={block.height}>
                       Block {block.height}: {block.pool}
                     </span>
                   ))}
                 </div>
               )}
-
-              {/* <div className="animate-marquee whitespace-nowrap">
-                <span className="mx-4 text-xl">Marquee Item 1</span>
-                <span className="mx-4 text-xl">Marquee Item 2</span>
-                <span className="mx-4 text-xl">Marquee Item 3</span>
-                <span className="mx-4 text-xl">Marquee Item 4</span>
-                <span className="mx-4 text-xl">Marquee Item 5</span>
-              </div>
-
-              <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
-                <span className="mx-4 text-xl">Marquee Item 1</span>
-                <span className="mx-4 text-xl">Marquee Item 2</span>
-                <span className="mx-4 text-xl">Marquee Item 3</span>
-                <span className="mx-4 text-xl">Marquee Item 4</span>
-                <span className="mx-4 text-xl">Marquee Item 5</span>
-              </div> */}
             </div>
           )}
         </div>
-        <div className="block max-w-full overflow-y-hidden">
-          <table className="w-full">
-            <thead className="border-b">
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id} className="text-left">
-                  {headerGroup.headers.map((header) => (
-                    <th
-                      key={header.id}
-                      className="text-sm font-medium px-4 py-2"
-                      colSpan={header.colSpan}
-                      style={{ position: "relative", width: header.getSize() }}
-                    >
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                      {header.column.getCanFilter() &&
-                      header.column.columnDef.header === "Model" ? (
-                        <Filter column={header.column} table={table} />
-                      ) : null}
-                      {header.column.getCanResize() && (
-                        <div
-                          onMouseDown={header.getResizeHandler()}
-                          onTouchStart={header.getResizeHandler()}
-                          className={`resizer ${
-                            header.column.getIsResizing() ? "isResizing" : ""
-                          }`}
-                        />
-                      )}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table.getRowModel().rows.map((row, index) => (
-                <tr
-                  key={row.id}
-                  className={`border-b transition duration-300 ease-in-out hover:bg-slate-700 ${
-                    index % 2 ? "bg-slate-900" : "bg-slate-800"
-                  }`}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <td
-                      key={cell.id}
-                      className={`px-4 py-4 whitespace-nowrap ${
-                        cell.column.columnDef.header === "Model"
-                          ? "cursor-pointer hover:text-orange-400"
-                          : ""
-                      }`}
-                      style={{ width: cell.column.getSize() }}
-                      onClick={() => {
-                        if (cell.column.columnDef.header === "Model") {
-                          const model = cell.row.original?.model.includes(
-                            "J/th"
-                          )
-                            ? cell.row.original?.model.replace("J/th", "J th")
-                            : cell.row.original?.model;
 
-                          router.push(`/[model]`, `/${model}`);
-                        } else return;
-                      }}
+        {isLoading ? (
+          <div className="block max-w-full overflow-y-hidden">
+            <table className="w-full">
+              <thead className="border-b">
+                {table.getHeaderGroups().map((headerGroup) => (
+                  <tr key={headerGroup.id} className="text-left">
+                    {headerGroup.headers.map((header) => (
+                      <th
+                        key={header.id}
+                        className="text-sm font-medium px-4 py-2"
+                        colSpan={header.colSpan}
+                        style={{
+                          position: "relative",
+                          width: header.getSize(),
+                        }}
+                      >
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                        {header.column.getCanFilter() &&
+                        header.column.columnDef.header === "Model" ? (
+                          <Filter column={header.column} table={table} />
+                        ) : null}
+                        {header.column.getCanResize() && (
+                          <div
+                            onMouseDown={header.getResizeHandler()}
+                            onTouchStart={header.getResizeHandler()}
+                            className={`resizer ${
+                              header.column.getIsResizing() ? "isResizing" : ""
+                            }`}
+                          />
+                        )}
+                      </th>
+                    ))}
+                  </tr>
+                ))}
+              </thead>
+              <tbody>
+                {Array(10)
+                  .fill(0)
+                  .map((_, i) => (
+                    <tr
+                      key={i}
+                      className={`border-b transition duration-300 ease-in-out hover:bg-slate-700 ${
+                        i % 2 ? "bg-slate-900" : "bg-slate-800"
+                      }`}
                     >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
+                      {Array(16)
+                        .fill(0)
+                        .map((_, j) => (
+                          <td className={`px-4 py-4 whitespace-nowrap`} key={j}>
+                            <div className="flex items-center mt-4 space-x-3">
+                              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-10"></div>
+                            </div>
+                          </td>
+                        ))}
+                    </tr>
                   ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="block max-w-full overflow-y-hidden">
+            <table className="w-full">
+              <thead className="border-b">
+                {table.getHeaderGroups().map((headerGroup) => (
+                  <tr key={headerGroup.id} className="text-left">
+                    {headerGroup.headers.map((header) => (
+                      <th
+                        key={header.id}
+                        className="text-sm font-medium px-4 py-2"
+                        colSpan={header.colSpan}
+                        style={{
+                          position: "relative",
+                          width: header.getSize(),
+                        }}
+                      >
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                        {header.column.getCanFilter() &&
+                        header.column.columnDef.header === "Model" ? (
+                          <Filter column={header.column} table={table} />
+                        ) : null}
+                        {header.column.getCanResize() && (
+                          <div
+                            onMouseDown={header.getResizeHandler()}
+                            onTouchStart={header.getResizeHandler()}
+                            className={`resizer ${
+                              header.column.getIsResizing() ? "isResizing" : ""
+                            }`}
+                          />
+                        )}
+                      </th>
+                    ))}
+                  </tr>
+                ))}
+              </thead>
+              <tbody>
+                {table.getRowModel().rows.map((row, index) => (
+                  <tr
+                    key={row.id}
+                    className={`border-b transition duration-300 ease-in-out hover:bg-slate-700 ${
+                      index % 2 ? "bg-slate-900" : "bg-slate-800"
+                    }`}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <td
+                        key={cell.id}
+                        className={`px-4 py-4 whitespace-nowrap ${
+                          cell.column.columnDef.header === "Model"
+                            ? "cursor-pointer hover:text-orange-400"
+                            : ""
+                        }`}
+                        style={{ width: cell.column.getSize() }}
+                        onClick={() => {
+                          if (cell.column.columnDef.header === "Model") {
+                            const model = cell.row.original?.model.includes(
+                              "J/th"
+                            )
+                              ? cell.row.original?.model.replace("J/th", "J th")
+                              : cell.row.original?.model;
+
+                            router.push(`/[model]`, `/${model}`);
+                          } else return;
+                        }}
+                      >
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
         <div className="bg-slate-900 w-full p-4">
           <div className="flex items-center justify-center gap-2 w-full my-4">
             <button

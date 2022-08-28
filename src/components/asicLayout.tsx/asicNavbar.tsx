@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { trpc } from "../../utils/trpc";
+import { LoadingSkeletonNav } from "../loadingSkeletons";
 
 const AsicNavbar = () => {
   const router = useRouter();
@@ -22,9 +23,7 @@ const AsicNavbar = () => {
       </div>
       <div className="flex flex-row gap-10 items-start justify-center flex-wrap">
         {isLoading ? (
-          Array(5)
-            .fill(0)
-            .map((_, i) => <LoadingSkeleton key={i} />)
+          <LoadingSkeletonNav />
         ) : (
           <>
             <div className="flex flex-col justify-center items-center text-white">
@@ -108,7 +107,7 @@ const AsicNavbar = () => {
                   Progress Precent
                 </span>
               </div>
-              <div className="w-full bg-slate-900 rounded-full h-2.5 dark:bg-gray-700 text-center">
+              <div className="w-full bg-slate-700 rounded-full h-2.5 dark:bg-gray-700 text-center">
                 <div
                   className="bg-orange-500 h-2.5 rounded-full"
                   style={{
@@ -128,21 +127,3 @@ const AsicNavbar = () => {
 };
 
 export default AsicNavbar;
-
-const LoadingSkeleton = () => {
-  return (
-    <div
-      role="status"
-      className="max-w-sm animate-pulse flex flex-col justify-center items-center mt-2"
-    >
-      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
-
-      <div className="flex items-center mt-4 space-x-3">
-        <div>
-          <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-16 mb-2"></div>
-        </div>
-      </div>
-      <span className="sr-only">Loading...</span>
-    </div>
-  );
-};
