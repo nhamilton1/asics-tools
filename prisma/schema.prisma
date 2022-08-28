@@ -10,12 +10,14 @@ datasource db {
 }
 
 model miner_data {
-    model      String @id @unique
+    model      String @id
     th         Float
     watts      Float
     efficiency Float
 
     market_data market_data[]
+
+    @@unique([model, th, watts, efficiency])
 }
 
 model market_data {

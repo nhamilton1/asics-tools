@@ -31,11 +31,11 @@ type marketInfoDupCheckType =
 const scheduler = async () => {
   console.time("time");
   try {
-    const minerInfo = await prisma.miner_data.findMany();
-    const marketInfo = await prisma.market_data.findMany();
     const scrapeForMFBData = (await minefarmbuyScraper()) || [];
     const scrapeForUpstreamData = (await upStreamDataCrawler()) || [];
     const scrapeForKaboomData = (await kaboomracksScraper()) || [];
+    const marketInfo = await prisma.market_data.findMany();
+    const minerInfo = await prisma.miner_data.findMany();
 
     let allData: allDataType;
 
