@@ -11,6 +11,7 @@ import favicon from "../../public/images/favicon.ico";
 import favicon32 from "../../public/images/favicon-32x32.png";
 import favicon16 from "../../public/images/favicon-16x16.png";
 import appleTouchIcon from "../../public/images/apple-touch-icon.png";
+import PlausibleProvider from "next-plausible";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -26,20 +27,32 @@ export function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     <>
-      <Head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href={appleTouchIcon.src}
-        />
-        <link rel="shortcut icon" href={favicon.src} type="image/x-icon" />
-        <link rel="icon" type="image/png" sizes="32x32" href={favicon32.src} />
-        <link rel="icon" type="image/png" sizes="16x16" href={favicon16.src} />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
-      </Head>
-      <Component {...pageProps} />
+      <PlausibleProvider domain="asic-tools.com">
+        <Head>
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href={appleTouchIcon.src}
+          />
+          <link rel="shortcut icon" href={favicon.src} type="image/x-icon" />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href={favicon32.src}
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href={favicon16.src}
+          />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+          <meta name="msapplication-TileColor" content="#da532c" />
+          <meta name="theme-color" content="#ffffff" />
+        </Head>
+        <Component {...pageProps} />
+      </PlausibleProvider>
     </>
   );
 }
