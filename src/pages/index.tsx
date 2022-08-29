@@ -405,7 +405,7 @@ const Home: NextPageWithLayout = () => {
                         .map((_, j) => (
                           <td className={`px-4 py-4 whitespace-nowrap`} key={j}>
                             <div className="flex items-center mt-4 space-x-3">
-                              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-10"></div>
+                              <div className="h-2.5 bg-gray-400 rounded-full dark:bg-gray-700 w-10"></div>
                             </div>
                           </td>
                         ))}
