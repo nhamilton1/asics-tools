@@ -57,7 +57,17 @@ const AsicNavbar = () => {
                       24
                     ).toFixed(0)
                   }{" "}
-                  Days
+                  {(new Date(
+                    data.difficultyAdjustment.remainingTime
+                  ).getTime() -
+                    new Date().getTime()) /
+                    1000 /
+                    60 /
+                    60 /
+                    24 >=
+                  2
+                    ? "Days"
+                    : "Day"}
                 </span>
               )}
             </div>
