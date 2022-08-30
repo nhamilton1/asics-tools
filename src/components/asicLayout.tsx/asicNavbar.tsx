@@ -46,28 +46,44 @@ const AsicNavbar = () => {
                   ~
                   {
                     //how many days until next adjustment from milliseconds
-                    (
-                      (new Date(
-                        data.difficultyAdjustment.remainingTime
-                      ).getTime() -
-                        new Date().getTime()) /
+
+                    (new Date(
+                      data.difficultyAdjustment.remainingTime
+                    ).getTime() -
+                      new Date().getTime()) /
                       1000 /
                       60 /
                       60 /
-                      24
-                    ).toFixed(0)
+                      24 >
+                    0
+                      ? (
+                          (new Date(
+                            data.difficultyAdjustment.remainingTime
+                          ).getTime() -
+                            new Date().getTime()) /
+                          1000 /
+                          60 /
+                          60 /
+                          24
+                        ).toFixed(0)
+                      : // in hours
+                        (
+                          data?.difficultyAdjustment.remainingTime /
+                          1000 /
+                          60 /
+                          60
+                        ).toFixed(0)
                   }{" "}
-                  {(new Date(
-                    data.difficultyAdjustment.remainingTime
-                  ).getTime() -
-                    new Date().getTime()) /
-                    1000 /
-                    60 /
-                    60 /
-                    24 >=
-                  2
+                  {data?.difficultyAdjustment.remainingTime / 1000 / 60 / 60 >=
+                  24
                     ? "Days"
-                    : "Day"}
+                    : data?.difficultyAdjustment.remainingTime /
+                        1000 /
+                        60 /
+                        60 >
+                      1
+                    ? "Hours"
+                    : "Hour"}
                 </span>
               )}
             </div>
