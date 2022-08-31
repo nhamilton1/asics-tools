@@ -322,11 +322,11 @@ const Home: NextPageWithLayout = () => {
             />
           </div>
           {isLoadingMinedBlocks ? (
-            <div className="relative flex overflow-x-hidden w-full items-center justify-center mr-5">
+            <div className="relative flex overflow-x-hidden w-full items-center justify-center mr-5 rounded-full">
               <LoadingSkeletonTicker />
             </div>
           ) : (
-            <div className="relative flex overflow-x-hidden w-full items-center justify-center mr-5">
+            <div className="relative flex overflow-x-hidden w-full items-center justify-center mr-5 rounded-full">
               {!!minedBlocks && (
                 <div className="animate-marquee whitespace-nowrap">
                   {minedBlocks.map((block) => (
