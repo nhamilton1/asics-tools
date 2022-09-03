@@ -8,5 +8,5 @@ html {
 
 @font-face {
   font-family: "Roboto";
-  src: url("../../public/fonts/Roboto-Regular.ttf");
+  src: url("../public/fonts/Roboto-Regular.ttf");
 }

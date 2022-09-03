@@ -7,10 +7,10 @@ import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import favicon from "../../public/images/favicon.ico";
-import favicon32 from "../../public/images/favicon-32x32.png";
-import favicon16 from "../../public/images/favicon-16x16.png";
-import appleTouchIcon from "../../public/images/apple-touch-icon.png";
+import favicon from "../public/images/favicon.ico";
+import favicon32 from "../public/images/favicon-32x32.png";
+import favicon16 from "../public/images/favicon-16x16.png";
+import appleTouchIcon from "../public/images/apple-touch-icon.png";
 import PlausibleProvider from "next-plausible";
 
 export type NextPageWithLayout = NextPage & {

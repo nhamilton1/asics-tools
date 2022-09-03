@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import GitHubLogo from "../../../public/images/github.png";
-import twitterLogo from "../../../public/images/twitter.png";
+import GitHubLogo from "../../public/images/github.png";
+import twitterLogo from "../../public/images/twitter.png";
 
 const AsicFooter = () => {
   return (
