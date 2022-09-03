@@ -23,7 +23,7 @@ import AsicLayout from "../components/asicLayout.tsx/asicLayout";
 import { NextPageWithLayout } from "./_app";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { LoadingSkeletonTicker } from "../components/loadingSkeletons";
+import MinedBlocksTicker from "../components/minedBlocksTicker";
 
 type AsicData =
   | {
@@ -56,15 +56,6 @@ const Home: NextPageWithLayout = () => {
   const router = useRouter();
   const [kWhPrice, setKWhPrice] = useState<number>(
     Number(localStorage?.getItem("kWhPrice")) || 0.12
-  );
-
-  const { data: minedBlocks, isLoading: isLoadingMinedBlocks } = trpc.useQuery(
-    ["mempool.get-mined-blocks"],
-    {
-      cacheTime: 10000,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-    }
   );
 
   const { data: asicData, isLoading } = trpc.useQuery(
@@ -321,33 +312,7 @@ const Home: NextPageWithLayout = () => {
               }}
             />
           </div>
-          {isLoadingMinedBlocks ? (
-            <div className="relative flex overflow-x-hidden w-full items-center justify-center mr-5 rounded-full">
-              <LoadingSkeletonTicker />
-            </div>
-          ) : (
-            <div className="relative flex overflow-x-hidden w-full items-center justify-center mr-5 rounded-full">
-              {!!minedBlocks && (
-                <div className="animate-marquee whitespace-nowrap">
-                  {minedBlocks.map((block) => (
-                    <span className="mx-4 text-lg" key={block.height}>
-                      Block {block.height}: {block.pool}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              {!!minedBlocks && (
-                <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
-                  {minedBlocks.map((block) => (
-                    <span className="mx-4 text-lg" key={block.height}>
-                      Block {block.height}: {block.pool}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+          <MinedBlocksTicker />
         </div>
 
         {isLoading ? (
