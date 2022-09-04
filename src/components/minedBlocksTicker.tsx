@@ -14,7 +14,7 @@ import marapool from "../public/images/marapool.svg";
 import sbicrypto from "../public/images/sbicrypto.svg";
 import slushpool from "../public/images/slushpool.svg";
 import viabtc from "../public/images/viabtc.svg";
-import unknown from "../public/images/unknown.png";
+import unknown from "../public/images/unknown.svg";
 
 const MinedBlocksTicker = () => {
   const { data: minedBlocks, isLoading: isLoadingMinedBlocks } = trpc.useQuery(
