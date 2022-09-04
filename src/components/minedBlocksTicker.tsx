@@ -36,9 +36,9 @@ const MinedBlocksTicker = () => {
         <div className="relative flex overflow-x-hidden w-full items-center justify-center mr-5 rounded-full">
           {!!minedBlocks && (
             <div className="animate-marquee whitespace-nowrap">
-              {minedBlocks.map((block) => (
+              {minedBlocks.map((block, index) => (
                 <span className="mx-4 text-lg" key={block.height}>
-                  Block {block.height}: {block.pool}{" "}
+                  {index + 1}. Block {block.height}: {block.pool}{" "}
                   <Image
                     src={getPoolLogo(block.pool)}
                     alt="F2Pool"
@@ -56,9 +56,9 @@ const MinedBlocksTicker = () => {
 
           {!!minedBlocks && (
             <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
-              {minedBlocks.map((block) => (
+              {minedBlocks.map((block, index) => (
                 <span className="mx-4 text-lg" key={block.height}>
-                  Block {block.height}: {block.pool}{" "}
+                  {index + 1}. Block {block.height}: {block.pool}{" "}
                   <Image
                     src={getPoolLogo(block.pool)}
                     alt="F2Pool"
