@@ -46,8 +46,6 @@ const MinedBlocksTicker = () => {
                     height={24}
                     layout="fixed"
                     priority={true}
-                    placeholder="blur"
-                    blurDataURL={getPoolLogo(block.pool)}
                   />
                 </span>
               ))}
@@ -66,8 +64,6 @@ const MinedBlocksTicker = () => {
                     height={24}
                     layout="fixed"
                     priority={true}
-                    placeholder="blur"
-                    blurDataURL={getPoolLogo(block.pool)}
                   />
                 </span>
               ))}
