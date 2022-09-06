@@ -599,20 +599,45 @@ function DenverAndDefs(
           <li className="py-2 border-b px-4">
             Values that are used in the table, but are not displayed
           </li>
-          <li className="py-2 border-b flex flex-row justify-between gap-10 px-4">
-            Current BTC price: <span>{price}</span>
+          <li className="py-2 border-b flex flex-row justify-between items-center gap-10 px-4">
+            Current BTC price:{" "}
+            {!price ? (
+              <div className="h-4 bg-gray-400 rounded-full dark:bg-gray-700 w-16" />
+            ) : (
+              <span>{price}</span>
+            )}
           </li>
-          <li className="py-2 border-b flex flex-row justify-between gap-10 px-4">
-            Current Network Hashrate: <span>{hashrate} EH/s</span>
+          <li className="py-2 border-b flex flex-row justify-between items-center gap-10 px-4">
+            Current Network Hashrate:{" "}
+            {!hashrate ? (
+              <div className="h-4 bg-gray-400 rounded-full dark:bg-gray-700 w-16" />
+            ) : (
+              <span>{hashrate}</span>
+            )}
           </li>
-          <li className="py-2 border-b flex flex-row justify-between gap-10 px-4">
-            Current Hash Price: <span>{hashPrice}</span>
+          <li className="py-2 border-b flex flex-row justify-between items-center gap-10 px-4">
+            Current Hash Price:{" "}
+            {!hashPrice ? (
+              <div className="h-4 bg-gray-400 rounded-full dark:bg-gray-700 w-16" />
+            ) : (
+              <span>{hashPrice}</span>
+            )}
           </li>
-          <li className="py-2 border-b flex flex-row justify-between gap-10 px-4">
-            Elongated Hash Price: <span>{enlongatedHashPrice}</span>
+          <li className="py-2 border-b flex flex-row justify-between items-center gap-10 px-4">
+            Elongated Hash Price:{" "}
+            {!enlongatedHashPrice ? (
+              <div className="h-4 bg-gray-400 rounded-full dark:bg-gray-700 w-16" />
+            ) : (
+              <span>{enlongatedHashPrice}</span>
+            )}
           </li>
-          <li className="py-2 border-b flex flex-row justify-between gap-10 px-4">
-            Current Hash Value: <span>{hashValue} sats</span>
+          <li className="py-2 border-b flex flex-row justify-between items-center gap-10 px-4">
+            Current Hash Value:{" "}
+            {!hashValue ? (
+              <div className="h-4 bg-gray-400 rounded-full dark:bg-gray-700 w-16" />
+            ) : (
+              <span>{hashValue}</span>
+            )}
           </li>
         </ul>
       </div>
