@@ -80,6 +80,12 @@ const kaboomracksScraper = async () => {
           .filter((i): number | null => i)
       )[0] || [];
 
+    // removes used asics, for now, until I add a column for it in the db and logic
+    // is this a good idea? do I add this?
+    // const isASICNew =
+    //   !minerData.includes("Used in Good Condition") ||
+    //   !minerData.includes("#used");
+
     /*
       ====================== Formatting for Antminers ======================
     */
@@ -281,10 +287,11 @@ const kaboomracksScraper = async () => {
       individualSales != null &&
       moqTest![0] === 1
     ) {
+      if (!minerData) throw new Error("No miner data found");
+
       let price = Number(minerData.match(/(?<=[$]\s*).*?(?=\s*each —)/gs)![0]);
 
-      //#TODO: Clean tihs up
-      //this is ugly as fuck and its too early to try to clean this up
+      //#TODO: Clean this up
       let date =
         new Date(
           minerData
@@ -316,12 +323,15 @@ const kaboomracksScraper = async () => {
       date = new Date(new Date(date).toLocaleDateString("en-CA"));
 
       let asicModel = minerData.match(/(?=Whatsminer M\s*).*?(?=\s*for)/gs)![0];
+      if (!asicModel) throw new Error("No asic model found");
 
-      let asicSearchName = minerData
-        ?.match(/(?=Whatsminer M\s*).*?(?=\s*T)/gs)![0]
-        ?.split(" ")
-        ?.slice(0, -1)
-        ?.join(" ") as string;
+      // replacing all logic with this func, lets see how it does
+      let asicSearchName = getSearchName(minerData);
+      // let asicSearchName = minerData
+      //   ?.match(/(?=Whatsminer M\s*).*?(?=\s*T)/gs)![0]
+      //   ?.split(" ")
+      //   ?.slice(0, -1)
+      //   ?.join(" ") as string;
 
       let th = Number(
         asicModel
@@ -332,18 +342,25 @@ const kaboomracksScraper = async () => {
           ?.replace("T", "")
       );
 
-      // console.log(asicModel)
-      // console.log(asicSearchName)
+      if (!th) {
+        th = findTh(minerData);
+      }
 
-      const asicName = asicModel?.match(/(?=Whatsminer M\s*).*?(?=\s*T)/gs);
+      const asicName =
+        asicModel?.match(/(?=Whatsminer M\s*).*?(?=\s*T)/gs) !== null
+          ? asicModel?.match(/(?=Whatsminer M\s*).*?(?=\s*T)/gs)
+          : `${asicModel} ${th}`;
+
+      if (!asicName) throw new Error("No asic name found");
 
       const { watts, efficiency } = await asicModelDbCheck(
-        asicModel!,
+        asicModel,
         th,
         asicSearchName
       );
 
-      let model = `${asicName![0]}T`;
+      let model = `${asicName.length < 0 ? asicName[0] : asicName}T`;
+
       let id = sha1(vendor + model + price + date);
 
       const matchedAsicNameInDb = await prisma.miner_data.findFirst({
@@ -499,3 +516,40 @@ const kaboomracksScraper = async () => {
 };
 
 export default kaboomracksScraper;
+
+const findTh = (asicString: string): number => {
+  // get Th/s from the string
+  const arrayOfTestString = asicString.split(" ");
+
+  const IndexOfTh = arrayOfTestString
+    .map((word, index) => (word.includes("Th/s") ? index : null))
+    .filter((index) => index !== null)[0];
+
+  if (IndexOfTh === null || !IndexOfTh) throw new Error("Th/s not found");
+
+  // if indexOfTh is not null, then we found Th/s, so the th should be the index before
+  const th = arrayOfTestString[IndexOfTh - 1];
+
+  return Number(th);
+};
+
+const getSearchName = (asicString: string): string => {
+  // get Th/s from the string
+  const arrayOfTestString = asicString.split(" ");
+
+  const IndexOfModel = arrayOfTestString
+    .map((word, index) => (word.includes("Whatsminer") ? index : null))
+    .filter((index) => index !== null)[0];
+
+  if (IndexOfModel === null || !IndexOfModel)
+    throw new Error("Whatsminer not found");
+
+  // if indexOfTh is not null, then we found whatsminer, so the model should be the one index after
+  const modelType = arrayOfTestString[IndexOfModel + 1];
+
+  if (!modelType) throw new Error("Model type not found");
+
+  const searchName = arrayOfTestString[IndexOfModel] + " " + modelType;
+
+  return searchName;
+};

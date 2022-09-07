@@ -104,7 +104,7 @@ const upStreamDataCrawler = async () => {
 
       const vendor: string = "upstreamdata";
 
-      const date: Date = new Date(new Date().toLocaleDateString("en-CA"));
+      const date: Date = new Date();
 
       const th: number = Number(
         asicModel.includes("h/s")
@@ -116,7 +116,9 @@ const upStreamDataCrawler = async () => {
         ? asicModel.replace(/Th\/s/i, "T")
         : asicModel.replace(/th/i, "T");
 
-      const id = sha1(`upstreamdata ${asicModel} ${price} ${date}`);
+      const id = sha1(`upstreamdata ${asicModel} ${price}`);
+
+      //  ${date} removing date from id for now
 
       const matchedAsicNameInDb = await prisma.miner_data.findFirst({
         where: {

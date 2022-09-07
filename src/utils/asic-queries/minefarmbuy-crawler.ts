@@ -184,7 +184,9 @@ const minefarmbuyScraper = async () => {
                   ifNoPriceFromAsicPrice[0]?.replace("$", "").replace(",", "")
                 )
               : Number(asicPrice[0].replace("$", "").replace(",", ""))
-          } ${new Date().toLocaleDateString("en-US")}`;
+          }`;
+
+          // ${new Date().toLocaleDateString("en-US")} removing date from id
 
           minefarmbuyData.push({
             vendor,
@@ -260,7 +262,9 @@ const minefarmbuyScraper = async () => {
 
             let id = `minefarmbuy ${model} ${Number(
               asicPrice[0]?.replace("$", "").replace(",", "")
-            )} ${new Date().toLocaleDateString("en-US")}`;
+            )}`;
+
+            // ${new Date().toLocaleDateString("en-US")} removing date from id
 
             minefarmbuyData.push({
               vendor,
