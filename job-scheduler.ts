@@ -51,12 +51,14 @@ const scheduler = async () => {
 
     minerInfoDupCheck = allData?.filter(
       (scapeData) =>
-        !minerInfo.find((allAsicData) => allAsicData.model === scapeData.model)
+        minerInfo.findIndex(
+          (allAsicData) => allAsicData.model === scapeData.model
+        ) === -1
     );
     console.log(minerInfoDupCheck);
     console.log(minerInfoDupCheck.length);
 
-    if (minerInfoDupCheck?.length > 0) {
+    if (minerInfoDupCheck.length > 0) {
       await prisma.miner_data.createMany({
         data: minerInfoDupCheck.map((miner) => ({
           model: miner.model,
@@ -75,21 +77,15 @@ const scheduler = async () => {
     console.log("market info dupe check length", marketInfoDupCheck?.length);
 
     if (marketInfoDupCheck?.length > 0) {
-      for (const market of marketInfoDupCheck) {
-        await prisma.market_data.create({
-          data: {
-            date: market.date,
-            vendor: market.vendor,
-            price: market.price,
-            id: market.id,
-            miner_data: {
-              connect: {
-                model: market.model,
-              },
-            },
-          },
-        });
-      }
+      await prisma.market_data.createMany({
+        data: marketInfoDupCheck.map((market) => ({
+          date: new Date(market.date),
+          model: market.model,
+          vendor: market.vendor,
+          price: market.price,
+          id: market.id,
+        })),
+      });
     }
   } catch (err) {
     console.error("error in scheduler file", err);
