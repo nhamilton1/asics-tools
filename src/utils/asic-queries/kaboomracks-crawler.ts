@@ -360,7 +360,6 @@ const kaboomracksScraper = async () => {
       );
 
       let model = `${asicName.length < 0 ? asicName[0] : asicName}T`;
-
       let id = sha1(vendor + model + price + date);
 
       const matchedAsicNameInDb = await prisma.miner_data.findFirst({
@@ -371,14 +370,14 @@ const kaboomracksScraper = async () => {
 
       if (!matchedAsicNameInDb) {
         console.log(`${model} not found in db`);
-        // await prisma.miner_data.create({
-        //   data: {
-        //     model,
-        //     th,
-        //     watts,
-        //     efficiency,
-        //   },
-        // });
+        await prisma.miner_data.create({
+          data: {
+            model,
+            th,
+            watts,
+            efficiency,
+          },
+        });
       }
 
       const asicsInfo = {
