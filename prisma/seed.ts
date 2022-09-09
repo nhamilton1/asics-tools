@@ -19,14 +19,27 @@ const main = async () => {
 
   console.log(`Missing ${uniqueMissingMiners.length} miners from db`);
   if (uniqueMissingMiners.length > 0) {
-    await prisma.miner_data.createMany({
-      data: uniqueMissingMiners.map((asics) => ({
-        model: asics.model,
-        watts: asics.watts,
-        efficiency: asics.efficiency,
-        th: asics.th,
-      })),
-    });
+    for (const asic of uniqueMissingMiners) {
+      const isAsicInDb = await prisma.miner_data.findUnique({
+        where: {
+          model: asic.model,
+        },
+      });
+
+      if (!isAsicInDb) {
+        console.log(`Adding ${asic.model} to db`);
+        await prisma.miner_data.create({
+          data: {
+            model: asic.model,
+            th: asic.th,
+            watts: asic.watts,
+            efficiency: asic.efficiency,
+          },
+        });
+      } else {
+        console.log(`${asic.model} already exists in db`);
+      }
+    }
   }
 
   const marketData = await prisma.market_data.findMany();
@@ -55,14 +68,21 @@ const main = async () => {
 
   console.log(`Missing ${uniqueMissingMarketAsics.length} asics from market`);
   if (uniqueMissingMarketAsics.length > 0) {
-    await prisma.market_data.createMany({
-      data: uniqueMissingMarketAsics.map((market) => ({
-        date: new Date(market.date),
-        model: market.model,
-        vendor: market.vendor,
-        price: market.price,
-      })),
-    });
+    for (const market of uniqueMissingMarketAsics) {
+      console.log(`Adding ${market.model} to market`);
+      await prisma.market_data.create({
+        data: {
+          vendor: market.vendor,
+          price: market.price,
+          date: new Date(market.date),
+          miner_data: {
+            connect: {
+              model: market.model,
+            },
+          },
+        },
+      });
+    }
   }
 
   console.log("Seeding complete");
