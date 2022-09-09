@@ -70,7 +70,7 @@ export const asicsRouter = createRouter().query("get-asics-info", {
 
     let currentBTCPrice = btcPrice.price;
     let currentHash = hashRate.current_hashrate;
-    let currentHashValue = Math.round(hashRate.hash_value! * 100000000);
+    let currentHashValue = Math.round(hashRate.hash_value * 100000000);
     let currentHashPrice = Number(
       (currentBTCPrice! * currentHashValue * 0.00000001).toFixed(4)
     );
