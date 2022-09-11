@@ -16,7 +16,9 @@ const BraiinsErrorBanner = () => {
   return (
     <>
       {!!data && (
-        <div className={`w-full ${showBanner ? "block" : "hidden"}`}>
+        <div
+          className={`w-full ${showBanner ? "block" : "animate-transitionUp"}`}
+        >
           <div className="flex flex-row items-center justify-center w-full h-12 bg-red-500">
             <div className="flex flex-row items-center justify-between w-full h-full text-white">
               <div className="ml-5" />
