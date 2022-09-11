@@ -2,7 +2,7 @@ import { useState } from "react";
 import { trpc } from "../../utils/trpc";
 
 const BraiinsErrorBanner = () => {
-  const { data } = trpc.useQuery(["mempool.get-difficulty-adjustment"], {
+  const { data, isLoading } = trpc.useQuery(["braiins.get-braiins-info"], {
     staleTime: Infinity,
     retry: false,
     cacheTime: Infinity,
@@ -11,11 +11,15 @@ const BraiinsErrorBanner = () => {
     refetchOnReconnect: false,
   });
 
-  const [showBanner, setShowBanner] = useState(true);
+  const [showBanner, setShowBanner] = useState(!data);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <>
-      {!!data && (
+      {!data && (
         <div
           className={`w-full ${showBanner ? "block" : "animate-transitionUp"}`}
         >
