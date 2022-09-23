@@ -28,7 +28,16 @@ type marketInfoDupCheckType =
     }[]
   | undefined;
 
-const scheduler = async () => {
+type minerInfoDupCheck =
+  | {
+      model: string;
+      th: number;
+      watts: number;
+      efficiency: number;
+    }[]
+  | undefined;
+
+export const scheduler = async () => {
   console.time("time");
   try {
     const scrapeForMFBData = (await minefarmbuyScraper()) || [];
@@ -40,7 +49,7 @@ const scheduler = async () => {
     let allData: allDataType;
 
     let marketInfoDupCheck: marketInfoDupCheckType;
-    let minerInfoDupCheck;
+    let minerInfoDupCheck: minerInfoDupCheck;
 
     //combine all three scrapers into one array.
     allData = [
@@ -51,9 +60,7 @@ const scheduler = async () => {
 
     minerInfoDupCheck = allData?.filter(
       (scapeData) =>
-        minerInfo.findIndex(
-          (allAsicData) => allAsicData.model === scapeData.model
-        ) === -1
+        minerInfo.findIndex((all) => all.model === scapeData.model) === -1
     );
     console.log(minerInfoDupCheck);
     console.log(minerInfoDupCheck.length);
@@ -77,6 +84,7 @@ const scheduler = async () => {
     console.log("market info dupe check length", marketInfoDupCheck?.length);
 
     if (marketInfoDupCheck?.length > 0) {
+      console.log("adding these to the db:", marketInfoDupCheck);
       await prisma.market_data.createMany({
         data: marketInfoDupCheck.map((market) => ({
           date: new Date(market.date),

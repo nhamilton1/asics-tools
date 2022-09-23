@@ -82,16 +82,21 @@ const kaboomracksScraper = async () => {
 
     // removes used asics, for now, until I add a column for it in the db and logic
     // is this a good idea? do I add this?
-    // const isASICNew =
-    //   !minerData.includes("Used in Good Condition") ||
-    //   !minerData.includes("#used");
+    const isASICNew =
+      !!minerData.includes("Used in Good Condition") ||
+      !!minerData.includes("#used");
 
     /*
       ====================== Formatting for Antminers ======================
     */
 
+    if (minerData.includes("XP")) {
+      s19XPParser(minerData);
+    }
+
     if (
       //might have to change this so it includes T versions
+      isASICNew &&
       minerData?.includes("Antminer S") &&
       individualSales != null &&
       moqTest[0] === 1
@@ -170,7 +175,9 @@ const kaboomracksScraper = async () => {
 
         const asicName = asicModel.match(/(?=Antminer S\s*).*?(?=\s*T)/gs);
         let model = `${asicName![0]}T`;
-        let id = sha1(vendor + model + price + date);
+        let id = sha1(
+          vendor + model + price + date.toLocaleDateString("en-CA")
+        );
 
         const addAsicToDb = await asicModelDbCheck(
           asicModel,
@@ -245,7 +252,9 @@ const kaboomracksScraper = async () => {
         );
 
         let model = `${asicName}T`;
-        let id = sha1(vendor + model + price + date);
+        let id = sha1(
+          vendor + model + price + date.toLocaleDateString("en-CA")
+        );
 
         const matchedAsicNameInDb = await prisma.miner_data.findFirst({
           where: {
@@ -283,6 +292,7 @@ const kaboomracksScraper = async () => {
       ====================== Formatting for Whatsminers ======================
     */
     if (
+      isASICNew &&
       minerData.includes("Whatsminer M") &&
       individualSales != null &&
       moqTest![0] === 1
@@ -346,12 +356,16 @@ const kaboomracksScraper = async () => {
         th = findTh(minerData);
       }
 
-      const asicName =
+      let asicName =
         asicModel?.match(/(?=Whatsminer M\s*).*?(?=\s*T)/gs) !== null
-          ? asicModel?.match(/(?=Whatsminer M\s*).*?(?=\s*T)/gs)
+          ? asicModel?.match(/(?=Whatsminer M\s*).*?(?=\s*T)/gs)?.toString()
           : `${asicModel} ${th}`;
 
       if (!asicName) throw new Error("No asic name found");
+
+      if (asicName?.includes("S")) {
+        asicName = asicName?.replace("S", "s");
+      }
 
       const { watts, efficiency } = await asicModelDbCheck(
         asicModel,
@@ -360,7 +374,8 @@ const kaboomracksScraper = async () => {
       );
 
       let model = `${asicName.length < 0 ? asicName[0] : asicName}T`;
-      let id = sha1(vendor + model + price + date);
+
+      let id = sha1(vendor + model + price + date.toLocaleDateString("en-CA"));
 
       const matchedAsicNameInDb = await prisma.miner_data.findFirst({
         where: {
@@ -398,6 +413,7 @@ const kaboomracksScraper = async () => {
     */
 
     if (
+      isASICNew &&
       minerData.includes("Canaan A") &&
       individualSales != null &&
       moqTest![0] === 1
@@ -462,7 +478,9 @@ const kaboomracksScraper = async () => {
         );
 
         let model = `${asicName![0]}T`;
-        let id = sha1(vendor + model + price + date);
+        let id = sha1(
+          vendor + model + price + date.toLocaleDateString("en-CA")
+        );
 
         const asicsInfo = {
           vendor,
@@ -491,7 +509,9 @@ const kaboomracksScraper = async () => {
           asicSearchName
         );
 
-        let id = sha1(vendor + model + price + date);
+        let id = sha1(
+          vendor + model + price + date.toLocaleDateString("en-CA")
+        );
 
         const asicsInfo = {
           vendor,
@@ -551,4 +571,13 @@ const getSearchName = (asicString: string): string => {
   const searchName = arrayOfTestString[IndexOfModel] + " " + modelType;
 
   return searchName;
+};
+
+const s19XPParser = (minerString: string) => {
+  console.log("====================================");
+  console.log(minerString);
+
+  if (!minerString.toLocaleLowerCase().includes("minimum order of 1")) {
+    return false;
+  }
 };
