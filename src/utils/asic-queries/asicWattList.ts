@@ -8,6 +8,10 @@ export const asicWattList: {
     wt: 98,
     13.5: 1323,
   },
+  "bitmain antminer s11": {
+    wt: 76.5,
+    20.5: 1530,
+  },
   "bitmain antminer s17e": {
     wt: 45,
     64: 2880,
