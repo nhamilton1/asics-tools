@@ -131,29 +131,29 @@ const Home: NextPageWithLayout = () => {
     }
   );
 
-  const [data, setData] = useState<AsicData[]>(
-    asicData?.formattingAsicData || []
+  const [data, setData] = useState<AsicData[] | undefined>(
+    asicData?.formattingAsicData || undefined
   );
 
   useEffect(() => {
-    const format = data.map((a) => {
+    const format = data?.map((a) => {
       if (a?.id && asicData) {
         let asicBTCPrice =
           Math.round(1000000 * (a.price / asicData.currentBTCPrice)) / 1000000;
-        let value = Math.round(a.price / a?.th);
-        let wattDollar = Number((value * Number(a?.efficiency)).toFixed(0));
+        let value = Math.round(a.price / a.th);
+        let wattDollar = Number((value * Number(a.efficiency)).toFixed(0));
         let denverDerivative = Number(
           (wattDollar / asicData.elongatedHashPrice).toFixed(2)
         );
         let btcPerMonth =
           Math.round(
-            1000000 * ((a?.th / (asicData.currentHash * 1000000)) * 900 * 30.5)
+            1000000 * ((a.th / (asicData.currentHash * 1000000)) * 900 * 30.5)
           ) / 1000000;
         let dollarPerMonth = Math.round(
           btcPerMonth * asicData.currentBTCPrice!
         );
         let monthlyEnergy =
-          Math.round(100 * (732 * (a?.watts * 0.001) * Number(kWhPrice))) / 100;
+          Math.round(100 * (732 * (a.watts * 0.001) * Number(kWhPrice))) / 100;
         let profitMonth = Math.round(dollarPerMonth - monthlyEnergy);
         let monthsToRoi = Math.round(100 * (a.price / dollarPerMonth)) / 100;
 
@@ -268,7 +268,7 @@ const Home: NextPageWithLayout = () => {
   );
 
   const table = useReactTable({
-    data: data.length === 0 ? [] : data,
+    data: !!data ? data : [],
     columns,
     state: {
       rowSelection,
@@ -315,237 +315,264 @@ const Home: NextPageWithLayout = () => {
           <MinedBlocksTicker />
         </div>
 
-        {isLoading ? (
-          <div className="block max-w-full overflow-y-hidden">
-            <table className="w-full">
-              <thead className="border-b">
-                {table.getHeaderGroups().map((headerGroup) => (
-                  <tr key={headerGroup.id} className="text-left">
-                    {headerGroup.headers.map((header) => (
-                      <th
-                        key={header.id}
-                        className="text-sm font-medium px-4 py-2"
-                        colSpan={header.colSpan}
-                        style={{
-                          position: "relative",
-                          width: header.getSize(),
-                        }}
-                      >
-                        {header.isPlaceholder
-                          ? null
-                          : flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
+        {/* 
+          had to add the !!data && because react table was causing some kind of infinite loop until the data was loaded.
+        */}
+        {!!data && (
+          <>
+            {isLoading ? (
+              <div className="block max-w-full overflow-y-hidden">
+                <table className="w-full">
+                  <thead className="border-b">
+                    {table.getHeaderGroups().map((headerGroup) => (
+                      <tr key={headerGroup.id} className="text-left">
+                        {headerGroup.headers.map((header) => (
+                          <th
+                            key={header.id}
+                            className="text-sm font-medium px-4 py-2"
+                            colSpan={header.colSpan}
+                            style={{
+                              position: "relative",
+                              width: header.getSize(),
+                            }}
+                          >
+                            {header.isPlaceholder
+                              ? null
+                              : flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
+                                )}
+                            {header.column.getCanFilter() &&
+                            header.column.columnDef.header === "Model" ? (
+                              <Filter column={header.column} table={table} />
+                            ) : null}
+                            {header.column.getCanResize() && (
+                              <div
+                                onMouseDown={header.getResizeHandler()}
+                                onTouchStart={header.getResizeHandler()}
+                                className={`resizer ${
+                                  header.column.getIsResizing()
+                                    ? "isResizing"
+                                    : ""
+                                }`}
+                              />
                             )}
-                        {header.column.getCanFilter() &&
-                        header.column.columnDef.header === "Model" ? (
-                          <Filter column={header.column} table={table} />
-                        ) : null}
-                        {header.column.getCanResize() && (
-                          <div
-                            onMouseDown={header.getResizeHandler()}
-                            onTouchStart={header.getResizeHandler()}
-                            className={`resizer ${
-                              header.column.getIsResizing() ? "isResizing" : ""
-                            }`}
-                          />
-                        )}
-                      </th>
-                    ))}
-                  </tr>
-                ))}
-              </thead>
-              <tbody>
-                {Array(10)
-                  .fill(0)
-                  .map((_, i) => (
-                    <tr
-                      key={i}
-                      className={`border-b transition duration-300 ease-in-out hover:bg-slate-700 ${
-                        i % 2 ? "bg-slate-900" : "bg-slate-800"
-                      }`}
-                    >
-                      {Array(16)
-                        .fill(0)
-                        .map((_, j) => (
-                          <td className={`px-4 py-4 whitespace-nowrap`} key={j}>
-                            <div className="flex items-center mt-4 space-x-3">
-                              <div className="h-2.5 bg-gray-400 rounded-full dark:bg-gray-700 w-10"></div>
-                            </div>
-                          </td>
+                          </th>
                         ))}
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div className="block max-w-full overflow-y-hidden">
-            <table className="w-full">
-              <thead className="border-b">
-                {table.getHeaderGroups().map((headerGroup) => (
-                  <tr key={headerGroup.id} className="text-left">
-                    {headerGroup.headers.map((header) => (
-                      <th
-                        key={header.id}
-                        className="text-sm font-medium px-4 py-2"
-                        colSpan={header.colSpan}
-                        style={{
-                          position: "relative",
-                          width: header.getSize(),
-                        }}
-                      >
-                        {header.isPlaceholder
-                          ? null
-                          : flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
-                        {header.column.getCanFilter() &&
-                        header.column.columnDef.header === "Model" ? (
-                          <Filter column={header.column} table={table} />
-                        ) : null}
-                        {header.column.getCanResize() && (
-                          <div
-                            onMouseDown={header.getResizeHandler()}
-                            onTouchStart={header.getResizeHandler()}
-                            className={`resizer ${
-                              header.column.getIsResizing() ? "isResizing" : ""
-                            }`}
-                          />
-                        )}
-                      </th>
+                      </tr>
                     ))}
-                  </tr>
-                ))}
-              </thead>
-              <tbody>
-                {table.getRowModel().rows.map((row, index) => (
-                  <tr
-                    key={row.id}
-                    className={`border-b transition duration-300 ease-in-out hover:bg-slate-700 ${
-                      index % 2 ? "bg-slate-900" : "bg-slate-800"
-                    }`}
-                  >
-                    {row.getVisibleCells().map((cell) => (
-                      <td
-                        key={cell.id}
-                        className={`px-4 py-4 whitespace-nowrap ${
-                          cell.column.columnDef.header === "Model"
-                            ? "cursor-pointer hover:text-orange-400"
-                            : ""
-                        }`}
-                        style={{ width: cell.column.getSize() }}
-                        onClick={() => {
-                          if (cell.column.columnDef.header === "Model") {
-                            const model = cell.row.original?.model.includes(
-                              "J/th"
-                            )
-                              ? cell.row.original?.model.replace("J/th", "J th")
-                              : cell.row.original?.model;
+                  </thead>
+                  <tbody>
+                    {Array(10)
+                      .fill(0)
+                      .map((_, i) => (
+                        <tr
+                          key={i}
+                          className={`border-b transition duration-300 ease-in-out hover:bg-slate-700 ${
+                            i % 2 ? "bg-slate-900" : "bg-slate-800"
+                          }`}
+                        >
+                          {Array(16)
+                            .fill(0)
+                            .map((_, j) => (
+                              <td
+                                className={`px-4 py-4 whitespace-nowrap`}
+                                key={j}
+                              >
+                                <div className="flex items-center mt-4 space-x-3">
+                                  <div className="h-2.5 bg-gray-400 rounded-full dark:bg-gray-700 w-10"></div>
+                                </div>
+                              </td>
+                            ))}
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div>
+                <div className="block max-w-full overflow-y-hidden">
+                  <table className="w-full">
+                    <thead className="border-b">
+                      {table.getHeaderGroups().map((headerGroup) => (
+                        <tr key={headerGroup.id} className="text-left">
+                          {headerGroup.headers.map((header) => (
+                            <th
+                              key={header.id}
+                              className="text-sm font-medium px-4 py-2"
+                              colSpan={header.colSpan}
+                              style={{
+                                position: "relative",
+                                width: header.getSize(),
+                              }}
+                            >
+                              {header.isPlaceholder
+                                ? null
+                                : flexRender(
+                                    header.column.columnDef.header,
+                                    header.getContext()
+                                  )}
+                              {header.column.getCanFilter() &&
+                              header.column.columnDef.header === "Model" ? (
+                                <Filter column={header.column} table={table} />
+                              ) : null}
+                              {header.column.getCanResize() && (
+                                <div
+                                  onMouseDown={header.getResizeHandler()}
+                                  onTouchStart={header.getResizeHandler()}
+                                  className={`resizer ${
+                                    header.column.getIsResizing()
+                                      ? "isResizing"
+                                      : ""
+                                  }`}
+                                />
+                              )}
+                            </th>
+                          ))}
+                        </tr>
+                      ))}
+                    </thead>
+                    <tbody>
+                      {table.getRowModel().rows.map((row, index) => (
+                        <tr
+                          key={row.id}
+                          className={`border-b transition duration-300 ease-in-out hover:bg-slate-700 ${
+                            index % 2 ? "bg-slate-900" : "bg-slate-800"
+                          }`}
+                        >
+                          {row.getVisibleCells().map((cell) => (
+                            <td
+                              key={cell.id}
+                              className={`px-4 py-4 whitespace-nowrap ${
+                                cell.column.columnDef.header === "Model"
+                                  ? "cursor-pointer hover:text-orange-400"
+                                  : ""
+                              }`}
+                              style={{ width: cell.column.getSize() }}
+                              onClick={() => {
+                                if (cell.column.columnDef.header === "Model") {
+                                  const model =
+                                    cell.row.original?.model.includes("J/th")
+                                      ? cell.row.original?.model.replace(
+                                          "J/th",
+                                          "J th"
+                                        )
+                                      : cell.row.original?.model;
 
-                            router.push(`/[model]`, `/${model}`);
-                          } else return;
-                        }}
+                                  router.push(`/[model]`, `/${model}`);
+                                } else return;
+                              }}
+                            >
+                              {flexRender(
+                                cell.column.columnDef.cell,
+                                cell.getContext()
+                              )}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="bg-slate-900 w-full">
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full my-4">
+                    <div className="flex flex-row gap-2">
+                      <button
+                        className={
+                          !table.getCanPreviousPage()
+                            ? "text-gray-500 border-gray-500 border p-1 rounded"
+                            : "border rounded p-1 cursor-pointer"
+                        }
+                        onClick={() => table.setPageIndex(0)}
+                        disabled={!table.getCanPreviousPage()}
                       >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                        {"<<"}
+                      </button>
+                      <button
+                        className={
+                          !table.getCanPreviousPage()
+                            ? "text-gray-500 border-gray-500 border p-1 rounded"
+                            : "border rounded p-1 cursor-pointer"
+                        }
+                        onClick={() => table.previousPage()}
+                        disabled={!table.getCanPreviousPage()}
+                      >
+                        {"<"}
+                      </button>
+                      <button
+                        className={
+                          !table.getCanNextPage()
+                            ? "text-gray-500 border-gray-500 border p-1 rounded"
+                            : "border rounded p-1 cursor-pointer"
+                        }
+                        onClick={() => table.nextPage()}
+                        disabled={!table.getCanNextPage()}
+                      >
+                        {">"}
+                      </button>
+                      <button
+                        className={
+                          !table.getCanNextPage()
+                            ? "text-gray-500 border-gray-500 border p-1 rounded"
+                            : "border rounded p-1 cursor-pointer"
+                        }
+                        onClick={() =>
+                          table.setPageIndex(table.getPageCount() - 1)
+                        }
+                        disabled={!table.getCanNextPage()}
+                      >
+                        {">>"}
+                      </button>
+                    </div>
+                    <div className="flex flex-row gap-2">
+                      <span className="flex items-center gap-1">
+                        <div>Page</div>
+                        <strong>
+                          {table.getState().pagination.pageIndex + 1} of{" "}
+                          {table.getPageCount()}
+                        </strong>
+                      </span>
+                      <span className="flex items-center gap-1">
+                        | Go to page:
+                        <input
+                          type="number"
+                          defaultValue={
+                            table.getState().pagination.pageIndex + 1
+                          }
+                          onChange={(e) => {
+                            let page = e.target.value
+                              ? Number(e.target.value) - 1
+                              : 0;
+                            table.setPageIndex(page);
+                          }}
+                          className="border p-1 rounded w-12 text-black"
+                        />
+                      </span>
+                    </div>
+                    <div className="flex flex-row gap-2">
+                      <select
+                        value={table.getState().pagination.pageSize}
+                        onChange={(e) => {
+                          table.setPageSize(Number(e.target.value));
+                        }}
+                        className="text-black"
+                      >
+                        {[10, 20, 30, 40, 50].map((pageSize) => (
+                          <option key={pageSize} value={pageSize}>
+                            Show {pageSize}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
         )}
 
         <div className="bg-slate-900 w-full p-4">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full my-4">
-            <div className="flex flex-row gap-2">
-              <button
-                className={
-                  !table.getCanPreviousPage()
-                    ? "text-gray-500 border-gray-500 border p-1 rounded"
-                    : "border rounded p-1 cursor-pointer"
-                }
-                onClick={() => table.setPageIndex(0)}
-                disabled={!table.getCanPreviousPage()}
-              >
-                {"<<"}
-              </button>
-              <button
-                className={
-                  !table.getCanPreviousPage()
-                    ? "text-gray-500 border-gray-500 border p-1 rounded"
-                    : "border rounded p-1 cursor-pointer"
-                }
-                onClick={() => table.previousPage()}
-                disabled={!table.getCanPreviousPage()}
-              >
-                {"<"}
-              </button>
-              <button
-                className={
-                  !table.getCanNextPage()
-                    ? "text-gray-500 border-gray-500 border p-1 rounded"
-                    : "border rounded p-1 cursor-pointer"
-                }
-                onClick={() => table.nextPage()}
-                disabled={!table.getCanNextPage()}
-              >
-                {">"}
-              </button>
-              <button
-                className={
-                  !table.getCanNextPage()
-                    ? "text-gray-500 border-gray-500 border p-1 rounded"
-                    : "border rounded p-1 cursor-pointer"
-                }
-                onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-                disabled={!table.getCanNextPage()}
-              >
-                {">>"}
-              </button>
-            </div>
-            <div className="flex flex-row gap-2">
-              <span className="flex items-center gap-1">
-                <div>Page</div>
-                <strong>
-                  {table.getState().pagination.pageIndex + 1} of{" "}
-                  {table.getPageCount()}
-                </strong>
-              </span>
-              <span className="flex items-center gap-1">
-                | Go to page:
-                <input
-                  type="number"
-                  defaultValue={table.getState().pagination.pageIndex + 1}
-                  onChange={(e) => {
-                    let page = e.target.value ? Number(e.target.value) - 1 : 0;
-                    table.setPageIndex(page);
-                  }}
-                  className="border p-1 rounded w-12 text-black"
-                />
-              </span>
-            </div>
-            <div className="flex flex-row gap-2">
-              <select
-                value={table.getState().pagination.pageSize}
-                onChange={(e) => {
-                  table.setPageSize(Number(e.target.value));
-                }}
-                className="text-black"
-              >
-                {[10, 20, 30, 40, 50].map((pageSize) => (
-                  <option key={pageSize} value={pageSize}>
-                    Show {pageSize}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
           {DenverAndDefs(
             asicData?.formattedBTCPrice,
             asicData?.currentHash,

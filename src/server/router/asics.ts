@@ -23,17 +23,20 @@ export const asicsRouter = createRouter().query("get-asics-info", {
       },
     });
 
-    const asicsWithMinerInfo = asics.map((asic) => {
-      const miner = minerInfo.find((x) => x.model === asic.model);
-      if (miner) {
-        return {
-          ...asic,
-          th: miner.th,
-          watts: miner.watts,
-          efficiency: miner.efficiency,
-        };
-      }
-    });
+    //TODO: why am I getting undefined to be put into the array?
+    const asicsWithMinerInfo = asics
+      .map((asic) => {
+        const miner = minerInfo.find((x) => x.model === asic.model);
+        if (miner) {
+          return {
+            ...asic,
+            th: miner.th,
+            watts: miner.watts,
+            efficiency: miner.efficiency,
+          };
+        }
+      })
+      .filter((x) => x !== undefined);
 
     const btcPriceURL = `https://insights.braiins.com/api/v1.0/price-stats`;
 
@@ -83,12 +86,12 @@ export const asicsRouter = createRouter().query("get-asics-info", {
           date: new Date(a.date.toISOString().slice(0, -1)).toLocaleDateString(
             "en-US"
           ),
-          efficiency: a?.efficiency.toFixed(1),
+          efficiency: a.efficiency.toFixed(1),
           model: a.model,
           price: a.price,
-          th: a?.th,
+          th: a.th,
           vendor: a.vendor,
-          watts: a?.watts,
+          watts: a.watts,
           currentHashPrice,
           elongatedHashPrice,
         };
