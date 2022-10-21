@@ -390,90 +390,89 @@ const Home: NextPageWithLayout = () => {
                 </table>
               </div>
             ) : (
-              <div>
-                <div className="block max-w-full overflow-y-hidden">
-                  <table className="w-full">
-                    <thead className="border-b">
-                      {table.getHeaderGroups().map((headerGroup) => (
-                        <tr key={headerGroup.id} className="text-left">
-                          {headerGroup.headers.map((header) => (
-                            <th
-                              key={header.id}
-                              className="text-sm font-medium px-4 py-2"
-                              colSpan={header.colSpan}
-                              style={{
-                                position: "relative",
-                                width: header.getSize(),
-                              }}
-                            >
-                              {header.isPlaceholder
-                                ? null
-                                : flexRender(
-                                    header.column.columnDef.header,
-                                    header.getContext()
-                                  )}
-                              {header.column.getCanFilter() &&
-                              header.column.columnDef.header === "Model" ? (
-                                <Filter column={header.column} table={table} />
-                              ) : null}
-                              {header.column.getCanResize() && (
-                                <div
-                                  onMouseDown={header.getResizeHandler()}
-                                  onTouchStart={header.getResizeHandler()}
-                                  className={`resizer ${
-                                    header.column.getIsResizing()
-                                      ? "isResizing"
-                                      : ""
-                                  }`}
-                                />
-                              )}
-                            </th>
-                          ))}
-                        </tr>
-                      ))}
-                    </thead>
-                    <tbody>
-                      {table.getRowModel().rows.map((row, index) => (
-                        <tr
-                          key={row.id}
-                          className={`border-b transition duration-300 ease-in-out hover:bg-slate-700 ${
-                            index % 2 ? "bg-slate-900" : "bg-slate-800"
-                          }`}
-                        >
-                          {row.getVisibleCells().map((cell) => (
-                            <td
-                              key={cell.id}
-                              className={`px-4 py-4 whitespace-nowrap ${
-                                cell.column.columnDef.header === "Model"
-                                  ? "cursor-pointer hover:text-orange-400"
-                                  : ""
-                              }`}
-                              style={{ width: cell.column.getSize() }}
-                              onClick={() => {
-                                if (cell.column.columnDef.header === "Model") {
-                                  const model =
-                                    cell.row.original?.model.includes("J/th")
-                                      ? cell.row.original?.model.replace(
-                                          "J/th",
-                                          "J th"
-                                        )
-                                      : cell.row.original?.model;
+              <div className="block max-w-full overflow-y-hidden">
+                <table className="w-full">
+                  <thead className="border-b">
+                    {table.getHeaderGroups().map((headerGroup) => (
+                      <tr key={headerGroup.id} className="text-left">
+                        {headerGroup.headers.map((header) => (
+                          <th
+                            key={header.id}
+                            className="text-sm font-medium px-4 py-2"
+                            colSpan={header.colSpan}
+                            style={{
+                              position: "relative",
+                              width: header.getSize(),
+                            }}
+                          >
+                            {header.isPlaceholder
+                              ? null
+                              : flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
+                                )}
+                            {header.column.getCanFilter() &&
+                            header.column.columnDef.header === "Model" ? (
+                              <Filter column={header.column} table={table} />
+                            ) : null}
+                            {header.column.getCanResize() && (
+                              <div
+                                onMouseDown={header.getResizeHandler()}
+                                onTouchStart={header.getResizeHandler()}
+                                className={`resizer ${
+                                  header.column.getIsResizing()
+                                    ? "isResizing"
+                                    : ""
+                                }`}
+                              />
+                            )}
+                          </th>
+                        ))}
+                      </tr>
+                    ))}
+                  </thead>
+                  <tbody>
+                    {table.getRowModel().rows.map((row, index) => (
+                      <tr
+                        key={row.id}
+                        className={`border-b transition duration-300 ease-in-out hover:bg-slate-700 ${
+                          index % 2 ? "bg-slate-900" : "bg-slate-800"
+                        }`}
+                      >
+                        {row.getVisibleCells().map((cell) => (
+                          <td
+                            key={cell.id}
+                            className={`px-4 py-4 whitespace-nowrap ${
+                              cell.column.columnDef.header === "Model"
+                                ? "cursor-pointer hover:text-orange-400"
+                                : ""
+                            }`}
+                            style={{ width: cell.column.getSize() }}
+                            onClick={() => {
+                              if (cell.column.columnDef.header === "Model") {
+                                const model = cell.row.original?.model.includes(
+                                  "J/th"
+                                )
+                                  ? cell.row.original?.model.replace(
+                                      "J/th",
+                                      "J th"
+                                    )
+                                  : cell.row.original?.model;
 
-                                  router.push(`/[model]`, `/${model}`);
-                                } else return;
-                              }}
-                            >
-                              {flexRender(
-                                cell.column.columnDef.cell,
-                                cell.getContext()
-                              )}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                                router.push(`/[model]`, `/${model}`);
+                              } else return;
+                            }}
+                          >
+                            {flexRender(
+                              cell.column.columnDef.cell,
+                              cell.getContext()
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
 
                 <div className="bg-slate-900 w-full">
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full my-4">
