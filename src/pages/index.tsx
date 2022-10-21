@@ -473,102 +473,100 @@ const Home: NextPageWithLayout = () => {
                     ))}
                   </tbody>
                 </table>
-
-                <div className="bg-slate-900 w-full">
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full my-4">
-                    <div className="flex flex-row gap-2">
-                      <button
-                        className={
-                          !table.getCanPreviousPage()
-                            ? "text-gray-500 border-gray-500 border p-1 rounded"
-                            : "border rounded p-1 cursor-pointer"
-                        }
-                        onClick={() => table.setPageIndex(0)}
-                        disabled={!table.getCanPreviousPage()}
-                      >
-                        {"<<"}
-                      </button>
-                      <button
-                        className={
-                          !table.getCanPreviousPage()
-                            ? "text-gray-500 border-gray-500 border p-1 rounded"
-                            : "border rounded p-1 cursor-pointer"
-                        }
-                        onClick={() => table.previousPage()}
-                        disabled={!table.getCanPreviousPage()}
-                      >
-                        {"<"}
-                      </button>
-                      <button
-                        className={
-                          !table.getCanNextPage()
-                            ? "text-gray-500 border-gray-500 border p-1 rounded"
-                            : "border rounded p-1 cursor-pointer"
-                        }
-                        onClick={() => table.nextPage()}
-                        disabled={!table.getCanNextPage()}
-                      >
-                        {">"}
-                      </button>
-                      <button
-                        className={
-                          !table.getCanNextPage()
-                            ? "text-gray-500 border-gray-500 border p-1 rounded"
-                            : "border rounded p-1 cursor-pointer"
-                        }
-                        onClick={() =>
-                          table.setPageIndex(table.getPageCount() - 1)
-                        }
-                        disabled={!table.getCanNextPage()}
-                      >
-                        {">>"}
-                      </button>
-                    </div>
-                    <div className="flex flex-row gap-2">
-                      <span className="flex items-center gap-1">
-                        <div>Page</div>
-                        <strong>
-                          {table.getState().pagination.pageIndex + 1} of{" "}
-                          {table.getPageCount()}
-                        </strong>
-                      </span>
-                      <span className="flex items-center gap-1">
-                        | Go to page:
-                        <input
-                          type="number"
-                          defaultValue={
-                            table.getState().pagination.pageIndex + 1
-                          }
-                          onChange={(e) => {
-                            let page = e.target.value
-                              ? Number(e.target.value) - 1
-                              : 0;
-                            table.setPageIndex(page);
-                          }}
-                          className="border p-1 rounded w-12 text-black"
-                        />
-                      </span>
-                    </div>
-                    <div className="flex flex-row gap-2">
-                      <select
-                        value={table.getState().pagination.pageSize}
-                        onChange={(e) => {
-                          table.setPageSize(Number(e.target.value));
-                        }}
-                        className="text-black"
-                      >
-                        {[10, 20, 30, 40, 50].map((pageSize) => (
-                          <option key={pageSize} value={pageSize}>
-                            Show {pageSize}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                </div>
               </div>
             )}
           </>
+        )}
+
+        {!!data && (
+          <div className="bg-slate-900 w-full">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full my-4">
+              <div className="flex flex-row gap-2">
+                <button
+                  className={
+                    !table.getCanPreviousPage()
+                      ? "text-gray-500 border-gray-500 border p-1 rounded"
+                      : "border rounded p-1 cursor-pointer"
+                  }
+                  onClick={() => table.setPageIndex(0)}
+                  disabled={!table.getCanPreviousPage()}
+                >
+                  {"<<"}
+                </button>
+                <button
+                  className={
+                    !table.getCanPreviousPage()
+                      ? "text-gray-500 border-gray-500 border p-1 rounded"
+                      : "border rounded p-1 cursor-pointer"
+                  }
+                  onClick={() => table.previousPage()}
+                  disabled={!table.getCanPreviousPage()}
+                >
+                  {"<"}
+                </button>
+                <button
+                  className={
+                    !table.getCanNextPage()
+                      ? "text-gray-500 border-gray-500 border p-1 rounded"
+                      : "border rounded p-1 cursor-pointer"
+                  }
+                  onClick={() => table.nextPage()}
+                  disabled={!table.getCanNextPage()}
+                >
+                  {">"}
+                </button>
+                <button
+                  className={
+                    !table.getCanNextPage()
+                      ? "text-gray-500 border-gray-500 border p-1 rounded"
+                      : "border rounded p-1 cursor-pointer"
+                  }
+                  onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+                  disabled={!table.getCanNextPage()}
+                >
+                  {">>"}
+                </button>
+              </div>
+              <div className="flex flex-row gap-2">
+                <span className="flex items-center gap-1">
+                  <div>Page</div>
+                  <strong>
+                    {table.getState().pagination.pageIndex + 1} of{" "}
+                    {table.getPageCount()}
+                  </strong>
+                </span>
+                <span className="flex items-center gap-1">
+                  | Go to page:
+                  <input
+                    type="number"
+                    defaultValue={table.getState().pagination.pageIndex + 1}
+                    onChange={(e) => {
+                      let page = e.target.value
+                        ? Number(e.target.value) - 1
+                        : 0;
+                      table.setPageIndex(page);
+                    }}
+                    className="border p-1 rounded w-12 text-black"
+                  />
+                </span>
+              </div>
+              <div className="flex flex-row gap-2">
+                <select
+                  value={table.getState().pagination.pageSize}
+                  onChange={(e) => {
+                    table.setPageSize(Number(e.target.value));
+                  }}
+                  className="text-black"
+                >
+                  {[10, 20, 30, 40, 50].map((pageSize) => (
+                    <option key={pageSize} value={pageSize}>
+                      Show {pageSize}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
         )}
 
         <div className="bg-slate-900 w-full p-4">
