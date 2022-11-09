@@ -1,20 +1,73 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { ReactElement, useState } from "react";
-import {
-  CartesianGrid,
-  Legend,
-  Line,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
-  TooltipProps,
-  XAxis,
-  YAxis,
-} from "recharts";
 import AsicLayout from "../components/asicLayout.tsx/asicLayout";
 import { LoadingSkeletonCard } from "../components/loadingSkeletons";
 import { trpc } from "../utils/trpc";
+import dynamic from "next/dynamic";
+
+const MinerPriceHistoryChart = dynamic(
+  () => import("../components/charts/minerPriceHistoryChart"),
+  { ssr: false }
+);
+
+const TempChart = dynamic(() => import("../components/charts/tempChart"), {
+  ssr: false,
+});
+
+const TempProfitChart = dynamic(
+  () => import("../components/charts/tempProfitChart"),
+  {
+    ssr: false,
+  }
+);
+
+const ProfitChart = dynamic(() => import("../components/charts/profitChart"), {
+  ssr: false,
+});
+
+// export async function getStaticProps() {
+//   const ssg = createSSGHelpers({
+//     router: appRouter,
+//     ctx: await createContext(),
+//     transformer: superjson,
+//   });
+
+//   await ssg.fetchQuery("asics.get-asics-info");
+
+//   return {
+//     props: {
+//       trpcState: ssg.dehydrate(),
+//     },
+//     revalidate: 1,
+//   };
+// }
+
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const prisma = new PrismaClient();
+//   const asics = await prisma?.market_data.findMany({
+//     select: {
+//       model: true,
+//     },
+//   });
+
+//   if (!asics) {
+//     return {
+//       paths: [],
+//       fallback: true,
+//     };
+//   } else {
+//     return {
+//       paths: asics.map((asic) => ({
+//         params: {
+//           model: asic.model,
+//         },
+//       })),
+//       // https://nextjs.org/docs/basic-features/data-fetching#fallback-blocking
+//       fallback: "blocking",
+//     };
+//   }
+// };
 
 const Model = () => {
   const localStorage =
@@ -360,119 +413,14 @@ const Model = () => {
               }}
             />
           </div>
-          {isLoading && (
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart
-                width={600}
-                height={300}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />=
-                <XAxis dataKey="date" />
-                <YAxis />
-                <Tooltip content={CustomTooltip} />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="profitMonth"
-                  stroke="#82ca9d"
-                  strokeWidth={4}
-                  name="Profit per month"
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          )}
+          {isLoading && <TempProfitChart />}
           {!!asicInfo?.chartData && (
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart
-                width={600}
-                height={300}
-                data={asicInfo.chartData}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />=
-                <XAxis dataKey="date" />
-                <YAxis />
-                <Tooltip content={CustomTooltip} />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="profitMonth"
-                  stroke="#82ca9d"
-                  strokeWidth={4}
-                  dot={<CustomizedDot />}
-                  activeDot={<ActiveCustomizedDot />}
-                  name="Profit per month"
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            <ProfitChart chartData={asicInfo.chartData} />
           )}
 
-          {isLoading && (
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart
-                width={600}
-                height={300}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" />
-                <YAxis />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="price"
-                  stroke="#FAA219"
-                  strokeWidth={4}
-                  dot={false}
-                  name="Historical ASIC price"
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          )}
+          {isLoading && <TempChart />}
           {!!asicInfo?.minerPriceHistory && (
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart
-                width={600}
-                height={300}
-                data={asicInfo?.minerPriceHistory}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" />
-                <YAxis />
-                <Tooltip content={CustomTooltipHistoricalPrice} />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="price"
-                  stroke="#FAA219"
-                  strokeWidth={4}
-                  dot={false}
-                  name="Historical ASIC price"
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            <MinerPriceHistoryChart data={asicInfo.minerPriceHistory} />
           )}
         </div>
         {isLoading && <div>Loading...</div>}
@@ -486,111 +434,4 @@ export default Model;
 
 Model.getLayout = function getLayout(page: ReactElement) {
   return <AsicLayout>{page}</AsicLayout>;
-};
-
-const CustomTooltip = ({
-  active,
-  payload,
-  label,
-}: TooltipProps<number, string>) => {
-  if (active) {
-    return (
-      <div className="bg-slate-700 p-2 flex flex-col">
-        <p>BTC Price: {!!payload && payload[0]?.payload.btcPrice}</p>
-        <p>{`${label} profit: $${
-          !!payload &&
-          payload[0]?.value?.toLocaleString("en-US", {
-            currency: "USD",
-          })
-        }`}</p>
-      </div>
-    );
-  }
-};
-
-const CustomTooltipHistoricalPrice = ({
-  active,
-  payload,
-  label,
-}: TooltipProps<number, string>) => {
-  if (active) {
-    return (
-      <div className="bg-slate-700 p-2 flex flex-col">
-        <p>{`asic price: $${
-          !!payload &&
-          payload[0]?.value?.toLocaleString("en-US", {
-            currency: "USD",
-          })
-        } on ${label} `}</p>
-      </div>
-    );
-  }
-};
-
-const CustomizedDot = ({ cx, cy, stroke, fill, value }: any) => {
-  if (value < 0) {
-    return (
-      <svg
-        x={cx - 4}
-        y={cy - 4}
-        width={10}
-        height={10}
-        fill={"red"}
-        stroke={stroke}
-        strokeWidth={0}
-      >
-        <circle cx={4} cy={4} r={4} />
-      </svg>
-    );
-  }
-
-  return (
-    <svg
-      x={cx - 0}
-      y={cy - 0}
-      width={10}
-      height={10}
-      fill={fill}
-      stroke={stroke}
-      strokeWidth={1.0}
-      viewBox="0 0 10 10"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx={0} cy={0} r={0} />
-    </svg>
-  );
-};
-
-const ActiveCustomizedDot = ({ cx, cy, stroke, fill, value }: any) => {
-  if (value < 0) {
-    return (
-      <svg
-        x={cx - 6}
-        y={cy - 6}
-        width={10}
-        height={10}
-        fill={"red"}
-        stroke={stroke}
-        strokeWidth={0}
-      >
-        <circle cx={6} cy={6} r={6} />
-      </svg>
-    );
-  }
-
-  return (
-    <svg
-      x={cx - 0}
-      y={cy - 0}
-      width={10}
-      height={10}
-      fill={fill}
-      stroke={stroke}
-      strokeWidth={1.0}
-      viewBox="0 0 10 10"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx={0} cy={0} r={0} />
-    </svg>
-  );
 };
