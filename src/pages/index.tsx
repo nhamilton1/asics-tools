@@ -11,7 +11,6 @@ import {
   Table,
   useReactTable,
 } from "@tanstack/react-table";
-
 import {
   InputHTMLAttributes,
   ReactElement,
@@ -48,6 +47,23 @@ type AsicData =
       monthsToRoi: number;
     }
   | undefined;
+
+// export async function getStaticProps() {
+//   const ssg = createSSGHelpers({
+//     router: appRouter,
+//     ctx: await createContext(),
+//     transformer: superjson,
+//   });
+
+//   await ssg.fetchQuery("asics.get-asics-info");
+
+//   return {
+//     props: {
+//       trpcState: ssg.dehydrate(),
+//     },
+//     revalidate: 1,
+//   };
+// }
 
 const Home: NextPageWithLayout = () => {
   const localStorage =
