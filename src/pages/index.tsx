@@ -296,9 +296,6 @@ const Home: NextPageWithLayout = () => {
     getFacetedUniqueValues: getFacetedUniqueValues(),
     enableColumnResizing: true,
     columnResizeMode: "onChange",
-    // debugTable: true,
-    // debugHeaders: true,
-    // debugColumns: true,
   });
 
   return (
