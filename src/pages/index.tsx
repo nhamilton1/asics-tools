@@ -217,7 +217,17 @@ const Home: NextPageWithLayout = () => {
       {
         header: "Price",
         accessorKey: "price",
-        cell: (info) => info.getValue(),
+        cell(props) {
+          if (props.getValue()) {
+            return props.getValue<number>().toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+              maximumFractionDigits: 0,
+            });
+          } else {
+            return "Error Loading";
+          }
+        },
       },
       {
         header: "TH",
@@ -242,12 +252,32 @@ const Home: NextPageWithLayout = () => {
       {
         header: "Value ($/TH)",
         accessorKey: "value",
-        cell: (info) => info.getValue(),
+        cell(props) {
+          if (props.getValue()) {
+            return props.getValue<number>().toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+              maximumFractionDigits: 0,
+            });
+          } else {
+            return "Error Loading";
+          }
+        },
       },
       {
         header: "Watt $",
         accessorKey: "wattDollar",
-        cell: (info) => info.getValue(),
+        cell(props) {
+          if (props.getValue()) {
+            return props.getValue<number>().toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+              maximumFractionDigits: 0,
+            });
+          } else {
+            return "Error Loading";
+          }
+        },
       },
       {
         header: "Denver Derivative",
@@ -262,12 +292,31 @@ const Home: NextPageWithLayout = () => {
       {
         header: "Monthly Energy",
         accessorKey: "monthlyEnergy",
-        cell: (info) => info.getValue(),
+        cell(props) {
+          if (props.getValue()) {
+            return props.getValue<number>().toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            });
+          } else {
+            return "Error Loading";
+          }
+        },
       },
       {
         header: "Profit per Month",
         accessorKey: "profitMonth",
-        cell: (info) => info.getValue(),
+        cell(props) {
+          if (props.getValue()) {
+            return props.getValue<number>().toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+              maximumFractionDigits: 0,
+            });
+          } else {
+            return "Error Loading";
+          }
+        },
       },
       {
         header: "Months to ROI",
@@ -277,7 +326,17 @@ const Home: NextPageWithLayout = () => {
       {
         header: "$/Month",
         accessorKey: "dollarPerMonth",
-        cell: (info) => info.getValue(),
+        cell(props) {
+          if (props.getValue()) {
+            return props.getValue<number>().toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+              maximumFractionDigits: 0,
+            });
+          } else {
+            return "Error Loading";
+          }
+        },
       },
     ],
     []
