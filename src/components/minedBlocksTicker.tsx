@@ -41,7 +41,7 @@ const MinedBlocksTicker = () => {
                   {index + 1}. Block {block.height}: {block.pool}{" "}
                   <Image
                     src={getPoolLogo(block.pool)}
-                    alt="F2Pool"
+                    alt={block.pool}
                     width={24}
                     height={24}
                     layout="fixed"
@@ -59,7 +59,7 @@ const MinedBlocksTicker = () => {
                   {index + 1}. Block {block.height}: {block.pool}{" "}
                   <Image
                     src={getPoolLogo(block.pool)}
-                    alt="F2Pool"
+                    alt={block.pool}
                     width={24}
                     height={24}
                     layout="fixed"
