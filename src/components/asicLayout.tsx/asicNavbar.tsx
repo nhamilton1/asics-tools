@@ -10,8 +10,6 @@ const AsicNavbar = () => {
     "mempool.get-difficulty-adjustment",
   ]);
 
-  // console.log(data?.difficultyAdjustment.remainingTime / 1000 / 60 / 60 / 24);
-
   return (
     <div className="w-full p-5 flex flex-row justify-between items-center flex-wrap gap-2">
       <div className="flex flex-row justify-start items-center">
@@ -48,12 +46,8 @@ const AsicNavbar = () => {
                   ~
                   {
                     //how many days until next adjustment from milliseconds
-                    data.difficultyAdjustment.remainingTime /
-                      1000 /
-                      60 /
-                      60 /
-                      24 >
-                    0
+                    data.difficultyAdjustment.remainingTime / 1000 / 60 / 60 >
+                    24
                       ? (
                           data?.difficultyAdjustment.remainingTime /
                           1000 /
@@ -69,8 +63,7 @@ const AsicNavbar = () => {
                           60
                         ).toFixed(0)
                   }{" "}
-                  {data?.difficultyAdjustment.remainingTime / 1000 / 60 / 60 >=
-                  24
+                  {data.difficultyAdjustment.remainingTime / 1000 / 60 / 60 > 24
                     ? "Days"
                     : data?.difficultyAdjustment.remainingTime /
                         1000 /
